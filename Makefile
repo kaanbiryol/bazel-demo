@@ -1,0 +1,1 @@
+project: bazel run //:xcodeproj

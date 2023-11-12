@@ -15,11 +15,16 @@ _SCHEMES = [
     xcode_schemes.scheme(
         name = "App",
         build_action = xcode_schemes.build_action(
-            targets = ["//App"],
+            targets = ["//App/Sources:App"],
         ),
         launch_action = xcode_schemes.launch_action(
-            "//App",
-        )
+            "//App/Sources:App",
+        ),
+        test_action = xcode_schemes.test_action(
+            [
+                "//App/Tests:AppTests",
+            ]
+        ),
     ),
 ]
 
@@ -27,10 +32,13 @@ xcodeproj(
     name = "xcodeproj",
     project_name = "App",
     schemes = _SCHEMES,
+    scheme_autogeneration_mode = "all",
+    build_mode ="bazel",
     top_level_targets = [
         top_level_target(
-            "//App", 
+            "//App/Sources:App", 
             target_environments = ["simulator"]
         ),
+        "//App/Tests:AppTests",
     ],
 )

@@ -11,17 +11,20 @@ ios_application(
     families = ["iphone", "ipad"],
     infoplists = [":Info.plist"],
     minimum_os_version = "17.0",
-    visibility = ["//visibility:public"],
+    visibility = [
+        "//App/Tests:__subpackages__",
+        "@rules_xcodeproj//xcodeproj:generated"
+    ],
     deps = [":AppModule"],
 )
 
 swift_library(
     name = "AppModule",
-    srcs = glob(["Sources/**/*.swift"]),
+    srcs = glob(["**/*.swift"]),
     module_name = "App",
     tags = ["manual"],
-    # visibility = ["//Sources/AppTests:__subpackages__"],
-    # deps = [
-    #     "//Sources/UI",
-    # ],
+    visibility = ["//App/Tests:__subpackages__"],
+    deps = [
+        "//Modules/Home/Sources:Home"
+    ]
 )
