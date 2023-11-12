@@ -1,1 +1,3 @@
-public class Home {}
+import Foundation
+
+public let mValue = 42

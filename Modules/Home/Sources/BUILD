@@ -8,6 +8,6 @@ load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 swift_library(
     name = "Home",
     srcs = glob(["**/*.swift"]),
-    # visibility = ["//Modules/Home/Tests:__subpackages__"],
+    module_name = "Home",
     visibility = ["//visibility:public"],
 )

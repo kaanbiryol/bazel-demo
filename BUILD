@@ -40,5 +40,6 @@ xcodeproj(
             target_environments = ["simulator"]
         ),
         "//App/Tests:AppTests",
+        "//Modules/Home/Tests:HomeTests",
     ],
 )
