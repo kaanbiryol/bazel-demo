@@ -15,4 +15,3 @@ def _swiftlint(name, enable_fix = False):
         executable = True,
         tools = ["@SwiftLint//:swiftlint"],
 )
-

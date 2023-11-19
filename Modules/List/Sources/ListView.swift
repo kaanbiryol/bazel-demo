@@ -16,7 +16,7 @@ public struct ListView: View {
                     }
                 }
             }
-            .navigationBarTitle(Networking.fetchTitle())
+            .navigationBarTitle("Networking.fetchTitle()")
         }
     }
 }

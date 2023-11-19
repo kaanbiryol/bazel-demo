@@ -6,6 +6,14 @@ load(
 )
 
 load("//tools:swiftlint.bzl", "swiftlint", "swiftlint_fix")
+load("//tools:post_build.bzl", "POST_BUILD_CONFIG")
+# load("//tools:build_configs.bzl", "rules_xcodeproj_build_mode_config")
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+
+
+# load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+
+
 
 swiftlint()
 swiftlint_fix()
@@ -45,7 +53,11 @@ xcodeproj(
     project_name = "bazel-demo",
     schemes = _SCHEMES,
     scheme_autogeneration_mode = "all",
-    build_mode ="bazel",
+    build_mode = select({
+        ":bwb": "bazel",
+        ":bwx": "xcode",
+        "//conditions:default": "bazel",
+    }),
     top_level_targets = [
         top_level_target(
             "//App/Sources:App", 
@@ -54,5 +66,25 @@ xcodeproj(
         "//App/Tests:AppTests",
         "//Modules/List/Tests:ListTests",
     ],
-    
+    post_build = POST_BUILD_CONFIG
+)
+
+string_flag(
+    name = "rules_xcodeproj_build_mode",
+    values = ["bazel", "xcode"],
+    build_setting_default = "bazel",
+)
+
+config_setting(
+    name = "bwb",
+    flag_values = {
+        ":rules_xcodeproj_build_mode": "bazel",
+    },
+)
+
+config_setting(
+    name = "bwx",
+    flag_values = {
+        ":rules_xcodeproj_build_mode": "xcode",
+    },
 )
