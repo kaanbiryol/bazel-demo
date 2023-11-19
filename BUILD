@@ -1,15 +1,21 @@
 load(
-  "@build_bazel_rules_apple//apple:ios.bzl",
-  "ios_application",
-  "ios_unit_test",
-)
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
-load(
     "@rules_xcodeproj//xcodeproj:defs.bzl",
     "top_level_target",
     "xcode_schemes",
     "xcodeproj",
 )
+
+_TOP_LEVEL_TARGETS = [
+    top_level_target(
+        "//App/Sources:App",
+        target_environments = [
+            # "device",
+            "simulator",
+        ],
+    ),
+    # "//Sources/AppTests",
+    # "//Sources/OtherTests",
+]
 
 _SCHEMES = [
     xcode_schemes.scheme(
@@ -23,6 +29,7 @@ _SCHEMES = [
         test_action = xcode_schemes.test_action(
             [
                 "//App/Tests:AppTests",
+                "//Modules/List/Tests:ListTests",
             ]
         ),
     ),
@@ -30,7 +37,7 @@ _SCHEMES = [
 
 xcodeproj(
     name = "xcodeproj",
-    project_name = "App",
+    project_name = "bazel-demo",
     schemes = _SCHEMES,
     scheme_autogeneration_mode = "all",
     build_mode ="bazel",
@@ -43,3 +50,5 @@ xcodeproj(
         "//Modules/List/Tests:ListTests",
     ],
 )
+
+

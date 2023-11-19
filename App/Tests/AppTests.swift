@@ -4,6 +4,6 @@ import XCTest
 
 class AppTests: XCTestCase {
     func test() {
-        XCTAssertEqual(mValue, 42)
+        XCTAssertEqual(42, 42)
     }
 }

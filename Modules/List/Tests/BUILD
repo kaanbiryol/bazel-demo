@@ -5,7 +5,7 @@ ios_unit_test(
     name = "ListTests",
     # bundle_id = "com.example.Home.HomeTests",
     minimum_os_version = "17.0",
-    # test_host = "//App/Sources:App",
+    test_host = "//App/Sources:App",
     visibility = ["@rules_xcodeproj//xcodeproj:generated"],
     deps = [":ListTestsModule"],
 )
@@ -17,6 +17,6 @@ swift_library(
     module_name = "ListTests",
     tags = ["manual"],
     deps = [
-        "//Modules/List/Sources:List",
+        "//Modules/List/Sources:ListFramework",
     ],
 )

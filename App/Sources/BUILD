@@ -8,15 +8,15 @@ load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 ios_application(
     name = "App",
     bundle_id = "com.example.app",
+    bundle_name = "App",
     families = ["iphone"],
-    infoplists = [":Info.plist"],
-    minimum_os_version = "17.0",
     frameworks = [
         "//Modules/List/Sources:ListFramework",
     ],
+    infoplists = [":Info.plist"],
+    minimum_os_version = "17.0",
     visibility = [
-        "//App/Tests:__subpackages__",
-        "@rules_xcodeproj//xcodeproj:generated"
+        "//visibility:public"
     ],
     deps = [":AppModule"],
 )
@@ -26,8 +26,9 @@ swift_library(
     srcs = glob(["**/*.swift"]),
     module_name = "App",
     tags = ["manual"],
-    visibility = ["//App/Tests:__subpackages__"],
+    visibility = ["//visibility:public"],
     deps = [
         "//Modules/List/Sources:List",
-    ]
+        "//Modules/Details/Sources:Details"
+    ],
 )

@@ -4,24 +4,23 @@ load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 swift_library(
     name = "List",
     srcs = glob(["**/*.swift"]),
-    copts = ["-application-extension"],
+    data = glob(
+        ["Resources/**"],
+        exclude = ["**/.DS_Store"],
+    ),
     module_name = "List",
     tags = ["manual"],
     visibility = ["//visibility:public"],
-    deps = [
+    alwayslink = True,
+        deps = [
         "//Modules/DataStore/Sources:DataStore",
         "//Modules/Details/Sources:Details",
     ],
-    alwayslink = True,
 )
 
 ios_framework(
     name = "ListFramework",
     bundle_id = "com.example.app.ListFramework",
-    extension_safe = True,
-    frameworks = [
-        "//Modules/Details/Sources:DetailsFramework",
-    ],
     families = ["iphone"],
     infoplists = ["Info.plist"],
     minimum_os_version = "17.0",

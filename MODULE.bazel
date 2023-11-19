@@ -1,6 +1,6 @@
 bazel_dep(
-    name = "rules_xcodeproj",
-    version = "1.13.0",
+    name = "rules_xcodeproj", 
+    version = "1.13.0"
 )
 bazel_dep(
     name = "apple_support",
@@ -19,6 +19,6 @@ bazel_dep(
 )
 bazel_dep(
     name = "rules_ios",
-    version = "3.1.0",
+    version = "3.1.4",
     repo_name = "build_bazel_rules_ios",
 )
