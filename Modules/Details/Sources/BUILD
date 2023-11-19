@@ -19,7 +19,7 @@ swift_library(
     tags = ["manual"],
     visibility = ["//visibility:public"],
     deps = [
-        "//Modules/DataStore/Sources:DataStore"
+        "//Modules/Networking/Sources:Networking"
     ],
     alwayslink = True,
 )
