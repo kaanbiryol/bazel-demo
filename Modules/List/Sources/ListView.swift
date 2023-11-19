@@ -4,9 +4,9 @@ import DataStore
 import Details
 
 public struct ListView: View {
-    
+
     public init() {}
-    
+
     public var body: some View {
         NavigationView {
             List {

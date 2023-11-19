@@ -3,7 +3,7 @@ import SwiftUI
 
 public struct DetailsView: View {
     let element: Int
-    
+
     public init(element: Int) {
         self.element = element
     }
@@ -20,7 +20,6 @@ public struct DetailsView: View {
         .navigationTitle("Details")
     }
 }
-
 
 #Preview {
     DetailsView(element: 1)

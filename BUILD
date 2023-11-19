@@ -5,6 +5,11 @@ load(
     "xcodeproj",
 )
 
+load("//tools:swiftlint.bzl", "swiftlint", "swiftlint_fix")
+
+swiftlint()
+swiftlint_fix()
+
 _TOP_LEVEL_TARGETS = [
     top_level_target(
         "//App/Sources:App",
@@ -50,18 +55,4 @@ xcodeproj(
         "//Modules/List/Tests:ListTests",
     ],
     
-)
-
-genrule(
-    name = "swiftlint",
-    srcs = [],
-    outs = ["swiftlint.sh"],
-    cmd = """
-echo "set -e" > "$@"
-echo "./$(location @SwiftLint//:swiftlint) --fix \\$$BUILD_WORKSPACE_DIRECTORY" >> "$@"
-""",
-    executable = True,
-    tools = [
-        "@SwiftLint//:swiftlint",
-    ],
 )
