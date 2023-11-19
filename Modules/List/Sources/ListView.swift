@@ -1,6 +1,6 @@
 import Foundation
 import SwiftUI
-import DataStore
+import Networking
 import Details
 
 public struct ListView: View {
@@ -16,7 +16,7 @@ public struct ListView: View {
                     }
                 }
             }
-            .navigationBarTitle(DataStore.title)
+            .navigationBarTitle(Networking.fetchTitle())
         }
     }
 }
