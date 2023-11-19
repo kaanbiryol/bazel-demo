@@ -22,3 +22,8 @@ bazel_dep(
     version = "3.1.4",
     repo_name = "build_bazel_rules_ios",
 )
+bazel_dep(
+    name = "swiftlint",
+    version = "0.54.0",
+    repo_name = "SwiftLint",
+ )
