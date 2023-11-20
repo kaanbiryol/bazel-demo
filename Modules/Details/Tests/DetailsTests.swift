@@ -1,9 +1,7 @@
 import XCTest
 
-@testable import Home
+@testable import Details
 
-class HomeTests: XCTestCase {
-    func test() {
-        XCTAssertEqual(42, 42)
-    }
+class DetailsTests: XCTestCase {
+    func test() {}
 }

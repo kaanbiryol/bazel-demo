@@ -21,6 +21,9 @@ swift_library(
 ios_framework(
     name = "ListFramework",
     bundle_id = "com.example.app.ListFramework",
+    frameworks = [
+        "//Modules/Details/Sources:DetailsFramework"
+    ],
     families = ["iphone"],
     infoplists = ["Info.plist"],
     minimum_os_version = "17.0",

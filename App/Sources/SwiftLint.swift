@@ -1,5 +1,7 @@
 import Foundation
 
+// Uncomment to see the lint errors
+// swiftlint:disable all
 struct SwiftLint {
     func directReturn() -> Int {
         let a = 1

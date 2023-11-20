@@ -12,6 +12,7 @@ ios_application(
     families = ["iphone"],
     frameworks = [
         "//Modules/List/Sources:ListFramework",
+        "//Modules/Details/Sources:DetailsFramework",
     ],
     infoplists = [":Info.plist"],
     minimum_os_version = "17.0",
