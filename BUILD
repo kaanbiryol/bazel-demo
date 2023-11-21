@@ -26,7 +26,7 @@ _SCHEMES = [
                 "//App/Tests:AppTests",
                 "//Modules/List/Tests:ListTests",
                 "//Modules/Details/Tests:DetailsTests",
-                # "//Modules/Networking/Tests:NetworkingTests",
+                "//Modules/Networking/Tests:NetworkingTests",
             ]
         ),
     ),
@@ -50,7 +50,7 @@ xcodeproj(
         "//App/Tests:AppTests",
         "//Modules/List/Tests:ListTests",
         "//Modules/Details/Tests:DetailsTests",
-        # "//Modules/Networking/Tests:NetworkingTests",
+        "//Modules/Networking/Tests:NetworkingTests",
     ],
     post_build = POST_BUILD_CONFIG
 )
