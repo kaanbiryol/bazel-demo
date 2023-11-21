@@ -7,10 +7,11 @@
 
 import SwiftUI
 import List
+import Networking
 
 struct ContentView: View {
     var body: some View {
-        ListView()
+        ListView(networkingService: NetworkingImpl())
     }
 }
 

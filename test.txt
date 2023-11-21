@@ -1,0 +1,10 @@
+Build options: --enable_bzlmod --subcommands=1 --explain=test.txt
+Executing action 'BazelWorkspaceStatusAction stable-status.txt': unconditional execution is requested.
+Executing action 'Compiling Swift module //Modules/Networking/Sources:Networking': One of the files has changed.
+Executing action 'Linking Modules/Networking/Sources/libNetworking.a': One of the files has changed.
+Executing action 'Compiling Swift module //App/Sources:AppModule': One of the files has changed.
+Executing action 'Linking App/Sources/App_bin': One of the files has changed.
+Executing action 'Creating symlink bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-fastbuild-ST-b6790d224f6d/bin/App/Sources/App_lipobin': One of the files has changed.
+Executing action 'Creating symlink bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-fastbuild-ST-b6790d224f6d/bin/App/Sources/App-intermediates/App': One of the files has changed.
+Executing action 'Bundling App': One of the files has changed.
+Executing action 'Processing and signing App': One of the files has changed.

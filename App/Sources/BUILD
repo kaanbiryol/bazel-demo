@@ -11,13 +11,12 @@ ios_application(
     bundle_name = "App",
     families = ["iphone"],
     frameworks = [
-        "//Modules/List/Sources:ListFramework",
-        "//Modules/Details/Sources:DetailsFramework",
+        "//Modules/List/Sources:ListFramework"
     ],
     infoplists = [":Info.plist"],
     minimum_os_version = "17.0",
     visibility = [
-        "//visibility:public"
+        "//visibility:public"   
     ],
     deps = [":AppModule"],
 )
@@ -30,6 +29,7 @@ swift_library(
     visibility = ["//visibility:public"],
     deps = [
         "//Modules/List/Sources:List",
-        "//Modules/Details/Sources:Details"
+        "//Modules/Networking/Sources:Networking",
+        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
     ],
 )

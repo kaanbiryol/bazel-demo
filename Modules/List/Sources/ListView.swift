@@ -1,11 +1,14 @@
 import Foundation
 import SwiftUI
-import Networking
+import NetworkingInterface
 import Details
 
 public struct ListView: View {
-
-    public init() {}
+    private let networkingService: any NetworkingService
+    
+    public init(networkingService: any NetworkingService) {
+        self.networkingService = networkingService
+    }
 
     public var body: some View {
         NavigationView {
@@ -16,13 +19,26 @@ public struct ListView: View {
                     }
                 }
             }
-            .navigationBarTitle(NetworkingImpl.fetchTitle())
+            .navigationBarTitle(networkingService.fetchTitle())
         }
     }
 }
 
+
+public class Mock: NetworkingService {
+    public func fetchTitle() -> String {
+        return ""
+    }
+    
+    public func fetchDetails() -> String {
+        return ""
+    }
+    
+    
+}
+
 #Preview {
-    ListView()
+    ListView(networkingService: Mock())
 }
 
 struct ListModel {

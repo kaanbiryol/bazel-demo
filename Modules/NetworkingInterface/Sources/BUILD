@@ -1,11 +1,9 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 swift_library(
-    name = "Networking",
+    name = "NetworkingInterface",
     srcs = glob(["**/*.swift"]),
-    module_name = "Networking",
+    module_name = "NetworkingInterface",
     visibility = ["//visibility:public"],
-    deps = [
-      "//Modules/NetworkingInterface/Sources:NetworkingInterface"
-    ]
+    deps = []
 )

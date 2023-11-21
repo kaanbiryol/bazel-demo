@@ -13,7 +13,7 @@ swift_library(
     visibility = ["//visibility:public"],
     alwayslink = True,
         deps = [
-        "//Modules/Networking/Sources:Networking",
+        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/Details/Sources:Details",
     ],
 )

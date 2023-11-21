@@ -1,0 +1,9 @@
+digraph mygraph {
+  node [shape=box];
+  "//Modules/List/Sources:List"
+  "//Modules/List/Sources:List" -> "//Modules/Networking/Sources:Networking"
+  "//Modules/List/Sources:List" -> "//Modules/Details/Sources:Details"
+  "//Modules/Details/Sources:Details"
+  "//Modules/Details/Sources:Details" -> "//Modules/Networking/Sources:Networking"
+  "//Modules/Networking/Sources:Networking"
+}

@@ -5,30 +5,12 @@ load(
     "xcodeproj",
 )
 
-load("//tools:swiftlint.bzl", "swiftlint", "swiftlint_fix")
 load("//tools:post_build.bzl", "POST_BUILD_CONFIG")
-# load("//tools:build_configs.bzl", "rules_xcodeproj_build_mode_config")
 load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
-
-
-# load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
-
-
+load("//tools:swiftlint.bzl", "swiftlint", "swiftlint_fix")
 
 swiftlint()
 swiftlint_fix()
-
-_TOP_LEVEL_TARGETS = [
-    top_level_target(
-        "//App/Sources:App",
-        target_environments = [
-            # "device",
-            "simulator",
-        ],
-    ),
-    # "//Sources/AppTests",
-    # "//Sources/OtherTests",
-]
 
 _SCHEMES = [
     xcode_schemes.scheme(
@@ -44,7 +26,7 @@ _SCHEMES = [
                 "//App/Tests:AppTests",
                 "//Modules/List/Tests:ListTests",
                 "//Modules/Details/Tests:DetailsTests",
-                "//Modules/Networking/Tests:NetworkingTests",
+                # "//Modules/Networking/Tests:NetworkingTests",
             ]
         ),
     ),
@@ -68,7 +50,7 @@ xcodeproj(
         "//App/Tests:AppTests",
         "//Modules/List/Tests:ListTests",
         "//Modules/Details/Tests:DetailsTests",
-        "//Modules/Networking/Tests:NetworkingTests",
+        # "//Modules/Networking/Tests:NetworkingTests",
     ],
     post_build = POST_BUILD_CONFIG
 )

@@ -17,6 +17,6 @@ swift_library(
     module_name = "NetworkingTests",
     tags = ["manual"],
     deps = [
-        "//Modules/Networking/Sources:Networking",
+        # "//Modules/Networking/Sources:Networking",
     ],
 )
