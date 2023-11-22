@@ -11,20 +11,20 @@ swift_library(
     module_name = "List",
     tags = ["manual"],
     visibility = ["//visibility:public"],
-    alwayslink = True,
-        deps = [
-        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+    deps = [
         "//Modules/Details/Sources:Details",
+        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
     ],
+    alwayslink = True,
 )
 
 ios_framework(
     name = "ListFramework",
     bundle_id = "com.example.app.ListFramework",
-    frameworks = [
-        "//Modules/Details/Sources:DetailsFramework"
-    ],
     families = ["iphone"],
+    frameworks = [
+        "//Modules/Details/Sources:DetailsFramework",
+    ],
     infoplists = ["Info.plist"],
     minimum_os_version = "17.0",
     visibility = ["//visibility:public"],

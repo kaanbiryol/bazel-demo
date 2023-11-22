@@ -27,3 +27,6 @@ bazel_dep(
     version = "0.54.0",
     repo_name = "SwiftLint",
  )
+
+non_module_dependencies = use_extension("//:extensions.bzl", "non_module_dependencies")
+use_repo(non_module_dependencies, "swift_collections")

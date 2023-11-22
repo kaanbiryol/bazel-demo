@@ -6,6 +6,6 @@ swift_library(
     module_name = "Networking",
     visibility = ["//visibility:public"],
     deps = [
-      "//Modules/NetworkingInterface/Sources:NetworkingInterface"
-    ]
+        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+    ],
 )

@@ -11,10 +11,10 @@ swift_library(
     module_name = "Details",
     tags = ["manual"],
     visibility = ["//visibility:public"],
-    alwayslink = True,
-        deps = [
+    deps = [
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
     ],
+    alwayslink = True,
 )
 
 ios_framework(

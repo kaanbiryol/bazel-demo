@@ -5,7 +5,7 @@ import Details
 
 public struct ListView: View {
     private let networkingService: any NetworkingService
-    
+
     public init(networkingService: any NetworkingService) {
         self.networkingService = networkingService
     }
@@ -24,17 +24,15 @@ public struct ListView: View {
     }
 }
 
-
 public class Mock: NetworkingService {
     public func fetchTitle() -> String {
         return ""
     }
-    
+
     public func fetchDetails() -> String {
         return ""
     }
-    
-    
+
 }
 
 #Preview {

@@ -4,12 +4,12 @@ load(
     "xcode_schemes",
     "xcodeproj",
 )
-
 load("//tools:post_build.bzl", "POST_BUILD_CONFIG")
 load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
 load("//tools:swiftlint.bzl", "swiftlint", "swiftlint_fix")
 
 swiftlint()
+
 swiftlint_fix()
 
 _SCHEMES = [
@@ -27,38 +27,41 @@ _SCHEMES = [
                 "//Modules/List/Tests:ListTests",
                 "//Modules/Details/Tests:DetailsTests",
                 "//Modules/Networking/Tests:NetworkingTests",
-            ]
+            ],
         ),
     ),
 ]
 
 xcodeproj(
     name = "xcodeproj",
-    project_name = "bazel-demo",
-    schemes = _SCHEMES,
-    scheme_autogeneration_mode = "all",
     build_mode = select({
         ":bwb": "bazel",
         ":bwx": "xcode",
         "//conditions:default": "bazel",
     }),
+    post_build = POST_BUILD_CONFIG,
+    project_name = "bazel-demo",
+    scheme_autogeneration_mode = "all",
+    schemes = _SCHEMES,
     top_level_targets = [
         top_level_target(
-            "//App/Sources:App", 
-            target_environments = ["simulator"]
+            "//App/Sources:App",
+            target_environments = ["simulator"],
         ),
         "//App/Tests:AppTests",
         "//Modules/List/Tests:ListTests",
         "//Modules/Details/Tests:DetailsTests",
         "//Modules/Networking/Tests:NetworkingTests",
     ],
-    post_build = POST_BUILD_CONFIG
 )
 
 string_flag(
     name = "rules_xcodeproj_build_mode",
-    values = ["bazel", "xcode"],
     build_setting_default = "bazel",
+    values = [
+        "bazel",
+        "xcode",
+    ],
 )
 
 config_setting(
