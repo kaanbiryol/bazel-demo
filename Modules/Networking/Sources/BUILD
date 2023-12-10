@@ -4,8 +4,16 @@ swift_library(
     name = "Networking",
     srcs = glob(["**/*.swift"]),
     module_name = "Networking",
-    visibility = ["//visibility:public"],
+    visibility = [":NetworkingPackageGroup"],
     deps = [
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+    ],
+)
+
+package_group(
+    name = "NetworkingPackageGroup",
+    packages = [
+        "//Modules/NetworkingInterface/Sources",
+        "//App/Sources"
     ],
 )

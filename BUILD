@@ -4,12 +4,10 @@ load(
     "xcode_schemes",
     "xcodeproj",
 )
-load("//tools:post_build.bzl", "POST_BUILD_CONFIG")
-load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
-load("//tools:swiftlint.bzl", "swiftlint", "swiftlint_fix")
+load("//build_tools:post_build.bzl", "POST_BUILD_CONFIG")
+load("//build_tools:swiftlint/swiftlint.bzl", "swiftlint", "swiftlint_fix")
 
 swiftlint()
-
 swiftlint_fix()
 
 _SCHEMES = [
@@ -35,8 +33,8 @@ _SCHEMES = [
 xcodeproj(
     name = "xcodeproj",
     build_mode = select({
-        ":bwb": "bazel",
-        ":bwx": "xcode",
+        "//build_tools/settings_rules_xcodeproj:bwb": "bazel",
+        "//build_tools/settings_rules_xcodeproj:bwx": "xcode",
         "//conditions:default": "bazel",
     }),
     post_build = POST_BUILD_CONFIG,
@@ -53,27 +51,12 @@ xcodeproj(
         "//Modules/Details/Tests:DetailsTests",
         "//Modules/Networking/Tests:NetworkingTests",
     ],
-)
-
-string_flag(
-    name = "rules_xcodeproj_build_mode",
-    build_setting_default = "bazel",
-    values = [
-        "bazel",
-        "xcode",
-    ],
-)
-
-config_setting(
-    name = "bwb",
-    flag_values = {
-        ":rules_xcodeproj_build_mode": "bazel",
-    },
-)
-
-config_setting(
-    name = "bwx",
-    flag_values = {
-        ":rules_xcodeproj_build_mode": "xcode",
+    xcode_configurations = {
+        "Debug": {
+            "//command_line_option:compilation_mode": "dbg",
+        },
+        "Release": {
+            "//command_line_option:compilation_mode": "opt",
+        },
     },
 )

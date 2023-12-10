@@ -33,6 +33,7 @@ public class Mock: NetworkingService {
         return ""
     }
 
+    private func somethingElse() {}
 }
 
 #Preview {

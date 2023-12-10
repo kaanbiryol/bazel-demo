@@ -19,6 +19,10 @@ public struct DetailsView: View {
         .padding()
 //        .navigationTitle(NetworkingImpl().fetchDetails())
     }
+    
+    private func test() -> String {
+        "KAAN2"
+    }
 }
 
 #Preview {

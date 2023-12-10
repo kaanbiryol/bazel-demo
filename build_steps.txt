@@ -1,0 +1,3 @@
+Build options: --enable_bzlmod --explain=build_steps.txt
+Executing action 'BazelWorkspaceStatusAction stable-status.txt': unconditional execution is requested.
+Executing action 'Compiling Swift module //Modules/Details/Sources:Details': One of the files has changed.
