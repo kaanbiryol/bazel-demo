@@ -13,7 +13,8 @@ swift_library(
 package_group(
     name = "NetworkingPackageGroup",
     packages = [
+        "//App/Sources",
         "//Modules/NetworkingInterface/Sources",
-        "//App/Sources"
+        "//Modules/Networking/Tests"
     ],
 )

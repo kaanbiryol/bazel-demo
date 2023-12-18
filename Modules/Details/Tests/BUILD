@@ -17,6 +17,6 @@ swift_library(
     module_name = "DetailsTests",
     tags = ["manual"],
     deps = [
-        "//Modules/Details/Sources:DetailsFramework",
+        "//Modules/Details/Sources:Details",
     ],
 )

@@ -10,9 +10,11 @@ ios_application(
     bundle_id = "com.example.app",
     bundle_name = "App",
     families = ["iphone"],
-    frameworks = [
-        "//Modules/List/Sources:ListFramework",
-    ],
+    frameworks = select({
+            "//build_tools/settings_linking:static": [],
+            "//build_tools/settings_linking:dynamic": ["//Modules/List/Sources:List"],
+            "//conditions:default": [],
+    }),
     infoplists = [":Info.plist"],
     minimum_os_version = "17.0",
     visibility = [

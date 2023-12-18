@@ -17,6 +17,6 @@ swift_library(
     module_name = "ListTests",
     tags = ["manual"],
     deps = [
-        "//Modules/List/Sources:ListFramework",
+        "//Modules/List/Sources:List",
     ],
 )

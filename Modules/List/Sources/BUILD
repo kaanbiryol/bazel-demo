@@ -1,7 +1,6 @@
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_framework")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("//build_tools:feature_macro.bzl", "feature_macro")
-load("//build_tools:feature.bzl", "feature")
 
 # swift_library(
 #     name = "List",
@@ -40,13 +39,11 @@ feature_macro(
         ["Resources/**"],
         exclude = ["**/.DS_Store"],
     ),
-    deps = [
-    "//Modules/Details/Sources:Details",
-    "//Modules/NetworkingInterface/Sources:NetworkingInterface",
-    ],
     framework_deps = [
-        "//Modules/Details/Sources:DetailsFramework",
-    ]
+        "//Modules/Details/Sources:Details",
+    ],
+    deps = [
+        "//Modules/Details/Sources:Details",
+        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+    ],
 )
-
-feature(name = "feature")
