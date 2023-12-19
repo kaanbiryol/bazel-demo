@@ -1,6 +1,6 @@
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_framework")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
-load("//build_tools:build_settings.bzl", "minimum_os_version")
+load("//build_tools:build_settings.bzl", "minimum_os_version", "_testparam")
 
 def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
     static_lib_name = "__static__" + name
