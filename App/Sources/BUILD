@@ -4,6 +4,7 @@ load(
     "ios_unit_test",
 )
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("//build_tools:build_settings.bzl", "minimum_os_version")
 
 ios_application(
     name = "App",
@@ -16,7 +17,7 @@ ios_application(
             "//conditions:default": [],
     }),
     infoplists = [":Info.plist"],
-    minimum_os_version = "17.0",
+    minimum_os_version = minimum_os_version,
     visibility = [
         "//visibility:public",
     ],

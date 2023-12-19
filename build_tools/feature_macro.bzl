@@ -1,17 +1,17 @@
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_framework")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("//build_tools:build_settings.bzl", "minimum_os_version")
 
 def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
     static_lib_name = "__static__" + name
     dynamic_lib_name = "__dynamic__" + name
-    print(static_lib_name, dynamic_lib_name)
     swift_library(
         name = static_lib_name,
         srcs = srcs,
         data = data,
         module_name = name,
         tags = ["manual"],
-        visibility = ["//visibility:public"],
+        visibility = ["//visibility:private"],
         deps = deps,
         alwayslink = True,
     )
@@ -22,8 +22,8 @@ def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
         families = ["iphone"],
         frameworks = framework_deps,
         infoplists = ["Info.plist"],
-        minimum_os_version = "17.0",
-        visibility = ["//visibility:public"],
+        minimum_os_version = minimum_os_version,
+        visibility = ["//visibility:private"],
         deps = [":" + static_lib_name],
     )
 
