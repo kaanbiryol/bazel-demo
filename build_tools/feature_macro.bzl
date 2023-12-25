@@ -5,6 +5,7 @@ load("//build_tools:build_settings.bzl", "minimum_os_version")
 def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
     static_lib_name = "__static__" + name
     dynamic_lib_name = "__dynamic__" + name
+    bundle_id = "com.example.app." + name + "Framework"
     swift_library(
         name = static_lib_name,
         srcs = srcs,
@@ -17,8 +18,7 @@ def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
     )
     ios_framework(
         name = dynamic_lib_name,
-        bundle_id = "com.example.app" + name + "Framework",
-        bundle_name = name,
+        bundle_id = bundle_id,
         families = ["iphone"],
         frameworks = framework_deps,
         infoplists = ["Info.plist"],
