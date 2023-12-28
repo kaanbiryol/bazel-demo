@@ -1,1 +1,6 @@
 common --enable_bzlmod
+
+run:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=dynamic" --//build_tools/settings_linking:linking_mode=dynamic
+run:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
+build:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=dynamic" --//build_tools/settings_linking:linking_mode=dynamic
+build:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
