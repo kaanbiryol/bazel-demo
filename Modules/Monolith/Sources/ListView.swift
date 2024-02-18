@@ -1,7 +1,5 @@
 import Foundation
 import SwiftUI
-import NetworkingInterface
-import Details
 
 public struct ListView: View {
     private let networkingService: any NetworkingService
@@ -9,21 +7,7 @@ public struct ListView: View {
     public init(networkingService: any NetworkingService) {
         self.networkingService = networkingService
     }
-    
-    private let abc5 = DetailsStruct(version: 1)
-    let abc2 = DetailsStruct(version: 2)
 
-   
-    
-    private func somethingElse() {}
-    private func somethingElse2() {}
-//    some comment here
-//    adding another comment
-    //    adding another comment123123
-    private func somethingElse32() {
-//        print(abc4)
-    }
-    
     public var body: some View {
         NavigationView {
             List {
@@ -46,10 +30,6 @@ public class Mock: NetworkingService {
     public func fetchDetails() -> String {
         return ""
     }
-    
-    public func fetchDetails33213213() -> String {
-        return ""
-    }
 
     private func somethingElse() {}
 }
@@ -59,10 +39,5 @@ public class Mock: NetworkingService {
 }
 
 struct ListModel {
-    static let value = 120
-    let abc2 = DetailsStruct(version: 2)
-    
-    init() {
-        print(abc2.doSomething())
-    }
+    static let value = 100
 }

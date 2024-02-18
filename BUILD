@@ -22,9 +22,9 @@ _SCHEMES = [
         test_action = xcode_schemes.test_action(
             [
                 "//App/Tests:AppTests",
-                "//Modules/List/Tests:ListTests",
-                "//Modules/Details/Tests:DetailsTests",
-                "//Modules/Networking/Tests:NetworkingTests",
+                # "//Modules/List/Tests:ListTests",
+                # "//Modules/Details/Tests:DetailsTests",
+                # "//Modules/Networking/Tests:NetworkingTests",
             ],
         ),
     ),
@@ -32,13 +32,9 @@ _SCHEMES = [
 
 xcodeproj(
     name = "xcodeproj",
-    build_mode = select({
-        "//build_tools/settings_rules_xcodeproj:bwb": "bazel",
-        "//build_tools/settings_rules_xcodeproj:bwx": "xcode",
-        "//conditions:default": "bazel",
-    }),
-    post_build = POST_BUILD_CONFIG,
-    project_name = "bazel-demo",
+    build_mode = "xcode",
+    # post_build = POST_BUILD_CONFIG,
+    project_name = "bazel-playground-mono",
     scheme_autogeneration_mode = "all",
     schemes = _SCHEMES,
     top_level_targets = [
@@ -47,9 +43,9 @@ xcodeproj(
             target_environments = ["simulator"],
         ),
         "//App/Tests:AppTests",
-        "//Modules/List/Tests:ListTests",
-        "//Modules/Details/Tests:DetailsTests",
-        "//Modules/Networking/Tests:NetworkingTests",
+        # "//Modules/List/Tests:ListTests",
+        # "//Modules/Details/Tests:DetailsTests",
+        # "//Modules/Networking/Tests:NetworkingTests",
     ],
     xcode_configurations = {
         "Debug": {
@@ -60,3 +56,46 @@ xcodeproj(
         },
     },
 )
+
+
+xcodeproj(
+    name = "xcodeproj_modular",
+    build_mode = "xcode",
+    # post_build = POST_BUILD_CONFIG,
+    project_name = "bazel-playground",
+    scheme_autogeneration_mode = "all",
+    schemes = _SCHEMES,
+    top_level_targets = [
+        top_level_target(
+            "//App/Sources:App",
+            target_environments = ["simulator"],
+        ),
+        "//App/Tests:AppTests",
+        # "//Modules/List/Tests:ListTests",
+        # "//Modules/Details/Tests:DetailsTests",
+        # "//Modules/Networking/Tests:NetworkingTests",
+    ],
+    xcode_configurations = {
+        "Debug": {
+            "//command_line_option:compilation_mode": "dbg",
+        },
+        "Release": {
+            "//command_line_option:compilation_mode": "opt",
+        },
+    },
+)
+
+# Clean (mono/modular) remove the lowest average the two (mono first) add / remove function
+#  3.6 2.5 2.4  / 2.5 2.8 2.6
+# Critical change (networkinterfface) 
+# 2.2 1.1 0.9 / 2.0 0.9 0.9
+# Normal change (NetworkImpl)
+# 0.8 0.7 0.8 / 0.7 0.8 0.7
+
+
+# Clean (mono/modular) remove the lowest average the two (modular first)
+#  1.2 2.7 3.7 2.7     /  2.4 2.4 2.5
+# Critical change (networkinterfface) 
+#   /  
+# Normal change (NetworkImpl)
+#   /  

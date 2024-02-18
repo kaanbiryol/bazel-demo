@@ -6,16 +6,11 @@
 //
 
 import SwiftUI
-import List
-import Networking
+import Monolith
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            ListView(networkingService: NetworkingImpl())
-            ListBuilderView()
-        }
-        
+        ListView(networkingService: NetworkingImpl())
     }
 }
 

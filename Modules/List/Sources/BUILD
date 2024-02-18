@@ -35,10 +35,6 @@ load("//build_tools:feature_macro.bzl", "feature_macro")
 feature_macro(
     name = "List",
     srcs = glob(["**/*.swift"]),
-    data = glob(
-        ["Resources/**"],
-        exclude = ["**/.DS_Store"],
-    ),
     framework_deps = [
         "//Modules/Details/Sources:Details",
     ],

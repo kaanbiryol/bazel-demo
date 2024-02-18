@@ -1,6 +1,11 @@
 common --enable_bzlmod
 
-run:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=dynamic" --//build_tools/settings_linking:linking_mode=dynamic
-run:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
-build:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=dynamic" --//build_tools/settings_linking:linking_mode=dynamic
-build:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
+common:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=dynamic" --//build_tools/settings_linking:linking_mode=dynamic
+common:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
+
+# need to find a way to add previous one to extra_common_flags 
+common:monolith --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_module:module_configuration=monolith" --//build_tools/settings_module:module_configuration=monolith
+common:modular  --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_module:module_configuration=modular" --//build_tools/settings_module:module_configuration=modular
+
+run:bazel --//build_tools/settings_rules_xcodeproj:rules_xcodeproj_build_mode=bazel
+run:xcode --//build_tools/settings_rules_xcodeproj:rules_xcodeproj_build_mode=xcode

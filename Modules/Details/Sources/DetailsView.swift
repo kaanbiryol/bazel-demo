@@ -4,11 +4,11 @@ import NetworkingInterface
 
 public struct DetailsView: View {
     let element: Int
-
+    
     public init(element: Int) {
         self.element = element
     }
-
+    
     public var body: some View {
         VStack {
             Image("bazel", bundle: .details)
@@ -17,7 +17,7 @@ public struct DetailsView: View {
             Text("Selected element23 \(element)")
         }
         .padding()
-//        .navigationTitle(NetworkingImpl().fetchDetails())
+        //        .navigationTitle(NetworkingImpl().fetchDetails())
     }
     
     private func test() -> String {
@@ -27,4 +27,18 @@ public struct DetailsView: View {
 
 #Preview {
     DetailsView(element: 1)
+}
+
+public struct DetailsStruct {
+    let version: Int
+    
+    static let value = 50000
+    
+    public init(version: Int) {
+        self.version = version * 100 / 2 + 60
+    }
+    
+    public func doSomething() -> String {
+        return String(describing: version) + "test"
+    }
 }

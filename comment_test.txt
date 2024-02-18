@@ -1,0 +1,47 @@
+Loading: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target //App/Sources:App (0 packages loaded, 0 targets configured)
+INFO: Analyzed target //App/Sources:App (0 packages loaded, 0 targets configured).
+INFO: Found 1 target...
+[0 / 11] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+SUBCOMMAND: # //Modules/List/Sources:__static__List [action 'Compiling Swift module //Modules/List/Sources:__static__List', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    SWIFT_AVOID_WARNING_USING_OLD_DRIVER=1 \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+  bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/worker swiftc @bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/Modules/List/Sources/List.swiftmodule-0.params)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //App/Sources:AppModule [action 'Compiling Swift module //App/Sources:AppModule', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    SWIFT_AVOID_WARNING_USING_OLD_DRIVER=1 \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+  bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/worker swiftc @bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App.swiftmodule-0.params)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+INFO: From Compiling Swift module //App/Sources:AppModule:
+App/Sources/SwiftLint.swift:13:13: warning: initialization of immutable value 'noWarning' was never used; consider replacing with assignment to '_' or removing it
+        let noWarning = NSNumber() as! Int
+        ~~~~^~~~~~~~~
+        _
+App/Sources/SwiftLint.swift:14:13: warning: initialization of immutable value 'hasWarning' was never used; consider replacing with assignment to '_' or removing it
+        let hasWarning = NSNumber() as! Int
+        ~~~~^~~~~~~~~~
+        _
+App/Sources/SwiftLint.swift:35:17: warning: will never be executed
+                return
+                ^
+App/Sources/SwiftLint.swift:34:19: note: condition always evaluates to true
+            guard true else {
+                  ^
+Target //App/Sources:App up-to-date:
+  bazel-bin/App/Sources/App.ipa
+INFO: Elapsed time: 0.603s, Critical Path: 0.52s
+INFO: 3 processes: 1 internal, 2 worker.
+INFO: Build completed successfully, 3 total actions

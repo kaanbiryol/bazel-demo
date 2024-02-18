@@ -9,13 +9,6 @@ public func fetchSomething() -> String {
     return ""
 }
 
-public func fetchSomething2() -> String {
-    return ""
-}
-
-
 public func fetchSomething3() -> String {
     return ""
 }
-
-

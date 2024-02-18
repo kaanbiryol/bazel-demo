@@ -1,5 +1,4 @@
 import Foundation
-import NetworkingInterface
 
 public class NetworkingImpl: NetworkingService {
 
@@ -10,10 +9,14 @@ public class NetworkingImpl: NetworkingService {
     }
 
     public func fetchDetails() -> String {
-        return ""
+        return "5"
     }
     
     public func fetchDetails2() -> String {
         return ""
+    }
+    
+    public func fetchDetails3() -> String {
+        return "3"
     }
 }
