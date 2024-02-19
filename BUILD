@@ -23,8 +23,8 @@ _SCHEMES = [
             [
                 "//App/Tests:AppTests",
                 "//Modules/List/Tests:ListTests",
-                "//Modules/Details/Tests:DetailsTests",
-                "//Modules/Networking/Tests:NetworkingTests",
+                # "//Modules/Details/Tests:DetailsTests",
+                # "//Modules/Networking/Tests:NetworkingTests",
             ],
         ),
     ),
@@ -32,11 +32,7 @@ _SCHEMES = [
 
 xcodeproj(
     name = "xcodeproj",
-    build_mode = select({
-        "//build_tools/settings_rules_xcodeproj:bwb": "bazel",
-        "//build_tools/settings_rules_xcodeproj:bwx": "xcode",
-        "//conditions:default": "bazel",
-    }),
+    build_mode = "xcode",
     post_build = POST_BUILD_CONFIG,
     project_name = "bazel-demo",
     scheme_autogeneration_mode = "all",
@@ -48,8 +44,8 @@ xcodeproj(
         ),
         "//App/Tests:AppTests",
         "//Modules/List/Tests:ListTests",
-        "//Modules/Details/Tests:DetailsTests",
-        "//Modules/Networking/Tests:NetworkingTests",
+        # "//Modules/Details/Tests:DetailsTests",
+        # "//Modules/Networking/Tests:NetworkingTests",
     ],
     xcode_configurations = {
         "Debug": {

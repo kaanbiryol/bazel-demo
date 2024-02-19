@@ -1,45 +1,49 @@
 import Foundation
 import SwiftUI
-import NetworkingInterface
-import Details
+//import NetworkingInterface
+//import Details
 
 public struct ListView: View {
-    private let networkingService: any NetworkingService
+//    private let networkingService: any NetworkingService
+//
+//    public init(networkingService: any NetworkingService) {
+//        self.networkingService = networkingService
+//    }
 
-    public init(networkingService: any NetworkingService) {
-        self.networkingService = networkingService
-    }
-
+    public init() {}
+    
     public var body: some View {
         NavigationView {
             List {
                 ForEach(1..<101) { element in
-                    NavigationLink(destination: DetailsView(element: element)) {
-                        Text("Element \(element)")
-                    }
+//                    NavigationLink(destination: DetailsView(element: element)) {
+//                        Text("Element \(element)")
+//                    }
                 }
             }
-            .navigationBarTitle(networkingService.fetchTitle())
+//            .navigationBarTitle(networkingService.fetchTitle())
         }
     }
+    
+    public func test() {}
 }
 
-public class Mock: NetworkingService {
-    public func fetchTitle() -> String {
-        return ""
-    }
-
-    public func fetchDetails() -> String {
-        return ""
-    }
-
-    private func somethingElse() {}
-}
-
-#Preview {
-    ListView(networkingService: Mock())
-}
-
-struct ListModel {
-    static let value = 100
-}
+//public class Mock: NetworkingService {
+//    public func fetchTitle() -> String {
+//        return ""
+//    }
+//
+//    public func fetchDetails() -> String {
+//        return ""
+//    }
+//
+//    private func somethingElse() {}
+//}
+//
+//#Preview {
+//    ListView(networkingService: Mock())
+//}
+//
+//struct ListModel {
+//    static let value = 100
+//}

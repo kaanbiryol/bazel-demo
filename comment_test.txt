@@ -1,0 +1,310 @@
+Loading: 
+Loading: 
+Loading: 0 packages loaded
+INFO: Build option --compilation_mode has changed, discarding analysis cache.
+Analyzing: target //App/Sources:App (1 packages loaded, 0 targets configured)
+INFO: Analyzed target //App/Sources:App (6 packages loaded, 3205 targets configured).
+INFO: Found 1 target...
+[1 / 12] [Prepa] BazelWorkspaceStatusAction stable-status.txt
+SUBCOMMAND: # @bazel_tools//tools/cpp/runfiles:runfiles [action 'Compiling tools/cpp/runfiles/runfiles.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/bazel_tools -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools/tools/cpp/runfiles/_objs/runfiles/runfiles.d '-DBAZEL_CURRENT_REPOSITORY="bazel_tools"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools/tools/cpp/runfiles/_objs/runfiles/runfiles.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/bazel_tools/tools/cpp/runfiles/runfiles.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools/tools/cpp/runfiles/_objs/runfiles/runfiles.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:worker [action 'Compiling tools/worker/worker_main.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -iquote external/bazel_tools -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools -iquote external/rules_cc~0.0.9 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_cc~0.0.9 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker/worker_main.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker/worker_main.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/worker_main.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker/worker_main.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:compile_with_worker [action 'Compiling tools/worker/work_processor.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/work_processor.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/work_processor.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/work_processor.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/work_processor.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:worker_protocol [action 'Compiling tools/worker/worker_protocol.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker_protocol/worker_protocol.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker_protocol/worker_protocol.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/worker_protocol.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker_protocol/worker_protocol.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:compile_without_worker [action 'Compiling tools/worker/compile_without_worker.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_without_worker/compile_without_worker.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_without_worker/compile_without_worker.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/compile_without_worker.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_without_worker/compile_without_worker.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:swift_runner [action 'Compiling tools/worker/swift_runner.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/swift_runner.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/swift_runner.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/swift_runner.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/swift_runner.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //App/Sources:App [action 'AssetCatalogCompile App/Sources/App-intermediates/xcassets', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+  bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_apple~3.1.1/tools/xctoolrunner/xctoolrunner actool --compile '[ABSOLUTE]bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App-intermediates/xcassets' --platform iphonesimulator --minimum-deployment-target 17.0 --compress-pngs --product-type com.apple.product-type.application --target-device iphone --output-partial-info-plist '[ABSOLUTE]bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App-intermediates/xcassets-info.plist' '[ABSOLUTE]Modules/List/Sources/Resources/Assets.xcassets')
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:swift_runner [action 'Compiling tools/worker/output_file_map.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/output_file_map.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/output_file_map.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/output_file_map.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/output_file_map.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+[38 / 65] Compiling tools/cpp/runfiles/runfiles.cc [for tool]; 1s darwin-sandbox ... (8 actions running)
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:compile_without_worker [action 'Linking external/rules_swift~1.13.0/tools/worker/libcompile_without_worker.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/libcompile_without_worker.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_without_worker/compile_without_worker.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/common:bazel_substitutions [action 'Compiling tools/common/bazel_substitutions.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/bazel_substitutions/bazel_substitutions.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/bazel_substitutions/bazel_substitutions.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/common/bazel_substitutions.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/bazel_substitutions/bazel_substitutions.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @bazel_tools//tools/cpp/runfiles:runfiles [action 'Linking external/bazel_tools/tools/cpp/runfiles/librunfiles.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools/tools/cpp/runfiles/librunfiles.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/bazel_tools/tools/cpp/runfiles/_objs/runfiles/runfiles.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:compile_with_worker [action 'Compiling tools/worker/compile_with_worker.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -iquote external/nlohmann_json~3.6.1 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1 -isystem external/nlohmann_json~3.6.1/include -isystem bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/nlohmann_json~3.6.1/include -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/compile_with_worker.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/compile_with_worker.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/worker/compile_with_worker.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/compile_with_worker.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/common:process [action 'Compiling tools/common/process.cc [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang_pp '-D_FORTIFY_SOURCE=1' -fstack-protector -fcolor-diagnostics -Wall -Wthread-safety -Wself-assign -fno-omit-frame-pointer -g0 -O2 -DNDEBUG '-DNS_BLOCK_ASSERTIONS=1' '-std=c++11' 'DEBUG_PREFIX_MAP_PWD=.' -iquote external/rules_swift~1.13.0 -iquote bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0 -MD -MF bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/process/process.d '-DBAZEL_CURRENT_REPOSITORY="rules_swift~1.13.0"' '-frandom-seed=bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/process/process.o' -isysroot __BAZEL_XCODE_SDKROOT__ -F__BAZEL_XCODE_SDKROOT__/System/Library/Frameworks -F__BAZEL_XCODE_DEVELOPER_DIR__/Platforms/MacOSX.platform/Developer/Library/Frameworks -no-canonical-prefixes -pthread -g0 -g0 '-std=c++17' -no-canonical-prefixes -Wno-builtin-macro-redefined '-D__DATE__="redacted"' '-D__TIMESTAMP__="redacted"' '-D__TIME__="redacted"' -target arm64-apple-macosx14.0 -c external/rules_swift~1.13.0/tools/common/process.cc -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/process/process.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/common:bazel_substitutions [action 'Linking external/rules_swift~1.13.0/tools/common/libbazel_substitutions.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/libbazel_substitutions.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/bazel_substitutions/bazel_substitutions.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+[47 / 67] Compiling tools/worker/worker_protocol.cc [for tool]; 2s darwin-sandbox ... (5 actions running)
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:swift_runner [action 'Linking external/rules_swift~1.13.0/tools/worker/libswift_runner.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/libswift_runner.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/output_file_map.o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/swift_runner/swift_runner.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:worker_protocol [action 'Linking external/rules_swift~1.13.0/tools/worker/libworker_protocol.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/libworker_protocol.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/worker_protocol/worker_protocol.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/common:process [action 'Linking external/rules_swift~1.13.0/tools/common/libprocess.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/libprocess.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/common/_objs/process/process.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:compile_with_worker [action 'Linking external/rules_swift~1.13.0/tools/worker/libcompile_with_worker.a [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/libcompile_with_worker.a bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/compile_with_worker.o bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/_objs/compile_with_worker/work_processor.o)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # @rules_swift~1.13.0//tools/worker:worker [action 'Linking external/rules_swift~1.13.0/tools/worker/worker [for tool]', configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=MacOSX \
+    APPLE_SDK_VERSION_OVERRIDE=14.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/cc_wrapper.sh @bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/worker-2.params)
+# Configuration: bc26376468644f0bf9ac2f7ef7f16e61ebcc324eeebff1acb919f91805d75ce2
+# Execution platform: @local_config_platform//:host
+INFO: From Linking external/rules_swift~1.13.0/tools/worker/worker [for tool]:
+ld: warning: ignoring duplicate libraries: '-lc++'
+SUBCOMMAND: # //Modules/List/Sources:__static__List [action 'Compiling Swift module //Modules/List/Sources:__static__List', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    SWIFT_AVOID_WARNING_USING_OLD_DRIVER=1 \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+  bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/worker swiftc @bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/Modules/List/Sources/List.swiftmodule-0.params)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //Modules/List/Sources:__static__List [action 'Linking Modules/List/Sources/lib__static__List.a', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/Modules/List/Sources/lib__static__List.a bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/Modules/List/Sources/__static__List_objs/ListBundle.swift.o bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/Modules/List/Sources/__static__List_objs/ListView.swift.o)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //App/Sources:AppModule [action 'Compiling Swift module //App/Sources:AppModule', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    SWIFT_AVOID_WARNING_USING_OLD_DRIVER=1 \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+  bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_swift~1.13.0/tools/worker/worker swiftc @bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App.swiftmodule-0.params)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+[59 / 67] Linking Modules/List/Sources/lib__static__List.a; 0s darwin-sandbox ... (2 actions running)
+INFO: From Compiling Swift module //App/Sources:AppModule:
+App/Sources/SwiftLint.swift:13:13: warning: initialization of immutable value 'noWarning' was never used; consider replacing with assignment to '_' or removing it
+        let noWarning = NSNumber() as! Int
+        ~~~~^~~~~~~~~
+        _
+App/Sources/SwiftLint.swift:14:13: warning: initialization of immutable value 'hasWarning' was never used; consider replacing with assignment to '_' or removing it
+        let hasWarning = NSNumber() as! Int
+        ~~~~^~~~~~~~~~
+        _
+App/Sources/SwiftLint.swift:35:17: warning: will never be executed
+                return
+                ^
+App/Sources/SwiftLint.swift:34:19: note: condition always evaluates to true
+            guard true else {
+                  ^
+
+SUBCOMMAND: # //App/Sources:AppModule [action 'Linking App/Sources/libAppModule.a', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/libtool -D -no_warning_for_no_symbols -static -o bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/libAppModule.a bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/AppModule_objs/App.swift.o bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/AppModule_objs/ContentView.swift.o bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/AppModule_objs/SwiftLint.swift.o)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //App/Sources:App [action 'Linking App/Sources/App_bin', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    PATH=/Users/kaanbiryol/Library/Caches/bazelisk/downloads/sha256/574d54bfb7e84adf3fe29bc2a0d13214048c1b5e295f826fced3fb94fba282ee/bin:/opt/homebrew/opt/llvm/bin:/Users/kaanbiryol/.rbenv/shims:/Users/kaanbiryol/miniconda3/bin:/Users/kaanbiryol/miniconda3/condabin:/Users/kaanbiryol/.pyenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/go/bin \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+    ZERO_AR_DATE=1 \
+  external/bazel_tools~cc_configure_extension~local_config_cc/wrapped_clang @bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App_bin-2.params)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //App/Sources:App [action 'Bundling App', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+  bazel-out/darwin_arm64-opt-exec-2B5CBBC6-ST-5a29d6cb7794/bin/external/rules_apple~3.1.1/tools/bundletool/bundletool bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App-intermediates/bundletool_control.json)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+SUBCOMMAND: # //App/Sources:App [action 'Processing and signing App', configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6, execution platform: @local_config_platform//:host]
+(cd /private/var/tmp/_bazel_kaanbiryol/3da0f45689d383ae3d9d127c24d2b6c7/execroot/_main && \
+  exec env - \
+    APPLE_SDK_PLATFORM=iPhoneSimulator \
+    APPLE_SDK_VERSION_OVERRIDE=17.0 \
+    XCODE_VERSION_OVERRIDE=15.0.1.15A507 \
+  bazel-out/ios-sim_arm64-min17.0-applebin_ios-ios_sim_arm64-opt-ST-b6790d224f6d/bin/App/Sources/App-intermediates/process-and-sign--250475192.sh should_sign should_compress)
+# Configuration: e733691f394fe24d18152a028eb2a038cd383ad23ea0644255290562b8130cf6
+# Execution platform: @local_config_platform//:host
+[66 / 67] Processing and signing App; 0s local
+Target //App/Sources:App up-to-date:
+  bazel-bin/App/Sources/App.ipa
+INFO: Elapsed time: 5.466s, Critical Path: 4.97s
+INFO: 40 processes: 14 internal, 22 darwin-sandbox, 2 local, 2 worker.
+INFO: Build completed successfully, 40 total actions

@@ -32,8 +32,8 @@ swift_library(
     visibility = ["//visibility:public"],
     deps = [
         "//Modules/List/Sources:List",
-        "//Modules/Networking/Sources:Networking",
-        "//Modules/NetworkingInterface/Sources:NetworkingInterface",
-        "@com_github_apple_swift_collections//:Collections",
+        # "//Modules/Networking/Sources:Networking",
+        # "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+        # "@com_github_apple_swift_collections//:Collections",
     ],
 )

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Collections
+//import Collections
 
 @main
 struct AppApp: App {
@@ -16,12 +16,12 @@ struct AppApp: App {
         }
     }
 }
-
-private class CollectionsTest {
-    func deque() {
-        var deque: Deque<String> = ["Ted", "Rebecca"]
-        deque.prepend("Keeley")
-        deque.append("Nathan")
-        print(deque) // ["Keeley", "Ted", "Rebecca", "Nathan"]
-    }
-}
+//
+//private class CollectionsTest {
+//    func deque() {
+//        var deque: Deque<String> = ["Ted", "Rebecca"]
+//        deque.prepend("Keeley")
+//        deque.append("Nathan")
+//        print(deque) // ["Keeley", "Ted", "Rebecca", "Nathan"]
+//    }
+//}
