@@ -37,6 +37,11 @@ xcodeproj(
         "//build_tools/settings_rules_xcodeproj:bwx": "xcode",
         "//conditions:default": "bazel",
     }),
+    generation_mode = select({
+        "//build_tools/settings_rules_xcodeproj:bwb": "incremental",
+        "//build_tools/settings_rules_xcodeproj:bwx": "legacy",
+        "//conditions:default": "legacy",
+    }),
     post_build = POST_BUILD_CONFIG,
     project_name = "bazel-demo",
     scheme_autogeneration_mode = "all",

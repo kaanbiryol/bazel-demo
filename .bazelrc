@@ -4,3 +4,6 @@ run:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/se
 run:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
 build:dynamic --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=dynamic" --//build_tools/settings_linking:linking_mode=dynamic
 build:static --@rules_xcodeproj//xcodeproj:extra_common_flags="--//build_tools/settings_linking:linking_mode=static" --//build_tools/settings_linking:linking_mode=static
+
+run:xcode --//build_tools/settings_rules_xcodeproj:rules_xcodeproj_build_mode=xcode
+run:bazel --//build_tools/settings_rules_xcodeproj:rules_xcodeproj_build_mode=bazel
