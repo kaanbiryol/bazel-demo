@@ -9,3 +9,6 @@ test:
 
 build:
 	bazel build -s //App/Sources:App
+
+swiflint:
+	bazel run //:swiftlint
