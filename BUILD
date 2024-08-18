@@ -52,7 +52,7 @@ xcodeproj(
             "//App/Sources:App",
             target_environments = [
                 "simulator",
-                "device",
+                # "device",
             ],
         ),
         "//App/Tests:AppTests",

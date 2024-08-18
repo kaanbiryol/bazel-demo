@@ -13,6 +13,7 @@ def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
         module_name = name,
         tags = ["manual"],
         visibility = ["//visibility:private"],
+        copts = ["-whole-module-optimization"],
         deps = deps,
         alwayslink = True,
     )

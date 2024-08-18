@@ -35,7 +35,7 @@ ios_application(
     }),
     infoplists = [":Info.plist"],
     minimum_os_version = minimum_os_version,
-    provisioning_profile = ":xcode_profile",
+    provisioning_profile = None,
     visibility = [
         "//visibility:public",
     ],
@@ -48,6 +48,7 @@ swift_library(
     module_name = "App",
     tags = ["manual"],
     visibility = ["//visibility:public"],
+    copts = ["-whole-module-optimization"],
     deps = [
         "//Modules/List/Sources:List",
         "//Modules/Networking/Sources:Networking",
