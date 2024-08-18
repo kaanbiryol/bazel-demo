@@ -8,6 +8,7 @@ load("//build_tools:post_build.bzl", "POST_BUILD_CONFIG")
 load("//build_tools:swiftlint/swiftlint.bzl", "swiftlint", "swiftlint_fix")
 
 swiftlint()
+
 swiftlint_fix()
 
 _SCHEMES = [
@@ -49,7 +50,10 @@ xcodeproj(
     top_level_targets = [
         top_level_target(
             "//App/Sources:App",
-            target_environments = ["simulator", "device"],
+            target_environments = [
+                "simulator",
+                "device",
+            ],
         ),
         "//App/Tests:AppTests",
         "//Modules/List/Tests:ListTests",

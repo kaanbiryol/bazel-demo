@@ -1,5 +1,3 @@
-load("@build_bazel_rules_apple//apple:ios.bzl", "ios_framework")
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("//build_tools:feature_macro.bzl", "feature_macro")
 
 # swift_library(

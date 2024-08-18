@@ -14,7 +14,7 @@ package_group(
     name = "NetworkingPackageGroup",
     packages = [
         "//App/Sources",
+        "//Modules/Networking/Tests",
         "//Modules/NetworkingInterface/Sources",
-        "//Modules/Networking/Tests"
     ],
 )

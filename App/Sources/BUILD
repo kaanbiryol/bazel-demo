@@ -1,13 +1,11 @@
+load("@build_bazel_rules_apple//apple:apple.bzl", "local_provisioning_profile")
 load(
     "@build_bazel_rules_apple//apple:ios.bzl",
     "ios_application",
-    "ios_unit_test",
 )
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
-load("//build_tools:build_settings.bzl", "minimum_os_version")
 load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcode_provisioning_profile")
-load("@build_bazel_rules_apple//apple:apple.bzl", "local_provisioning_profile")
-
+load("//build_tools:build_settings.bzl", "minimum_os_version")
 
 BUNDLE_ID = "com.kaan.bazel"
 
@@ -31,9 +29,9 @@ ios_application(
     bundle_name = "App",
     families = ["iphone"],
     frameworks = select({
-            "//build_tools/settings_linking:static": [],
-            "//build_tools/settings_linking:dynamic": ["//Modules/List/Sources:List"],
-            "//conditions:default": [],
+        "//build_tools/settings_linking:static": [],
+        "//build_tools/settings_linking:dynamic": ["//Modules/List/Sources:List"],
+        "//conditions:default": [],
     }),
     infoplists = [":Info.plist"],
     minimum_os_version = minimum_os_version,
