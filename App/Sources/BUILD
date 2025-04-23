@@ -53,6 +53,6 @@ swift_library(
         "//Modules/List/Sources:List",
         "//Modules/Networking/Sources:Networking",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
-        "@com_github_apple_swift_collections//:Collections",
+        "@swift_collections//:Collections",
     ],
 )

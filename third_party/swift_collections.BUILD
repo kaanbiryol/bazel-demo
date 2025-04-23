@@ -1,0 +1,26 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+
+swift_library(
+    name = "Collections",
+    srcs = glob([
+        "Sources/Collections/**/*.swift",
+        "Sources/OrderedCollections/**/*.swift",
+        "Sources/DequeModule/**/*.swift",
+    ]),
+    module_name = "Collections",
+    visibility = ["//visibility:public"],
+)
+
+swift_library(
+    name = "DequeModule",
+    srcs = glob(["Sources/DequeModule/**/*.swift"]),
+    module_name = "DequeModule",
+    visibility = ["//visibility:public"],
+)
+
+swift_library(
+    name = "OrderedCollections",
+    srcs = glob(["Sources/OrderedCollections/**/*.swift"]),
+    module_name = "OrderedCollections",
+    visibility = ["//visibility:public"],
+) 
