@@ -10,7 +10,7 @@ private struct ListContainer: View {
     }
 
     var body: some View {
-        ListView(networkingService: Mock())
+//        ListView(networkingService: Mock())
     }
 }
 

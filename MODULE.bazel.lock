@@ -184,7 +184,7 @@
   "moduleExtensions": {
     "//:extensions.bzl%non_module_dependencies": {
       "general": {
-        "bzlTransitiveDigest": "/bkgKbp0gTu9MMSnatMWzsNGTX7kOLPLEChli/C0JFI=",
+        "bzlTransitiveDigest": "+uLAci7cAM/MYN7o4TQJu8xhhKj2K/8MmaxCncknYGw=",
         "usagesDigest": "y4/K3ZpF8slrdk7/l+cZOVVKpnBoy/eIwLjIa2UvMfI=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -197,6 +197,24 @@
               "strip_prefix": "swift-collections-1.0.4",
               "url": "https://github.com/apple/swift-collections/archive/refs/tags/1.0.4.tar.gz",
               "build_file": "@@//third_party:swift_collections.BUILD"
+            }
+          },
+          "factory": {
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
+            "attributes": {
+              "sha256": "764409e55836512ec6e8f1eeb8853223082ce9ba7b0819ed883b104bfdf6cff6",
+              "strip_prefix": "Factory-2.4.5",
+              "url": "https://github.com/hmlongco/Factory/archive/refs/tags/v2.4.5.tar.gz",
+              "build_file": "@@//third_party:factory.BUILD"
+            }
+          },
+          "ribs": {
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
+            "attributes": {
+              "sha256": "f733bf399ac574b962c9050650c5dd0de62484e6109f37d16558a64bded04452",
+              "strip_prefix": "RIBs-iOS-0.16.3",
+              "url": "https://github.com/uber/RIBs-iOS/archive/refs/tags/v0.16.3.tar.gz",
+              "build_file": "@@//third_party:ribs.BUILD"
             }
           }
         },

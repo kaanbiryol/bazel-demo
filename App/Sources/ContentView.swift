@@ -8,10 +8,13 @@
 import SwiftUI
 import List
 import Networking
+import RouterService
+import NetworkingInterface
+
 
 struct ContentView: View {
     var body: some View {
-        ListView(networkingService: NetworkingImpl())
+        Text("")
     }
 }
 

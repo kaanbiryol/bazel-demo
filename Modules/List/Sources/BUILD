@@ -37,11 +37,13 @@ feature_macro(
         ["Resources/**"],
         exclude = ["**/.DS_Store"],
     ),
-    framework_deps = [
-        "//Modules/Details/Sources:Details",
-    ],
+    # framework_deps = [
+    #     "//Modules/Details/Sources:Details",
+    # ],
     deps = [
-        "//Modules/Details/Sources:Details",
+        "//Modules/RouterService/Sources:RouterService",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+        "//Modules/ListInterface/Sources:ListInterface",
+        "//Modules/DetailsInterface/Sources:DetailsInterface",
     ],
 )

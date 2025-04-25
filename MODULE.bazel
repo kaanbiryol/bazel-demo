@@ -15,4 +15,4 @@ bazel_dep(name = "swiftlint", version = "0.59.1")
 bazel_dep(name = "buildifier_prebuilt", version = "7.1.2")
 
 non_module_dependencies = use_extension("//:extensions.bzl", "non_module_dependencies")
-use_repo(non_module_dependencies, "swift_collections")
+use_repo(non_module_dependencies, "swift_collections", "factory", "ribs")

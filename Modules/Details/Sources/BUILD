@@ -35,5 +35,6 @@ feature_macro(
     ),
     deps = [
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
+        "//Modules/DetailsInterface/Sources:DetailsInterface",
     ],
 )

@@ -14,7 +14,7 @@ def feature_macro(name, srcs = [], data = [], framework_deps = [], deps = []):
         tags = ["manual"],
         visibility = ["//visibility:private"],
         copts = ["-whole-module-optimization"],
-        deps = deps,
+        deps = deps + ["@factory//:Factory", "//Modules/RIBs:RIBs"],
         alwayslink = True,
     )
     ios_framework(
