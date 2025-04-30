@@ -4,5 +4,6 @@ swift_library(
     name = "RouterService",
     srcs = glob(["**/*.swift"]),
     module_name = "RouterService",
+    deps = ["//Modules/RIBs:RIBs", "@factory//:Factory",],
     visibility = ["//visibility:public"],
 )

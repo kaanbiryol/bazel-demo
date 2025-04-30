@@ -5,5 +5,5 @@ swift_library(
     srcs = glob(["**/*.swift"]),
     module_name = "NetworkingInterface",
     visibility = ["//visibility:public"],
-    deps = [],
+    deps = ["@factory//:Factory"],
 )

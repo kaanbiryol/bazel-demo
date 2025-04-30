@@ -15,65 +15,18 @@ import Details
 import RouterService
 import Networking
 import Factory
-
-extension Container {
-    var routerService: Factory<RouterService> {
-        self { RouterService() }
-    }
-    var networkingService: Factory<NetworkingService> {
-        self { NetworkingImpl() }
-    }
-}
+import RIBs
 
 @main
-struct AppApp: App {
-//    @Injected(\Container.networkingService) private var networkingService
-//    @Injected(\Container.routerService) private var routerService
+struct Root: App {
+     
+    @Injected(\.listBuilder) private var listBuilder: ListBuildable
     
-    let routerService: RouterService = RouterService()
-    
-    init() {
-        // Initialize Router and Register Dependencies
-//        let store = Store()
-//        self.routerService = RouterService(store: store)
-        
-        routerService.register(dependencyFactory: {
-              return NetworkingImpl()
-          }, forType: NetworkingService.self)
-        
-        routerService.register(routeHandler: DetailsRouteHandler())
-        
-        // Register services/dependencies
-//        store.register({ NetworkingImpl() }, forMetaType: NetworkingService.self)
-//        store.register({ routerService }, forMetaType: RouterService.self)
-        
-        // Register route handlers
-//        let detailsRouteHandler = DetailsRouteHandler()
-//        detailsRouteHandler.registerRoutes(with: routerService)
-    }
+    init() {}
     
     var body: some Scene {
         WindowGroup {
-            AppRootView(routerService: routerService)
-        }
-    }
-}
-
-// Root view that displays the ListView feature
-struct AppRootView: View {
-    
-    private var routerService: RouterService
-    
-    public init(routerService: RouterService) {
-        self.routerService = routerService
-    }
-    
-    var body: some View {
-        if let listView = routerService.swiftUIView(forFeature: ListFeature.self) {
-            listView
-                .navigationViewStyle(StackNavigationViewStyle())
-        } else {
-        
+            listBuilder.buildView(fromRoute: ListRoute())
         }
     }
 }
@@ -86,3 +39,55 @@ private class CollectionsTest {
         print(deque) // ["Keeley", "Ted", "Rebecca", "Nathan"]
     }
 }
+
+
+// MARK: - WIP RIBS
+
+protocol RootInteractable: Interactable {
+    var router: RootRouting? { get set }
+}
+
+protocol RootListener: AnyObject {
+    
+}
+
+protocol RootPresentable: Presentable {
+    var listener: RootPresentableListener? { get set  }
+}
+
+protocol RootPresentableListener: AnyObject {
+    func didNavigateBack()
+}
+
+@Observable class RootInteractor: Interactor, RootInteractable {
+    
+    weak var router: RootRouting?
+    
+    @ObservationIgnored @State private var routeToList: Bool = true
+    
+    public override init() {
+        super.init()
+    }
+    
+    override func didBecomeActive() {
+        super.didBecomeActive()
+        router?.routeToList(binding: $routeToList)
+        
+    }
+}
+
+extension RootInteractor: RootPresentableListener {
+    func didNavigateBack() {
+        
+    }
+}
+
+protocol RootViewControllable: ViewControllable {
+    func embedQuickFilter(_ viewController: ViewControllable)
+    func unembedQuickFilter(_ viewController: ViewControllable)
+}
+
+protocol RootRouting: Routing {
+    func routeToList(binding: Binding<Bool>)
+}
+

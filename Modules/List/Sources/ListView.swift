@@ -6,92 +6,81 @@ import RouterService
 import Factory
 import UIKit
 import RIBs
+import Combine
 
-
-
-
-// Feature implementation for ListView
-public struct ListFeature: Feature {
-    @Dependency var networkingService: NetworkingService
-    @Dependency var routerService: RouterServiceProtocol
-    
-    public init() {}
-    
-    // UIKit implementation - required by Feature protocol
-    public func build(fromRoute route: Route?) -> UIViewController {
-        let listView = ListView(networkingService: networkingService, routerService: routerService)
-        return UIHostingController(rootView: listView)
-    }
-    
-    // SwiftUI implementation
-    public func buildSwiftUIView(fromRoute route: Route?) -> AnyView? {
-        return AnyView(
-            ListView(networkingService: networkingService, routerService: routerService)
-        )
-    }
+protocol ListInteractable: Interactable {
+    var router: ListRouting? { get set }
 }
 
-public struct ListView: View {
-    private let networkingService: NetworkingService
-    private let routerService: RouterServiceProtocol
-    @State private var selectedElement: Int?
-    
-    public init(networkingService: NetworkingService, routerService: RouterServiceProtocol) {
-        self.networkingService = networkingService
-        self.routerService = routerService
-    }
-    
-    public var body: some View {
-        NavigationView {
-            List {
-                ForEach(1..<101) { element in
-//                    Button {
-//                        selectedElement = element
-//                    } label: {
-//                        Text("Element \(element)")
-//                            .frame(maxWidth: .infinity, alignment: .leading)
-//                            .contentShape(Rectangle())
-//                    }
-//                    .buttonStyle(.plain)
-                    ListItem(element: element, routerService: routerService)
-                }
-            }
-            .navigationBarTitle(networkingService.fetchTitle())
-            .navigateTo(
-                using: routerService,
-                route: DetailsRoute(element: selectedElement ?? 0),
-                isActive: Binding(
-                    get: { selectedElement != nil },
-                    set: { if !$0 { selectedElement = nil } }
-                ),
-                style: .sheet
-            )
-        }
-    }
+protocol ListViewControllable: ViewControllable {
+    func embedQuickFilter(_ viewController: ViewControllable)
+    func unembedQuickFilter(_ viewController: ViewControllable)
 }
 
-// Using standard button navigation with RouterService
-struct ListItem: View {
-    let element: Int
-    let routerService: RouterServiceProtocol
-    
-    var body: some View {
-        Button {
-            // No need to set a binding, directly navigate with a link
-        } label: {
-            Text("Element \(element)")
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .buttonStyle(.plain)
-        .navigationLink(
-            using: routerService,
-            route: DetailsRoute(element: element)
-        ) {
-            Text("Element \(element)")
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
+protocol ListRouting: Routing {
+    func routeToRentHomeBottomSheet(binding: Binding<Bool>)
+    func cleanupViews()
+    func cleanupPresentedChild()
 }
+
+//final class ListRouter: Router<ListInteractable>, ListRouting {
+//    
+//    let routerService: RouterServiceProtocol
+//    
+//    init(interactor: ListInteractable, routerService: RouterServiceProtocol) {
+//        self.routerService = routerService
+//        super.init(interactor: interactor)
+//        interactor.router = self
+//    }
+//    
+//    func routeToRentHomeBottomSheet(binding: Binding<Bool>) {
+//        // get builder
+////        routerService.navigateTo(route: DetailsRoute(element: 0), isActive: binding, style: .fullScreenCover)
+////        attachChild(alert, attachingType: .modal)
+//        
+//////        viewController.presentViewController(alert.viewControllable)
+////
+////        currentPresentedChild = alert
+//    }
+//    
+//    func cleanupViews() {
+//        
+//    }
+//    
+//    func cleanupPresentedChild() {
+//        
+//    }
+//}
+//
+//@Observable public class ListInteractor: Interactor, ListInteractable {
+//    @ObservationIgnored public let networkingService: NetworkingService
+//    @ObservationIgnored public let routerService: RouterServiceProtocol
+//    
+//    public private(set) var items: [Int] = []
+//    public private(set) var title: String = ""
+//    
+//    var selectemItem: Int?
+//    
+//    weak var router: ListRouting?
+//    
+//    public init(networkingService: NetworkingService, routerService: RouterServiceProtocol) {
+//        self.networkingService = networkingService
+//        self.routerService = routerService
+//    }
+//    
+//    public override func didBecomeActive() {
+//        super.didBecomeActive()
+//        fetchData()
+//    }
+//    
+//    private func fetchData() {
+//        title = networkingService.fetchTitle()
+//        items = Array(1...100)
+////        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+////            self.selectemItem = 1
+////        })
+//    }
+//}
 
 // Mock for preview
 public class Mock: NetworkingService {
@@ -114,8 +103,3 @@ public class Mock: NetworkingService {
 //    
 //    return ListView(networkingService: Mock(), routerService: routerService)
 }
-
-struct ListModel {
-    static let value = 100
-}
-

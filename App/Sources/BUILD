@@ -50,7 +50,7 @@ swift_library(
     visibility = ["//visibility:public"],
     copts = ["-whole-module-optimization"],
     deps = [
-        "//Modules/RouterService/Sources:RouterService",
+        # "//Modules/RouterService/Sources:RouterService",
         "//Modules/List/Sources:List",
         "//Modules/Details/Sources:Details",
         "//Modules/ListInterface/Sources:ListInterface",
