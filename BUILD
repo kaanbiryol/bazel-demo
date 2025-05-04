@@ -43,7 +43,7 @@ xcodeproj(
         "//build_tools/settings_rules_xcodeproj:bwx": "legacy",
         "//conditions:default": "legacy",
     }),
-    post_build = POST_BUILD_CONFIG,
+    # post_build = POST_BUILD_CONFIG,
     project_name = "bazel-demo",
     scheme_autogeneration_mode = "all",
     schemes = _SCHEMES,
