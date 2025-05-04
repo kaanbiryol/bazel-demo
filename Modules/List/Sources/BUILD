@@ -47,5 +47,6 @@ feature_macro(
         "//Modules/DetailsInterface/Sources:DetailsInterface",
         "//Modules/HomeInterface/Sources:HomeInterface",
         "//Modules/OrderInterface/Sources:OrderInterface",
+        "//Modules/ExampleRIB/Sources:ExampleRIB",
     ],
 )

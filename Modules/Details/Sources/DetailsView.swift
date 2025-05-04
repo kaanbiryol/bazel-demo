@@ -4,6 +4,7 @@ import Foundation
 import SwiftUI
 import NetworkingInterface
 import DetailsInterface
+import UIKit
 
 public class RentDetailsBuilder: RentDetailsBuildable {
 //    @Injected(\.networkingService) private var networkingService
@@ -30,6 +31,8 @@ private struct RentDetailsView: View {
     @Binding var selection: RentDetailsSelection
     @Environment(\.dismiss) private var dismiss
     
+    @State private var isActive: Bool = false
+    
     var body: some View {
         HStack {
             Button("1") {
@@ -42,12 +45,48 @@ private struct RentDetailsView: View {
             }
             Button("3") {
                 selection = RentDetailsSelection(value: "3")
-                dismiss()
+                isActive = true
+//                dismiss()
             }
         }
+        .routeTo(route: TestRoute(), isActive: $isActive, style: .push)
     }
     
 }
+
+public class TestBuilder: Builder2 {
+//    @Injected(\.networkingService) private var networkingService
+//    @Injected(\.router) private var router
+    
+     
+    
+    public init() {
+         
+    }
+    
+    public func buildView(fromRoute route: Route?) -> AnyView? {
+        // Create the interactor
+        
+        // Return the ListView wrapped in AnyView
+        return AnyView(
+            Text("KAAN")
+        )
+    }
+}
+
+
+public struct TestRoute: Route {
+    public static var identifier: String = "rent_details_route2"
+    
+    public init() {
+    }
+    
+    public func getBuilder() -> any Builder2 {
+        return TestBuilder()
+    }
+    
+}
+
 
 // MARK: WIP RIBS
 

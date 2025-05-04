@@ -9,47 +9,63 @@ import DetailsInterface
 import ListInterface
 import HomeInterface
 import OrderInterface
+import Details
+import ExampleRIB
 
-//struct ListView: View {
-//    
-//    @State var showDetails = false
-//    
-//    @State private var path = NavigationPath()
-////    NavigationStack(path: $path) {
-////        List {
-////            NavigationLink("Mint", value: Color.mint)
-////            NavigationLink("Red", value: Color.red)
-////        }
-////        .navigationDestination(for: Color.self) { color in
-////            Text("test")
-////        }
-////    }
-//    
-//    @State var selection: RentDetailsSelection = RentDetailsSelection(value: "")
-//    @Injected(\.router) private var router
-//
-//    public var body: some View {
-//        NavigationStack {
-//            VStack {
-//                Button("Show details") {
-//                    showDetails = true
-//                }
-//                .routeTo(
-//                    route: RentDetailsRoute(selection: $selection),
-//                    isActive: $showDetails,
-//                    style: .push
-//                )
-//                Text("Selection: \($selection.value.wrappedValue)")
-//            }
+struct ListView: View {
+    
+    @State var showDetails = false
+    @State var showSimpleTextRIB = false
+    
+    @State private var path = NavigationPath()
+//    NavigationStack(path: $path) {
+//        List {
+//            NavigationLink("Mint", value: Color.mint)
+//            NavigationLink("Red", value: Color.red)
 //        }
-//        
+//        .navigationDestination(for: Color.self) { color in
+//            Text("test")
+//        }
+//    }
+    
+    @State var selection: RentDetailsSelection = RentDetailsSelection(value: "")
+    @Injected(\.router) private var router
+
+    public var body: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                Button("Show details") {
+                    showDetails = true
+                }
+                .routeTo(
+                    route: RentDetailsRoute(selection: $selection),
+                    isActive: $showDetails,
+                    style: .push
+                )
+                
+                Button("Show SimpleTextRIB") {
+                    showSimpleTextRIB = true
+                }
+                .background(
+                    NavigationLink(isActive: $showSimpleTextRIB) {
+                        // Use SimpleTextRIBView from the ExampleRIB module
+                        SimpleTextRIBView()
+                    } label: {
+                        EmptyView()
+                    }
+                )
+                
+                Text("Selection: \($selection.value.wrappedValue)")
+            }
+        }
+        
 //        EmptyView()
 //            .tabRouteTo(tabItems: [
 //                TabItem(label: "Menu", systemImage: "list.dash", route: HomeTabRoute()),
 //                TabItem(label: "Order", systemImage: "square.and.pencil", route: OrderTabRoute())
 //            ])
-//    }
-//}
+    }
+}
 
 public class ListBuilder: ListBuildable {
     @Injected(\.networkingService) private var networkingService
@@ -80,20 +96,20 @@ struct RouteTabItem: View {
     }
 }
 
-struct ListView: View {
-    public var body: some View {
-        TabView {
-            RouteTabItem(
-                route: HomeRoute()
-            )
-            
-            RouteTabItem(
-                route: OrderRoute()
-            )
-           
-        }
-    }
-}
+//struct ListView: View {
+//    public var body: some View {
+//        TabView {
+//            RouteTabItem(
+//                route: HomeRoute()
+//            )
+//            
+//            RouteTabItem(
+//                route: OrderRoute()
+//            )
+//           
+//        }
+//    }
+//}
 
 
 
