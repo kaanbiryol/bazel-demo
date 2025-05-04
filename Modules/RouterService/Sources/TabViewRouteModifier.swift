@@ -1,6 +1,66 @@
 import SwiftUI
 import Factory
 
+// Protocol for routes that provide tab information
+public protocol TabLabelProvider {
+    var tabLabel: String { get }
+    var tabIcon: String { get }
+}
+
+
+// Helper extension to erase type
+extension View {
+    func eraseToAnyView() -> AnyView {
+        AnyView(self)
+    }
+}
+
+// Simplify RouteView
+struct RouteView: View {
+    let route: Route
+    
+    init(_ route: Route) {
+        self.route = route
+    }
+    
+    var body: some View {
+        if let view = route.getBuilder().buildView(fromRoute: route) {
+            view
+        } else {
+            EmptyView()
+        }
+    }
+}
+
+
+extension Route where Self: View {
+    public var body: some View {
+        let routeView = RouteView(self)
+        
+        if let self = self as? TabLabelProvider {
+            return routeView
+                .tabItem {
+                    Label(self.tabLabel, systemImage: self.tabIcon)
+                }
+                .eraseToAnyView()
+        } else {
+            return routeView.eraseToAnyView()
+        }
+    }
+}
+
+// Clean up extensions
+extension Route {
+    func tabItem(label: String, systemImage: String) -> some View {
+        RouteView(self)
+            .tabItem {
+                Label(label, systemImage: systemImage)
+            }
+    }
+}
+
+
+
 public struct TabItem {
     let label: String
     let systemImage: String

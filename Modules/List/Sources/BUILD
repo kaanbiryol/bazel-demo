@@ -45,5 +45,7 @@ feature_macro(
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/ListInterface/Sources:ListInterface",
         "//Modules/DetailsInterface/Sources:DetailsInterface",
+        "//Modules/HomeInterface/Sources:HomeInterface",
+        "//Modules/OrderInterface/Sources:OrderInterface",
     ],
 )

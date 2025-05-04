@@ -1,9 +1,3 @@
-//
-//  AppApp.swift
-//  App
-//
-//  Created by Kaan Biryol on 01.11.23.
-//
 
 import SwiftUI
 import Collections

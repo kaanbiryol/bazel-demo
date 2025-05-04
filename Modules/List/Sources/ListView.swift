@@ -7,21 +7,23 @@ import Factory
 import UIKit
 import RIBs
 import Combine
+import OrderInterface
+import HomeInterface
 
-protocol ListInteractable: Interactable {
-    var router: ListRouting? { get set }
-}
-
-protocol ListViewControllable: ViewControllable {
-    func embedQuickFilter(_ viewController: ViewControllable)
-    func unembedQuickFilter(_ viewController: ViewControllable)
-}
-
-protocol ListRouting: Routing {
-    func routeToRentHomeBottomSheet(binding: Binding<Bool>)
-    func cleanupViews()
-    func cleanupPresentedChild()
-}
+//protocol ListInteractable: Interactable {
+//    var router: ListRouting? { get set }
+//}
+//
+//protocol ListViewControllable: ViewControllable {
+//    func embedQuickFilter(_ viewController: ViewControllable)
+//    func unembedQuickFilter(_ viewController: ViewControllable)
+//}
+//
+//protocol ListRouting: Routing {
+//    func routeToRentHomeBottomSheet(binding: Binding<Bool>)
+//    func cleanupViews()
+//    func cleanupPresentedChild()
+//}
 
 //final class ListRouter: Router<ListInteractable>, ListRouting {
 //    

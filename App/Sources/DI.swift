@@ -6,6 +6,10 @@ import ListInterface
 import List
 import DetailsInterface
 import Details
+import HomeInterface
+import Home
+import OrderInterface
+import Order
 
 extension Container: AutoRegistering {
     public func autoRegister() {
@@ -17,6 +21,16 @@ extension Container: AutoRegistering {
         
         listBuilder.register {
             ListBuilder()
+        }
+        
+        // Register Home module
+        homeBuilder.register {
+            HomeBuilder()
+        }
+        
+        // Register Order module
+        orderBuilder.register {
+            OrderBuilder()
         }
     }
 }
