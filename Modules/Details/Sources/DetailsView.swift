@@ -45,7 +45,6 @@ private struct RentDetailsView: View {
                 dismiss()
             }
         }
-        
     }
     
 }

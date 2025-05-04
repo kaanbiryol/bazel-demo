@@ -40,18 +40,6 @@ import ListInterface
 //    }
 //}
 
-
-//// public final class RentCoreBuilder: Builder<RentCoreComponent, Void>, RentCoreBuildable {
-//public final class TestBuilder: Builder<ListComponent, Void>, TestBuildable  {
-//    
-//    public func buildSwiftUIView() -> AnyView? {
-//        let component = componentBuilder()
-//        // component.something
-//        return AnyView(Text(""))
-//    }
-//    
-//}
-
 public class ListBuilder: ListBuildable {
     @Injected(\.networkingService) private var networkingService
     @Injected(\.router) private var router
@@ -81,8 +69,8 @@ struct ListView: View {
 //    }
     
     @State var selection: RentDetailsSelection = RentDetailsSelection(value: "")
+    @Injected(\.router) private var router
 
-    //dismiss with dismiss()
     public var body: some View {
         NavigationStack {
             VStack {
@@ -98,17 +86,40 @@ struct ListView: View {
             }
         }
         
-        TabView {
-            Text("TEST")
-                .tabItem {
-                    Label("Menu", systemImage: "list.dash")
-                }
-            
-            Text("TES2T")
-                .tabItem {
-                    Label("Order", systemImage: "square.and.pencil")
-                }
-        }
+        EmptyView()
+            .tabRouteTo(tabItems: [
+                TabItem(label: "Menu", systemImage: "list.dash", route: HomeTabRoute()),
+                TabItem(label: "Order", systemImage: "square.and.pencil", route: OrderTabRoute())
+            ])
+    }
+}
+
+// Example route implementations for the tabs
+struct HomeTabRoute: Route {
+    public static var identifier: String { "home_tab" }
+    
+    public func getBuilder() -> Builder2 {
+        HomeTabBuilder()
+    }
+}
+
+struct OrderTabRoute: Route {
+    public static var identifier: String { "order_tab" }
+    
+    public func getBuilder() -> Builder2 {
+        OrderTabBuilder()
+    }
+}
+
+class HomeTabBuilder: Builder2 {
+    public func buildView(fromRoute route: Route?) -> AnyView? {
+        return AnyView(Text("Home Tab"))
+    }
+}
+
+class OrderTabBuilder: Builder2 {
+    public func buildView(fromRoute route: Route?) -> AnyView? {
+        return AnyView(Text("Order Tab"))
     }
 }
 

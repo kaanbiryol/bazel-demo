@@ -11,5 +11,3 @@ public final class RouterContainer: SharedContainer {
     @TaskLocal public static var shared = RouterContainer()
     public let manager = ContainerManager()
 }
-
-
