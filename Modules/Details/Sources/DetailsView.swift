@@ -58,8 +58,6 @@ public class TestBuilder: Builder2 {
 //    @Injected(\.networkingService) private var networkingService
 //    @Injected(\.router) private var router
     
-     
-    
     public init() {
          
     }

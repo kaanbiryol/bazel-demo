@@ -13,7 +13,7 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
     private let numbersContainer = UIView()
     private let mainStackView = UIStackView()
     
-    weak var listener: SimpleTextInteractable?
+    var listener: SimpleTextInteractable?
     
     private var selection: RentDetailsSelection = RentDetailsSelection(value: "")
     

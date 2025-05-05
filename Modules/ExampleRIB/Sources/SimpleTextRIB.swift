@@ -61,7 +61,6 @@ final class SimpleTextInteractor: Interactor, SimpleTextInteractable {
     
     override func didBecomeActive() {
         super.didBecomeActive()
-        presenter.updateText("Hello from SimpleTextRIB!")
     }
     
     override func willResignActive() {
