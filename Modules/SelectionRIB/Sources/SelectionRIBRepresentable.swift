@@ -6,7 +6,7 @@ public struct SelectionRIBRepresentable: UIViewControllerRepresentable {
     public init() {}
     
     public func makeUIViewController(context: Context) -> UIViewController {
-        let builder = SimpleTextBuilder()
+        let builder = SelectionBuilder()
         let router = builder.build()
         return router.viewControllable.uiViewController
     }

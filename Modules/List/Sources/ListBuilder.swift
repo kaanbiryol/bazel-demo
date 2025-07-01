@@ -10,7 +10,7 @@ import ListInterface
 import HomeInterface
 import OrderInterface
  
-import ExampleRIB
+import SelectionRIB
 
 public class ListBuilder: ListBuildable {
     @Injected(\.networkingService) private var networkingService

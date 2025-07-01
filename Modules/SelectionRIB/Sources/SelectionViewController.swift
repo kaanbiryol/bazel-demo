@@ -4,16 +4,23 @@ import RIBs
 import DetailsInterface
 import Details
 
-// MARK: - ViewController
-final class SimpleTextViewController: UIViewController, SimpleTextPresentable, SimpleTextViewControllable {
+public protocol SelectionTextListener: AnyObject {}
+
+protocol SelectionPresentable: AnyObject {
+    func updateText(_ text: String)
+    func updateWithSelection(_ number: Int)
+    
+    var listener: SelectionInteractable? { get set }
+}
+
+final class SelectionViewController: UIViewController, SelectionPresentable, SelectionViewControllable {
     
     private let label = UILabel()
-    private let actionButton = UIButton(type: .system)
     private let detailsContainer = UIView()
     private let numbersContainer = UIView()
     private let mainStackView = UIStackView()
     
-    var listener: SimpleTextInteractable?
+    var listener: SelectionInteractable?
     
     private var selection: RentDetailsSelection = RentDetailsSelection(value: "")
     
@@ -49,11 +56,6 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
         label.numberOfLines = 0
         label.text = "KAAN"
         
-        // Configure action button
-        actionButton.setTitle("Trigger Action", for: .normal)
-        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
-        
-        // Configure numbers container
         numbersContainer.backgroundColor = .systemBackground
         
         // Add three numbered buttons to the container
@@ -64,7 +66,6 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
         numbersStackView.translatesAutoresizingMaskIntoConstraints = false
         numbersContainer.addSubview(numbersStackView)
         
-        // Create and add three buttons
         for number in 1...3 {
             let button = UIButton(type: .system)
             button.setTitle("\(number)", for: .normal)
@@ -88,7 +89,6 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
         // Add all components to the main stack view in order
         mainStackView.addArrangedSubview(detailsContainer)
         mainStackView.addArrangedSubview(label)
-        mainStackView.addArrangedSubview(actionButton)
         mainStackView.addArrangedSubview(numbersContainer)
         
         // Add padding to the stack view using constraints
@@ -123,10 +123,6 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
         ])
         hostingController.didMove(toParent: self)
         
-    }
-    
-    @objc private func actionButtonTapped() {
-        listener?.didButtonTap()
     }
     
     @objc private func numberButtonTapped(_ sender: UIButton) {

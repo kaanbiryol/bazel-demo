@@ -1,7 +1,7 @@
 load("//build_tools:feature_macro.bzl", "feature_macro")
 
 feature_macro(
-    name = "ExampleRIB",
+    name = "SelectionRIB",
     srcs = glob(["**/*.swift"]),
     deps = [
         # "//Modules/RIBs:RIBs",
