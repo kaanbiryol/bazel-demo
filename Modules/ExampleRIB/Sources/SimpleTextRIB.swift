@@ -16,7 +16,7 @@ public final class SimpleTextBuilder: SimpleTextBuildable {
     public func build() -> SimpleTextRouting {
         let viewController = SimpleTextViewController()
         let interactor = SimpleTextInteractor(presenter: viewController)
-        let router = SimpleTextRouter(interactor: interactor, viewController: viewController)
+        let router = SelectionRouter(interactor: interactor, viewController: viewController)
         return router
     }
 }
@@ -93,7 +93,7 @@ protocol SimpleTextPresentable: AnyObject {
 }
 
 // MARK: - Router
-final class SimpleTextRouter: RIBs.Router<SimpleTextInteractable>, SimpleTextRouting {
+final class SelectionRouter: RIBs.Router<SimpleTextInteractable>, SimpleTextRouting {
     var viewControllable: any RIBs.ViewControllable
     
     init(interactor: SimpleTextInteractable, viewController: SimpleTextViewControllable) {
@@ -103,7 +103,6 @@ final class SimpleTextRouter: RIBs.Router<SimpleTextInteractable>, SimpleTextRou
     }
     
     func routeToSomewhere() {
-        // Implementation for routing to another RIB would go here
         print("SimpleTextRouter: routeToSomewhere called")
     }
-} 
+}

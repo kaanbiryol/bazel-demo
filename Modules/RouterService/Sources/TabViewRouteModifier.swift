@@ -24,11 +24,7 @@ struct RouteView: View {
     }
     
     var body: some View {
-        if let view = route.getBuilder().buildView(fromRoute: route) {
-            view
-        } else {
-            EmptyView()
-        }
+        route.getBuilder().buildView(fromRoute: route)
     }
 }
 

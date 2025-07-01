@@ -16,7 +16,7 @@ extension Container: AutoRegistering {
         networkingService.register { NetworkingImpl() }
         
         rentDetailsBuilder.register { binding in
-            RentDetailsBuilder(selectionBinding: binding)
+            DetailsBuilder(selectionBinding: binding)
         }
         
         listBuilder.register {

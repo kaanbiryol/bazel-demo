@@ -6,7 +6,7 @@ import NetworkingInterface
 import DetailsInterface
 import UIKit
 
-public class RentDetailsBuilder: RentDetailsBuildable {
+public class DetailsBuilder: RentDetailsBuildable {
 //    @Injected(\.networkingService) private var networkingService
 //    @Injected(\.router) private var router
     
@@ -16,10 +16,7 @@ public class RentDetailsBuilder: RentDetailsBuildable {
         self.selectionBinding = selectionBinding
     }
     
-    public func buildView(fromRoute route: Route?) -> AnyView? {
-        // Create the interactor
-        
-        // Return the ListView wrapped in AnyView
+    public func buildView(fromRoute route: Route?) -> AnyView {
         return AnyView(
             RentDetailsView(selection: selectionBinding)
         )
@@ -32,6 +29,7 @@ private struct RentDetailsView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var isActive: Bool = false
+    @State private var name: String = "Alice"
     
     var body: some View {
         HStack {
@@ -49,6 +47,12 @@ private struct RentDetailsView: View {
 //                dismiss()
             }
         }
+//        Text(name)
+//            .onAppear(perform: {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                    name = "KAAN"
+//                }
+//            })
         .routeTo(route: TestRoute(), isActive: $isActive, style: .push)
     }
     
@@ -62,7 +66,7 @@ public class TestBuilder: Builder2 {
          
     }
     
-    public func buildView(fromRoute route: Route?) -> AnyView? {
+    public func buildView(fromRoute route: Route?) -> AnyView {
         // Create the interactor
         
         // Return the ListView wrapped in AnyView
@@ -82,7 +86,6 @@ public struct TestRoute: Route {
     public func getBuilder() -> any Builder2 {
         return TestBuilder()
     }
-    
 }
 
 

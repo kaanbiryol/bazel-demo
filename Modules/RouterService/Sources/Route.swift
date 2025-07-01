@@ -7,6 +7,6 @@ public protocol Route {
 }
 
 public protocol Builder2 {
-    func buildView(fromRoute route: Route?) -> AnyView?
+    func buildView(fromRoute route: Route?) -> AnyView
 }
 

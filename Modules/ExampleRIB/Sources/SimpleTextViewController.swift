@@ -109,20 +109,20 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
             }
         )
         
-        let detailsBuilder = RentDetailsBuilder(selectionBinding: selectionBinding)
-        if let detailsView = detailsBuilder.buildView(fromRoute: nil) {
-            let hostingController = UIHostingController(rootView: detailsView)
-            addChild(hostingController)
-            detailsContainer.addSubview(hostingController.view)
-            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                hostingController.view.topAnchor.constraint(equalTo: detailsContainer.topAnchor),
-                hostingController.view.leadingAnchor.constraint(equalTo: detailsContainer.leadingAnchor),
-                hostingController.view.trailingAnchor.constraint(equalTo: detailsContainer.trailingAnchor),
-                hostingController.view.bottomAnchor.constraint(equalTo: detailsContainer.bottomAnchor)
-            ])
-            hostingController.didMove(toParent: self)
-        }
+        let detailsBuilder = DetailsBuilder(selectionBinding: selectionBinding)
+        let detailsView = detailsBuilder.buildView(fromRoute: nil)
+        let hostingController = UIHostingController(rootView: detailsView)
+        addChild(hostingController)
+        detailsContainer.addSubview(hostingController.view)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            hostingController.view.topAnchor.constraint(equalTo: detailsContainer.topAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: detailsContainer.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: detailsContainer.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: detailsContainer.bottomAnchor)
+        ])
+        hostingController.didMove(toParent: self)
+        
     }
     
     @objc private func actionButtonTapped() {
@@ -142,4 +142,4 @@ final class SimpleTextViewController: UIViewController, SimpleTextPresentable, S
     func updateWithSelection(_ number: Int) {
         label.text = "Selected: \(number)"
     }
-} 
+}

@@ -9,7 +9,7 @@ public class HomeBuilder: HomeBuildable {
     
     public init() {}
     
-    public func buildView(fromRoute route: Route?) -> AnyView? {
+    public func buildView(fromRoute route: Route?) -> AnyView {
         return AnyView(HomeView())
     }
 }
