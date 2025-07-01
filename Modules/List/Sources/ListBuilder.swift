@@ -5,7 +5,7 @@ import RouterService
 import Factory
 import UIKit
 import RIBs
-import DetailsInterface
+import SummaryInterface
 import ListInterface
 import HomeInterface
 import OrderInterface

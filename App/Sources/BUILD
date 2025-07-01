@@ -52,9 +52,9 @@ swift_library(
     deps = [
         # "//Modules/RouterService/Sources:RouterService",
         "//Modules/List/Sources:List",
-        "//Modules/Details/Sources:Details",
+        "//Modules/Summary/Sources:Summary",
         "//Modules/ListInterface/Sources:ListInterface",
-        "//Modules/DetailsInterface/Sources:DetailsInterface",
+        "//Modules/SummaryInterface/Sources:SummaryInterface",
         "//Modules/Networking/Sources:Networking",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/Home/Sources:Home",

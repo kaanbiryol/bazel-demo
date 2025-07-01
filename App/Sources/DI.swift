@@ -4,8 +4,8 @@ import NetworkingInterface
 import Networking
 import ListInterface
 import List
-import DetailsInterface
-import Details
+import SummaryInterface
+import Summary
 import HomeInterface
 import Home
 import OrderInterface
@@ -16,7 +16,7 @@ extension Container: AutoRegistering {
         networkingService.register { NetworkingImpl() }
         
         rentDetailsBuilder.register { binding in
-            DetailsBuilder(selectionBinding: binding)
+            SummaryBuilder(selectionBinding: binding)
         }
         
         listBuilder.register {

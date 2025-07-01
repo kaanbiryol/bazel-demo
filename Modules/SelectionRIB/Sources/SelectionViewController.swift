@@ -1,10 +1,10 @@
 import UIKit
 import SwiftUI
 import RIBs
-import DetailsInterface
-import Details
+import SummaryInterface
+import Summary
 
-public protocol SelectionTextListener: AnyObject {}
+public protocol SelectionListener: AnyObject {}
 
 protocol SelectionPresentable: AnyObject {
     func updateText(_ text: String)
@@ -17,17 +17,19 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
     
     private let label = UILabel()
     private let detailsContainer = UIView()
-    private let numbersContainer = UIView()
+    private let selectionContainer = UIView()
     private let mainStackView = UIStackView()
     
     var listener: SelectionInteractable?
     
-    private var selection: RentDetailsSelection = RentDetailsSelection(value: "")
+    private var selection: SummarySelection = SummarySelection(value: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         embedDetailsView()
+        
+        listener?.didSelectNumber(1)
     }
     
     private func setupUI() {
@@ -56,40 +58,28 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
         label.numberOfLines = 0
         label.text = "KAAN"
         
-        numbersContainer.backgroundColor = .systemBackground
+        selectionContainer.backgroundColor = .systemBackground
         
-        // Add three numbered buttons to the container
-        let numbersStackView = UIStackView()
-        numbersStackView.axis = .horizontal
-        numbersStackView.distribution = .fillEqually
-        numbersStackView.spacing = 10
-        numbersStackView.translatesAutoresizingMaskIntoConstraints = false
-        numbersContainer.addSubview(numbersStackView)
+        // Add segmented control as radio button alternative
+        let segmentedControl = UISegmentedControl(items: ["Option 1", "Option 2", "Option 3"])
+        segmentedControl.selectedSegmentIndex = 0 // Default selection
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        selectionContainer.addSubview(segmentedControl)
         
-        for number in 1...3 {
-            let button = UIButton(type: .system)
-            button.setTitle("\(number)", for: .normal)
-            button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-            button.backgroundColor = .systemGray5
-            button.layer.cornerRadius = 8
-            button.tag = number
-            button.addTarget(self, action: #selector(numberButtonTapped(_:)), for: .touchUpInside)
-            numbersStackView.addArrangedSubview(button)
-        }
-        
-        // Set constraints for the numbers stack view inside numbersContainer
+        // Set constraints for the segmented control inside selectionContainer
         NSLayoutConstraint.activate([
-            numbersStackView.topAnchor.constraint(equalTo: numbersContainer.topAnchor, constant: 8),
-            numbersStackView.leadingAnchor.constraint(equalTo: numbersContainer.leadingAnchor, constant: 8),
-            numbersStackView.trailingAnchor.constraint(equalTo: numbersContainer.trailingAnchor, constant: -8),
-            numbersStackView.bottomAnchor.constraint(equalTo: numbersContainer.bottomAnchor, constant: -8),
-            numbersContainer.heightAnchor.constraint(equalToConstant: 60)
+            segmentedControl.centerXAnchor.constraint(equalTo: selectionContainer.centerXAnchor),
+            segmentedControl.centerYAnchor.constraint(equalTo: selectionContainer.centerYAnchor),
+            segmentedControl.leadingAnchor.constraint(greaterThanOrEqualTo: selectionContainer.leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(lessThanOrEqualTo: selectionContainer.trailingAnchor, constant: -16),
+            selectionContainer.heightAnchor.constraint(equalToConstant: 60)
         ])
         
         // Add all components to the main stack view in order
         mainStackView.addArrangedSubview(detailsContainer)
         mainStackView.addArrangedSubview(label)
-        mainStackView.addArrangedSubview(numbersContainer)
+        mainStackView.addArrangedSubview(selectionContainer)
         
         // Add padding to the stack view using constraints
         NSLayoutConstraint.activate([
@@ -101,7 +91,7 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
     }
     
     private func embedDetailsView() {
-        let selectionBinding = Binding<RentDetailsSelection>(
+        let selectionBinding = Binding<SummarySelection>(
             get: { self.selection },
             set: { newValue in
                 self.selection = newValue
@@ -109,7 +99,7 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
             }
         )
         
-        let detailsBuilder = DetailsBuilder(selectionBinding: selectionBinding)
+        let detailsBuilder = SummaryBuilder(selectionBinding: selectionBinding)
         let detailsView = detailsBuilder.buildView(fromRoute: nil)
         let hostingController = UIHostingController(rootView: detailsView)
         addChild(hostingController)
@@ -122,12 +112,11 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
             hostingController.view.bottomAnchor.constraint(equalTo: detailsContainer.bottomAnchor)
         ])
         hostingController.didMove(toParent: self)
-        
     }
     
-    @objc private func numberButtonTapped(_ sender: UIButton) {
-        let number = sender.tag
-        listener?.didSelectNumber(number)
+    @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
+        let selectedIndex = sender.selectedSegmentIndex + 1
+        listener?.didSelectNumber(selectedIndex)
     }
     
     // MARK: - SimpleTextPresentable

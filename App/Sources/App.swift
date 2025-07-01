@@ -1,11 +1,10 @@
-
 import SwiftUI
 import Collections
 import NetworkingInterface
 import ListInterface
 import List
-import DetailsInterface
-import Details
+import SummaryInterface
+import Summary
 import RouterService
 import Networking
 import Factory

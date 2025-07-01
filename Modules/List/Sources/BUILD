@@ -44,7 +44,7 @@ feature_macro(
         "//Modules/RouterService/Sources:RouterService",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/ListInterface/Sources:ListInterface",
-        "//Modules/DetailsInterface/Sources:DetailsInterface",
+        "//Modules/SummaryInterface/Sources:SummaryInterface",
         "//Modules/HomeInterface/Sources:HomeInterface",
         "//Modules/OrderInterface/Sources:OrderInterface",
         "//Modules/SelectionRIB/Sources:SelectionRIB",

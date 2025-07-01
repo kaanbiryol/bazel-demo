@@ -2,18 +2,18 @@ import Foundation
 import UIKit
 import SwiftUI
 import RIBs
-import DetailsInterface
+import SummaryInterface
 
 protocol SelectionInteractable: Interactable {
     var router: SelectionRouting? { get set }
-    var listener: SelectionTextListener? { get set }
+    var listener: SelectionListener? { get set }
     
     func didSelectNumber(_ number: Int)
 }
 
-final class SelectionTextInteractor: Interactor, SelectionInteractable {
+final class SelectionInteractor: Interactor, SelectionInteractable {
     weak var router: SelectionRouting?
-    weak var listener: SelectionTextListener?
+    weak var listener: SelectionListener?
     
     private let presenter: SelectionPresentable
     

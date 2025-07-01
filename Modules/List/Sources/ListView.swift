@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 import NetworkingInterface
-import DetailsInterface
+import SummaryInterface
 import RouterService
 import Factory
 import UIKit
@@ -124,13 +124,21 @@ struct ListView: View {
 //        }
 //    }
     
-    @State var selection: RentDetailsSelection = RentDetailsSelection(value: "")
+    @State var selection: SummarySelection = SummarySelection(value: "")
     @Injected(\.router) private var router
     
     //picked list bg color of element
 
     public var body: some View {
         NavigationStack {
+//            Button("Show details") {
+//                showDetails = true
+//            }
+//            .routeTo(
+//                route: RentDetailsRoute(selection: $selection),
+//                isActive: $showDetails,
+//                style: .push
+//            )
             List(Array(1...50), id: \.self) { item in
                 Button("Element \(item)") {
                     //nav path?

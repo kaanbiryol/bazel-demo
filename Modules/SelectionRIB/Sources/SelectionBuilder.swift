@@ -11,7 +11,7 @@ public final class SelectionBuilder: SelectionBuildable {
     
     public func build() -> SelectionRouting {
         let viewController = SelectionViewController()
-        let interactor = SelectionTextInteractor(presenter: viewController)
+        let interactor = SelectionInteractor(presenter: viewController)
         let router = SelectionRouter(interactor: interactor, viewController: viewController)
         return router
     }
