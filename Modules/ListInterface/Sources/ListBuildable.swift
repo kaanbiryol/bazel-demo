@@ -9,4 +9,10 @@ public extension Container {
             fatalError("🚨 NetworkingService not registered – make sure your App registers one.")
         }
     }
+    
+    var listRIBBuilder: Factory<ListRIBBuildable> {
+        Factory(self) {
+            fatalError("🚨 NetworkingService not registered – make sure your App registers one.")
+        }
+    }
 }

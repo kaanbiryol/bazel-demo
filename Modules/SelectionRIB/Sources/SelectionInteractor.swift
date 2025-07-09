@@ -9,6 +9,7 @@ protocol SelectionInteractable: Interactable {
     var listener: SelectionListener? { get set }
     
     func didSelectNumber(_ number: Int)
+    func didTapNext()
 }
 
 final class SelectionInteractor: Interactor, SelectionInteractable {
@@ -16,6 +17,8 @@ final class SelectionInteractor: Interactor, SelectionInteractable {
     weak var listener: SelectionListener?
     
     private let presenter: SelectionPresentable
+    
+    private let selectionBinding: Binding<SummarySelection> = Binding.constant(SummarySelection(value: ""))
     
     init(presenter: SelectionPresentable) {
         self.presenter = presenter
@@ -36,5 +39,9 @@ final class SelectionInteractor: Interactor, SelectionInteractable {
     
     func didSelectNumber(_ number: Int) {
         presenter.updateWithSelection(number)
+    }
+    
+    func didTapNext() {
+        router?.routeToSummary(selectionBinding: selectionBinding)
     }
 }

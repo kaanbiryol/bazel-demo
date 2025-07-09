@@ -9,17 +9,61 @@ import RouterService
 import Networking
 import Factory
 import RIBs
+import UIKit
+import RootRIB
+
+// MARK: - Architecture Choice
+enum RootType {
+    case rib
+    case swiftUI
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let sceneConfig = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
+        sceneConfig.delegateClass = SceneDelegate.self
+        return sceneConfig
+    }
+}
+
+class SceneDelegate: NSObject, UIWindowSceneDelegate {
+    
+    @Injected(\.rootRIBBuilder) var rootRIBBuilder: RootRIBBuildable
+    
+    @Injected(\.rootType) var rootType: RootType
+    
+    
+    var window: UIWindow?
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        
+        switch rootType {
+        case .swiftUI:
+            let rootView = RootSwiftUI()
+            let hostingController = UIHostingController(rootView: rootView)
+            window.rootViewController = hostingController
+            window.makeKeyAndVisible()
+        case .rib:
+            let router = rootRIBBuilder.build()
+            router.launch(from: window)
+        }
+    }
+}
 
 @main
 struct Root: App {
-     
-    @Injected(\.listBuilder) private var listBuilder: ListBuildable
-    
-    init() {}
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
-            listBuilder.buildView(fromRoute: ListRoute())
+            // Empty placeholder - SceneDelegate handles the UI setup
+            // (either SwiftUI or RIBs based on the useSwiftUI flag)
+            Color.clear
+                .ignoresSafeArea()
         }
     }
 }
@@ -32,55 +76,3 @@ private class CollectionsTest {
         print(deque) // ["Keeley", "Ted", "Rebecca", "Nathan"]
     }
 }
-
-
-// MARK: - WIP RIBS
-
-protocol RootInteractable: Interactable {
-    var router: RootRouting? { get set }
-}
-
-protocol RootListener: AnyObject {
-    
-}
-
-protocol RootPresentable: Presentable {
-    var listener: RootPresentableListener? { get set  }
-}
-
-protocol RootPresentableListener: AnyObject {
-    func didNavigateBack()
-}
-
-@Observable class RootInteractor: Interactor, RootInteractable {
-    
-    weak var router: RootRouting?
-    
-    @ObservationIgnored @State private var routeToList: Bool = true
-    
-    public override init() {
-        super.init()
-    }
-    
-    override func didBecomeActive() {
-        super.didBecomeActive()
-        router?.routeToList(binding: $routeToList)
-        
-    }
-}
-
-extension RootInteractor: RootPresentableListener {
-    func didNavigateBack() {
-        
-    }
-}
-
-protocol RootViewControllable: ViewControllable {
-    func embedQuickFilter(_ viewController: ViewControllable)
-    func unembedQuickFilter(_ viewController: ViewControllable)
-}
-
-protocol RootRouting: Routing {
-    func routeToList(binding: Binding<Bool>)
-}
-

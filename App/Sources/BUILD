@@ -51,10 +51,13 @@ swift_library(
     copts = ["-whole-module-optimization"],
     deps = [
         # "//Modules/RouterService/Sources:RouterService",
+        "//Modules/RootRIB/Sources:RootRIB",
         "//Modules/List/Sources:List",
         "//Modules/Summary/Sources:Summary",
+        "//Modules/Selection/Sources:Selection",
         "//Modules/ListInterface/Sources:ListInterface",
         "//Modules/SummaryInterface/Sources:SummaryInterface",
+        "//Modules/SelectionInterface/Sources:SelectionInterface",
         "//Modules/Networking/Sources:Networking",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/Home/Sources:Home",

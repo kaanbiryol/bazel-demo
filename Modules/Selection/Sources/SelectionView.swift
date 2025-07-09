@@ -3,16 +3,16 @@ import RIBs
 import Foundation
 import SwiftUI
 import NetworkingInterface
-import SummaryInterface
+import SelectionInterface
 import UIKit
 
-struct SummaryView: View {
+struct SelectionView: View {
     
-    @Binding var selection: SummarySelection
+    @Binding var selection: SelectionSelection
     @Environment(\.dismiss) private var dismiss
     
     @State private var isActive: Bool = false
-    @State private var name: String = "Alice"
+    @State private var name: String = "Selection"
     
     var body: some View {
         VStack(spacing: 20) {
@@ -22,49 +22,48 @@ struct SummaryView: View {
                     .font(.headline)
                 Text(selection.value.isEmpty ? "None" : selection.value)
                     .font(.title2)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.green)
                     .padding()
-                    .background(Color.blue.opacity(0.1))
+                    .background(Color.green.opacity(0.1))
                     .cornerRadius(8)
             }
             
             // Selection buttons
             HStack(spacing: 15) {
-                Button("1") {
-                    selection.value = "1"
+                Button("Option A") {
+                    selection.value = "Option A"
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
                 
-                Button("2") {
-                    selection.value = "2"
+                Button("Option B") {
+                    selection.value = "Option B"
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
                 
-                Button("3") {
-                    selection.value = "3"
+                Button("Option C") {
+                    selection.value = "Option C"
                     isActive = true
-//                dismiss()
                 }
                 .buttonStyle(.borderedProminent)
             }
+            
+            // Clear selection button
+            Button("Clear") {
+                selection.value = ""
+                dismiss()
+            }
+            .buttonStyle(.bordered)
+            .foregroundColor(.red)
         }
         .padding()
-//        Text(name)
-//            .onAppear(perform: {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//                    name = "KAAN"
-//                }
-//            })
-        .routeTo(route: TestRoute(), isActive: $isActive, style: .push)
+        .navigationTitle("Selection")
+        .routeTo(route: SelectionTestRoute(), isActive: $isActive, style: .push)
     }
-    
 }
 
-public class TestBuilder: Builder2 {
-//    @Injected(\.networkingService) private var networkingService
-//    @Injected(\.router) private var router
+public class SelectionTestBuilder: Builder2 {
     
     public init() {
          
@@ -72,19 +71,25 @@ public class TestBuilder: Builder2 {
     
     public func buildView(fromRoute route: Route?) -> AnyView {
         return AnyView(
-            Text("KAAN")
+            VStack {
+                Text("Selection Test View")
+                    .font(.title)
+                    .padding()
+                Text("You selected Option C")
+                    .font(.body)
+                    .padding()
+            }
         )
     }
 }
 
-
-public struct TestRoute: Route {
-    public static var identifier: String = "rent_details_route2"
+public struct SelectionTestRoute: Route {
+    public static var identifier: String = "selection_test_route"
     
     public init() {
     }
     
     public func getBuilder() -> any Builder2 {
-        return TestBuilder()
+        return SelectionTestBuilder()
     }
-}
+} 

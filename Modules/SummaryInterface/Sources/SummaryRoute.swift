@@ -3,7 +3,7 @@ import Foundation
 import RouterService
 import struct SwiftUI.Binding
 
-public struct RentDetailsRoute: Route {
+public struct SummaryRoute: Route {
     public static var identifier: String = "rent_details_route"
     
     public let selection: Binding<SummarySelection>
@@ -13,9 +13,8 @@ public struct RentDetailsRoute: Route {
     }
     
     public func getBuilder() -> any Builder2 {
-        return Container.shared.rentDetailsBuilder(selection)
+        return Container.shared.summaryBuilder(selection)
     }
-    
 }
 
 public struct SummarySelection {

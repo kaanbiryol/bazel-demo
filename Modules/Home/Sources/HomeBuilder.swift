@@ -5,7 +5,7 @@ import Factory
 import HomeInterface
 
 public class HomeBuilder: HomeBuildable {
-    @Injected(\.router) private var router
+//    @Injected(\.router) private var router
     
     public init() {}
     

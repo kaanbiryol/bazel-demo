@@ -41,6 +41,7 @@ feature_macro(
     #     "//Modules/Details/Sources:Details",
     # ],
     deps = [
+        "//Modules/SelectionInterface/Sources:SelectionInterface",
         "//Modules/RouterService/Sources:RouterService",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/ListInterface/Sources:ListInterface",

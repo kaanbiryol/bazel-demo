@@ -2,10 +2,10 @@ import Factory
 import RouterService
 import struct SwiftUI.Binding
 
-public protocol RentDetailsBuildable: Builder2 {}
+public protocol SummaryBuildable: Builder2 {}
 
 public extension Container {
-    var rentDetailsBuilder: ParameterFactory<Binding<SummarySelection>, RentDetailsBuildable> {
+    var summaryBuilder: ParameterFactory<Binding<SummarySelection>, SummaryBuildable> {
     ParameterFactory(self) { _ in
       fatalError("🚨 NetworkingService not registered – make sure your App registers one.")
     }

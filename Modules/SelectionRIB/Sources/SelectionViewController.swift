@@ -18,18 +18,20 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
     private let label = UILabel()
     private let detailsContainer = UIView()
     private let selectionContainer = UIView()
+    private let nextButton = UIButton(type: .system)
     private let mainStackView = UIStackView()
     
     var listener: SelectionInteractable?
     
     private var selection: SummarySelection = SummarySelection(value: "")
+    private var selectedIndex: Int = 1 // Default to first option
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        embedDetailsView()
+//        embedDetailsView()
         
-        listener?.didSelectNumber(1)
+        updateWithSelection(selectedIndex)
     }
     
     private func setupUI() {
@@ -76,10 +78,30 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
             selectionContainer.heightAnchor.constraint(equalToConstant: 60)
         ])
         
+        // Configure Next button
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        nextButton.backgroundColor = .systemBlue
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.layer.cornerRadius = 8
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Set height constraint for Next button
+        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         // Add all components to the main stack view in order
         mainStackView.addArrangedSubview(detailsContainer)
         mainStackView.addArrangedSubview(label)
         mainStackView.addArrangedSubview(selectionContainer)
+        
+        // Add some spacing before the Next button
+        let spacerView = UIView()
+        spacerView.translatesAutoresizingMaskIntoConstraints = false
+        spacerView.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        mainStackView.addArrangedSubview(spacerView)
+        
+        mainStackView.addArrangedSubview(nextButton)
         
         // Add padding to the stack view using constraints
         NSLayoutConstraint.activate([
@@ -115,8 +137,12 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
     }
     
     @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
-        let selectedIndex = sender.selectedSegmentIndex + 1
-        listener?.didSelectNumber(selectedIndex)
+        selectedIndex = sender.selectedSegmentIndex + 1
+        updateWithSelection(selectedIndex)
+    }
+    
+    @objc private func nextButtonTapped() {
+        listener?.didTapNext()
     }
     
     // MARK: - SimpleTextPresentable

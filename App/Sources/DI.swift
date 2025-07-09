@@ -1,3 +1,6 @@
+import SelectionRIB
+import Selection
+import SelectionInterface
 import Factory
 import RouterService
 import NetworkingInterface
@@ -10,12 +13,31 @@ import HomeInterface
 import Home
 import OrderInterface
 import Order
+import RIBs
+import RootRIB
+
+// MARK: - Static dependencies
+
+extension Container {
+    
+    var rootType: Factory<RootType> {
+        self { .rib }
+    }
+    
+    var rootRIBBuilder: Factory<RootRIBBuildable> {
+        self { RootRIBBuilder() }
+    }
+}
+
+// MARK: - Dynamic dependencies
 
 extension Container: AutoRegistering {
     public func autoRegister() {
-        networkingService.register { NetworkingImpl() }
+        networkingService.register {
+            NetworkingImpl()
+        }
         
-        rentDetailsBuilder.register { binding in
+        summaryBuilder.register { binding in
             SummaryBuilder(selectionBinding: binding)
         }
         
@@ -23,14 +45,22 @@ extension Container: AutoRegistering {
             ListBuilder()
         }
         
-        // Register Home module
+        listRIBBuilder.register {
+            ListRIBBuilder()
+        }
+        
         homeBuilder.register {
             HomeBuilder()
         }
         
-        // Register Order module
         orderBuilder.register {
             OrderBuilder()
         }
+        
+        selectionBuilder.register { binding in
+            SelectionBuilder(selectionBinding: binding)
+        }
+        
     }
 }
+
