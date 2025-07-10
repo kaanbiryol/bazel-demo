@@ -4,19 +4,19 @@ import Factory
 import SwiftUI
 
 // MARK: - BuilderProtocol
-public protocol SelectionBuildable: Buildable {
-    func build() -> SelectionRouting
+public protocol SelectionRIBBuildable: Buildable {
+    func build() -> SelectionRIBRouting
 }
 
 // MARK: - Builder
-public final class SelectionRIBBuilder: SelectionBuildable {
+public final class SelectionRIBBuilder: SelectionRIBBuildable {
     
     public init() {}
     
-    public func build() -> SelectionRouting {
-        let viewController = SelectionViewController()
-        let interactor = SelectionInteractor(presenter: viewController)
-        let router = SelectionRouter(
+    public func build() -> SelectionRIBRouting {
+        let viewController = SelectionRIBViewController()
+        let interactor = SelectionRIBInteractor(presenter: viewController)
+        let router = SelectionRIBRouter(
             interactor: interactor,
             viewController: viewController,
             summaryBuilder: Container.shared.summaryBuilder

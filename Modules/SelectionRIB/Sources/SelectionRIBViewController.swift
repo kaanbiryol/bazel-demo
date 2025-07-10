@@ -4,16 +4,16 @@ import RIBs
 import SummaryInterface
 import Summary
 
-public protocol SelectionListener: AnyObject {}
+public protocol SelectionRIBListener: AnyObject {}
 
-protocol SelectionPresentable: AnyObject {
+protocol SelectionRIBPresentable: AnyObject {
     func updateText(_ text: String)
     func updateWithSelection(_ number: Int)
     
-    var listener: SelectionInteractable? { get set }
+    var listener: SelectionRIBInteractable? { get set }
 }
 
-final class SelectionViewController: UIViewController, SelectionPresentable, SelectionViewControllable {
+final class SelectionRIBViewController: UIViewController, SelectionRIBPresentable, SelectionRIBViewControllable {
     
     private let label = UILabel()
     private let detailsContainer = UIView()
@@ -21,7 +21,7 @@ final class SelectionViewController: UIViewController, SelectionPresentable, Sel
     private let nextButton = UIButton(type: .system)
     private let mainStackView = UIStackView()
     
-    var listener: SelectionInteractable?
+    var listener: SelectionRIBInteractable?
     
     private var selection: SummarySelection = SummarySelection(value: "")
     private var selectedIndex: Int = 1 // Default to first option

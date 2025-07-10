@@ -6,6 +6,7 @@ feature_macro(
     deps = [
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
         "//Modules/SelectionInterface/Sources:SelectionInterface",
-        # "//Modules/RouterService/Sources:RouterService",
+        "//Modules/SummaryInterface/Sources:SummaryInterface",
+        "//Modules/RouterService/Sources:RouterService",
     ],
 ) 

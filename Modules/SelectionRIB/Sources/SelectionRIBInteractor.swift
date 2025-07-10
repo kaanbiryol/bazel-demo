@@ -4,23 +4,23 @@ import SwiftUI
 import RIBs
 import SummaryInterface
 
-protocol SelectionInteractable: Interactable {
-    var router: SelectionRouting? { get set }
-    var listener: SelectionListener? { get set }
+protocol SelectionRIBInteractable: Interactable {
+    var router: SelectionRIBRouting? { get set }
+    var listener: SelectionRIBListener? { get set }
     
     func didSelectNumber(_ number: Int)
     func didTapNext()
 }
 
-final class SelectionInteractor: Interactor, SelectionInteractable {
-    weak var router: SelectionRouting?
-    weak var listener: SelectionListener?
+final class SelectionRIBInteractor: Interactor, SelectionRIBInteractable {
+    weak var router: SelectionRIBRouting?
+    weak var listener: SelectionRIBListener?
     
-    private let presenter: SelectionPresentable
+    private let presenter: SelectionRIBPresentable
     
     private let selectionBinding: Binding<SummarySelection> = Binding.constant(SummarySelection(value: ""))
     
-    init(presenter: SelectionPresentable) {
+    init(presenter: SelectionRIBPresentable) {
         self.presenter = presenter
         super.init()
         

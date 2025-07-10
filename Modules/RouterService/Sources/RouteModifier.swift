@@ -1,6 +1,10 @@
 import SwiftUI
 import Factory
 
+extension EnvironmentValues {
+    @Entry public var presentationStyle: NavigationStyle = .push
+}
+
 public struct RouteModifier: ViewModifier {
     // @InjectedObject(\.router) private var router
     let router: Router
@@ -15,13 +19,15 @@ public struct RouteModifier: ViewModifier {
             // Embed the route content directly when active
             if style == .embed && isActive {
                 routeDestination()
+                    .environment(\.presentationStyle, .embed)
             }
         }
         .background(
             ZStack {
                 if style == .push {
                     NavigationLink(
-                        destination: routeDestination(),
+                        destination: routeDestination()
+                            .environment(\.presentationStyle, .push),
                         isActive: $isActive
                     ) {
                         EmptyView()
@@ -32,9 +38,11 @@ public struct RouteModifier: ViewModifier {
         )
         .sheet(isPresented: style == .sheet ? $isActive : .constant(false)) {
             routeDestination()
+                .environment(\.presentationStyle, .sheet)
         }
         .fullScreenCover(isPresented: style == .fullScreenCover ? $isActive : .constant(false)) {
             routeDestination()
+                .environment(\.presentationStyle, .fullScreenCover)
         }
     }
     

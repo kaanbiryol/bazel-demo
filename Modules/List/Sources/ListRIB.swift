@@ -18,7 +18,7 @@ public final class ListRIBBuilder: ListRIBBuildable {
 final class ListRouter: Router<ListInteractable>, ListRouting {
     
     private let viewController: ListViewControllable
-    var selectionBuilder: SelectionBuildable?
+    var selectionBuilder: SelectionRIBBuildable?
     
     init(interactor: ListInteractable, viewController: ListViewControllable) {
         self.viewController = viewController
@@ -125,7 +125,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - SelectionListener Extension
-extension ListInteractor: SelectionListener {
+extension ListInteractor: SelectionRIBListener {
     func selectionDidComplete() {
         // Handle selection completion if needed
     }

@@ -3,23 +3,23 @@ import SummaryInterface
 import Factory
 import SwiftUI
 
-public protocol SelectionRouting: ViewableRouting {
+public protocol SelectionRIBRouting: ViewableRouting {
     func routeToSummary(selectionBinding: Binding<SummarySelection>)
 }
 
-public protocol SelectionViewControllable: ViewControllable {
+public protocol SelectionRIBViewControllable: ViewControllable {
     func updateText(_ text: String)
 }
 
-final class SelectionRouter: RIBs.Router<SelectionInteractable>, SelectionRouting {
+final class SelectionRIBRouter: RIBs.Router<SelectionRIBInteractable>, SelectionRIBRouting {
     
     var viewControllable: any RIBs.ViewControllable
     
     private let summaryBuilder: ParameterFactory<Binding<SummarySelection>, SummaryBuildable>
     
     init(
-        interactor: SelectionInteractable,
-        viewController: SelectionViewControllable,
+        interactor: SelectionRIBInteractable,
+        viewController: SelectionRIBViewControllable,
         summaryBuilder: ParameterFactory<Binding<SummarySelection>, SummaryBuildable>
     ) {
         self.viewControllable = viewController
