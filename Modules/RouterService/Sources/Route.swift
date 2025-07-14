@@ -6,7 +6,7 @@ public protocol Route: Hashable {
     func getBuilder() -> any Builder2
 }
 
-// Default implementation of Hashable for Route
+
 public extension Route {
     func hash(into hasher: inout Hasher) {
         hasher.combine(Self.identifier)
@@ -18,7 +18,6 @@ public extension Route {
     }
 }
 
-// Type-erased equality for different Route types
 public func == (lhs: any Route, rhs: any Route) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

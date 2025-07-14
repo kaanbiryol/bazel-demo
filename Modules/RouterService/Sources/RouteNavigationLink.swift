@@ -2,7 +2,7 @@ import SwiftUI
 import Factory
 
 public struct RouteDestinationView: View {
-    let route: Route
+    let route: any Route
     let navigationPath: Binding<NavigationPath>
     @Injected(\.router) private var router
 
@@ -19,7 +19,7 @@ public struct RouteDestinationView: View {
 // MARK: - Convenience initialisers on NavigationLink
 public extension NavigationLink where Destination == RouteDestinationView {
 
-    public init(route: Route,
+    init(route: Route,
          navigationPath: Binding<NavigationPath>,
          @ViewBuilder label: () -> Label
     ) {

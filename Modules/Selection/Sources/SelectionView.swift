@@ -15,7 +15,6 @@ struct SelectionView: View {
     @Environment(\.presentationStyle) private var presentationStyle
     
     @Environment(\.navigationPath) private var navigationPath
-    @Environment(\.routeNavigator) private var navigator  // Access the injected navigator
     
     @State private var selectedOptions: Set<String> = []
     @State private var showSummary: Bool = false

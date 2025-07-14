@@ -13,7 +13,6 @@ struct SummaryView: View {
     @Environment(\.dismiss) private var dismiss
     
     @Environment(\.navigationPath) private var navigationPath
-    @Environment(\.routeNavigator) private var navigator
     
     @State private var showSelection: Bool = false
     @State private var selectionState = SelectionSelection(value: "")

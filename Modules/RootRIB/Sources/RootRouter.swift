@@ -32,7 +32,6 @@ final class RootRouter: Router<RootInteractable>, RootRouting {
     }
     
     func launch(from window: UIWindow) {
-        // Wrap in navigation controller to match SwiftUI NavigationStack behavior
         let navigationController = UINavigationController(rootViewController: viewControllable.uiViewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
