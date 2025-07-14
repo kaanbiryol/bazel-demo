@@ -3,7 +3,7 @@ import SwiftUI
 import Combine
 
 public protocol RouterProtocol {
-    func view(for route: Route) -> AnyView?
+    func view(for route: any Route) -> AnyView
     func handle(deepLink url: URL) -> Bool
 }
 
@@ -13,8 +13,8 @@ public class Router: RouterProtocol {
     private var deepLinkRegistry: [String: (URL) -> (any Route)?] = [:] // Path prefix to route factory
     public private(set) var deepLinkPublisher = PassthroughSubject<any Route, Never>() // To notify of deep links
     
-    public func view(for route: Route) -> AnyView? {
-        return route.getBuilder().buildView(fromRoute: route)
+    public func view(for route: any Route) -> AnyView {
+        return route.getBuilder().buildView()
     }
     
     public func registerDeepLink<R: Route>(pathPrefix: String, factory: @escaping (URL) -> R?) {

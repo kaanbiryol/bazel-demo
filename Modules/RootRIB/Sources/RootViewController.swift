@@ -8,42 +8,30 @@ final class RootViewController: UIViewController, RootViewControllable, RootPres
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-    }
-    
-    private func setupUI() {
-        title = "Root"
-        view.backgroundColor = .systemBackground
     }
     
     func embedViewController(_ viewController: any ViewControllable) {
-        let childVC = viewController.uiViewController
+        let childViewController = viewController.uiViewController
+        addChild(childViewController)
+        view.addSubview(childViewController.view)
         
-        // Proper view controller containment
-        addChild(childVC)
-        view.addSubview(childVC.view)
-        
-        // Set up constraints to fill the parent view
-        childVC.view.translatesAutoresizingMaskIntoConstraints = false
+        childViewController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            childVC.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            childVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            childVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            childVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            childViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            childViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            childViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            childViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Complete the containment relationship
-        childVC.didMove(toParent: self)
+        childViewController.didMove(toParent: self)
     }
     
     func unembedViewController(_ viewController: any ViewControllable) {
-        let childVC = viewController.uiViewController
+        let childViewController = viewController.uiViewController
+        guard childViewController.parent == self else { return }
         
-        // Proper view controller containment removal
-        guard childVC.parent == self else { return }
-        
-        childVC.willMove(toParent: nil)
-        childVC.view.removeFromSuperview()
-        childVC.removeFromParent()
+        childViewController.willMove(toParent: nil)
+        childViewController.view.removeFromSuperview()
+        childViewController.removeFromParent()
     }
 }

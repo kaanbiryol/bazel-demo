@@ -9,7 +9,6 @@ import SummaryInterface
 import ListInterface
 import HomeInterface
 import OrderInterface
- 
 import SelectionRIB
 
 public class ListBuilder: ListBuildable {
@@ -18,7 +17,7 @@ public class ListBuilder: ListBuildable {
     
     public init() {}
     
-    public func buildView(fromRoute route: Route?) -> AnyView {
+    public func buildView() -> AnyView {
         return AnyView(
             ListView()
         )

@@ -18,12 +18,9 @@ public struct RouteNavigationStack<Content: View>: View {
         NavigationStack(path: $path) {
             content()
                 .navigationDestination(for: AnyRoute.self) { anyRoute in
-                    if let view = router.view(for: anyRoute.base) {
-                        view
-                            .environment(\.navigationPath, $path)
-                    } else {
-                        EmptyView()
-                    }
+                    router.view(for: anyRoute.base)
+                        .environment(\.presentationStyle, .push)
+                        .environment(\.navigationPath, $path)
                 }
         }
     }

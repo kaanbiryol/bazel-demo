@@ -32,8 +32,7 @@ final class RootRouter: Router<RootInteractable>, RootRouting {
     }
     
     func launch(from window: UIWindow) {
-        let navigationController = UINavigationController(rootViewController: viewControllable.uiViewController)
-        window.rootViewController = navigationController
+        window.rootViewController = viewControllable.uiViewController
         window.makeKeyAndVisible()
         
         interactable.activate()
@@ -47,9 +46,9 @@ final class RootRouter: Router<RootInteractable>, RootRouting {
 //        attachChild(listRouter, attachingType: .embedded)
 //        viewController.embedViewController(listRouter.viewControllable)
         
-        let listView = listBuilder.buildView(fromRoute: nil)
+        let listView = listBuilder.buildView()
         let summaryController = SwiftUIViewControllable(listView)
-        viewControllable.pushViewController(summaryController)
+        viewControllable.embedViewController(summaryController)
     }
 }
 
@@ -60,3 +59,4 @@ final class SwiftUIViewControllable: ViewControllable {
         self.uiViewController = UIHostingController(rootView: view)
     }
 }
+

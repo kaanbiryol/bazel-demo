@@ -12,7 +12,7 @@ public class SelectionBuilder: SelectionBuildable {
         self.selectionBinding = selectionBinding
     }
     
-    public func buildView(fromRoute route: Route?) -> AnyView {
+    public func buildView() -> AnyView {
         return AnyView(
             SelectionView(selection: selectionBinding)
         )

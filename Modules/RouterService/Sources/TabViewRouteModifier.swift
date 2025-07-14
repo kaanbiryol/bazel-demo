@@ -24,7 +24,7 @@ struct RouteView: View {
     }
     
     var body: some View {
-        route.getBuilder().buildView(fromRoute: route)
+        route.getBuilder().buildView()
     }
 }
 
@@ -55,12 +55,10 @@ extension Route {
     }
 }
 
-
-
 public struct TabItem {
     let label: String
     let systemImage: String
-    let route: Route
+    let route: any Route
     
     public init(label: String, systemImage: String, route: Route) {
         self.label = label
@@ -77,17 +75,10 @@ public struct TabViewRouteModifier: ViewModifier {
         TabView {
             ForEach(0..<tabItems.count, id: \.self) { index in
                 let item = tabItems[index]
-                if let view = router.view(for: item.route) {
-                    view
-                        .tabItem {
-                            Label(item.label, systemImage: item.systemImage)
-                        }
-                } else {
-                    EmptyView()
-                        .tabItem {
-                            Label(item.label, systemImage: item.systemImage)
-                        }
-                }
+                router.view(for: item.route)
+                    .tabItem {
+                        Label(item.label, systemImage: item.systemImage)
+                    }
             }
         }
     }
@@ -113,4 +104,4 @@ public extension View {
             tabItems: tabItems
         ))
     }
-} 
+}

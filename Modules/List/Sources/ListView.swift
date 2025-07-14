@@ -38,17 +38,15 @@ struct ListView: View {
                     }
                 }
                 .navigationTitle("List")
+                .scrollContentBackground(.hidden)
                 
                 Button("Go to Order") {
                     navigationPath.push(to: OrderRoute())
-                }
+                }.padding(8)
                 
-                Button("Simulate Deep Link to Selection 123") {
-                    let url = URL(string: "myapp://selection/123")! // Example URL
-                    _ = router.handle(deepLink: url)
-                }
             }
         }
+        .background(Color(.systemBackground).ignoresSafeArea())
         .routeTo(route: currentModalRoute ?? SelectionRoute(selection: .constant(SelectionSelection(value: "Fallback"))), isActive: $showModal, style: .sheet) // Use .routeTo instead
         .onReceive(router.deepLinkPublisher) { route in
             currentModalRoute = route
@@ -59,11 +57,8 @@ struct ListView: View {
         }
         .onAppear {
             router.registerDeepLink<SelectionRoute>(pathPrefix: "selection") { url in
-                
                 let urlString = url.absoluteString
-                print("📱 Processing selection URL: \(urlString)")
                 if let id = urlString.split(separator: "/").last {
-                    print("🆔 Extracted ID: \(id)")
                     return SelectionRoute(selection: .constant(SelectionSelection(value: "Deep Link ID: \(id)")))
                 }
                 return nil
@@ -152,7 +147,7 @@ struct RouteTabItem: View {
     }
     
     var body: some View {
-        route.getBuilder().buildView(fromRoute: route)
+        route.getBuilder().buildView()
     }
 }
 

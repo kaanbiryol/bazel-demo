@@ -122,7 +122,7 @@ final class SelectionRIBViewController: UIViewController, SelectionRIBPresentabl
         )
         
         let detailsBuilder = SummaryBuilder(selectionBinding: selectionBinding)
-        let detailsView = detailsBuilder.buildView(fromRoute: nil)
+        let detailsView = detailsBuilder.buildView()
         let hostingController = UIHostingController(rootView: detailsView)
         addChild(hostingController)
         detailsContainer.addSubview(hostingController.view)

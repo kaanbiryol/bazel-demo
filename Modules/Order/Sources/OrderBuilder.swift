@@ -5,11 +5,9 @@ import Factory
 import OrderInterface
 
 public class OrderBuilder: OrderBuildable {
-    @Injected(\.router) private var router
-    
     public init() {}
     
-    public func buildView(fromRoute route: Route?) -> AnyView {
+    public func buildView() -> AnyView {
         return AnyView(OrderView())
     }
 }

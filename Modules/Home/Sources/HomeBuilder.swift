@@ -5,11 +5,10 @@ import Factory
 import HomeInterface
 
 public class HomeBuilder: HomeBuildable {
-//    @Injected(\.router) private var router
     
     public init() {}
     
-    public func buildView(fromRoute route: Route?) -> AnyView {
+    public func buildView() -> AnyView {
         return AnyView(HomeView())
     }
 }

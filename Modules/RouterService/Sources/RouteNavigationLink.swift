@@ -5,21 +5,16 @@ public struct RouteDestinationView: View {
     let route: any Route
     let navigationPath: Binding<NavigationPath>
     @Injected(\.router) private var router
-
+    
     public var body: some View {
-        if let view = router.view(for: route) {
-            view
-                .environment(\.navigationPath, navigationPath)
-        } else {
-            AnyView(EmptyView())
-        }
+        router.view(for: route)
+            .environment(\.navigationPath, navigationPath)
     }
 }
 
-// MARK: - Convenience initialisers on NavigationLink
 public extension NavigationLink where Destination == RouteDestinationView {
-
-    init(route: Route,
+    
+    init(route: any Route,
          navigationPath: Binding<NavigationPath>,
          @ViewBuilder label: () -> Label
     ) {

@@ -29,7 +29,7 @@ final class SelectionRIBRouter: RIBs.Router<SelectionRIBInteractable>, Selection
     }
     
     func routeToSummary(selectionBinding: Binding<SummarySelection>) {
-        let summaryView = summaryBuilder(selectionBinding).buildView(fromRoute: nil)
+        let summaryView = summaryBuilder(selectionBinding).buildView()
         let summaryController = SwiftUIViewControllable(summaryView)
         viewControllable.pushViewController(summaryController)
         // TODO:  check if (push) UINavigationController / NavigationStack can work together

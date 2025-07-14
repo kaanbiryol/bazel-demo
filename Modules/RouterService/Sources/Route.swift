@@ -23,5 +23,5 @@ public func == (lhs: any Route, rhs: any Route) -> Bool {
 }
 
 public protocol Builder2 {
-    func buildView(fromRoute route: Route?) -> AnyView
+    func buildView() -> AnyView
 }

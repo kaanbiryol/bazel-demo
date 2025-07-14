@@ -12,7 +12,7 @@ public class SummaryBuilder: SummaryBuildable {
         self.selectionBinding = selectionBinding
     }
     
-    public func buildView(fromRoute route: Route?) -> AnyView {
+    public func buildView() -> AnyView {
         return AnyView(
             SummaryView(selection: selectionBinding)
         )

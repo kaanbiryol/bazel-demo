@@ -7,53 +7,51 @@ import SelectionInterface
 import SummaryInterface
 import UIKit
 
-
 struct SelectionView: View {
-    
-    @Binding var selection: SelectionSelection
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationStyle) private var presentationStyle
-    
     @Environment(\.navigationPath) private var navigationPath
     
+    @Binding var selection: SelectionSelection
+    
     @State private var selectedOptions: Set<String> = []
-    @State private var showSummary: Bool = false
     @State private var summarySelection = SummarySelection(value: "")
     
     var body: some View {
-        VStack(spacing: 30) {
-            Text(selectedOptions.isEmpty ? "Select options below" : "\(selectedOptions.count) selected")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .frame(height: 20)
-            
-            VStack(spacing: 12) {
-                SelectionRow(title: "Option A", isSelected: selectedOptions.contains("Option A")) {
-                    toggleSelection("Option A")
-                }
-                
-                SelectionRow(title: "Option B", isSelected: selectedOptions.contains("Option B")) {
-                    toggleSelection("Option B")
-                }
-                
-                SelectionRow(title: "Option C", isSelected: selectedOptions.contains("Option C")) {
-                    toggleSelection("Option C")
-                }
+        VStack(spacing: 12) {
+            SelectionRow(title: "A", isSelected: selectedOptions.contains("A")) {
+                toggleSelection("A")
             }
             
+            SelectionRow(title: "B", isSelected: selectedOptions.contains("B")) {
+                toggleSelection("B")
+            }
+            
+            SelectionRow(title: "C", isSelected: selectedOptions.contains("C")) {
+                toggleSelection("C")
+            }
+            
+            Spacer().frame(height: 8)
             
             Button(continueButtonTitle) {
-                handleContinueAction()
+                if presentationStyle == .sheet {
+                    dismiss()
+                } else {
+                    goToSummary()
+                }
             }
             .buttonStyle(.borderedProminent)
-            .disabled(selectedOptions.isEmpty)
             
             Spacer()
+            
         }
         .padding()
         .navigationTitle("Selection")
-        .routeTo(route: SummaryRoute(selection: $summarySelection), isActive: $showSummary, style: .push(navigationPath))
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
+            loadCurrentSelections()
+        }
+        .onChange(of: selection.value) { newValue in
             loadCurrentSelections()
         }
     }
@@ -62,22 +60,14 @@ struct SelectionView: View {
         return presentationStyle == .sheet ? "Done" : "Continue to Summary"
     }
     
-    private func handleContinueAction() {
-        if presentationStyle == .sheet {
-            // We're presented as a sheet, just dismiss
-            dismiss()
-        } else {
-            // We're pushed, navigate to Summary
-            goToSummary()
-        }
-    }
-    
     private func loadCurrentSelections() {
         if !selection.value.isEmpty {
             let options = selection.value.components(separatedBy: ", ")
                 .map { $0.trimmingCharacters(in: .whitespaces) }
                 .filter { !$0.isEmpty }
             selectedOptions = Set(options)
+        } else {
+            selectedOptions = []
         }
     }
     
@@ -93,29 +83,28 @@ struct SelectionView: View {
     private func goToSummary() {
         let summaryText = selectedOptions.sorted().joined(separator: ", ")
         summarySelection.value = summaryText
-//        showSummary = true
-        navigationPath.wrappedValue.push(to: SummaryRoute(selection: $summarySelection))
+        navigationPath.push(SummaryRoute(selection: $summarySelection))
     }
-}
-
-struct SelectionRow: View {
-    let title: String
-    let isSelected: Bool
-    let action: () -> Void
     
-    var body: some View {
-        Button(action: action) {
-            HStack {
-                Text(title)
-                    .foregroundColor(.primary)
-                Spacer()
-                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(isSelected ? .accentColor : .secondary)
+    private struct SelectionRow: View {
+        let title: String
+        let isSelected: Bool
+        let action: () -> Void
+        
+        var body: some View {
+            Button(action: action) {
+                HStack {
+                    Text(title)
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(isSelected ? .accentColor : .secondary)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
             }
-            .padding()
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
+            .buttonStyle(.plain)
         }
-        .buttonStyle(.plain)
     }
 }
