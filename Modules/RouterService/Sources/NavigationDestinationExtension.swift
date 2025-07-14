@@ -38,3 +38,21 @@ import Factory
 //        router.view(for: route) ?? AnyView(EmptyView())
 //    }
 //} 
+
+//// Helper extension to make navigation easier
+//public extension View {
+//    /// Convenience method to access navigation path from environment
+//    func withNavigationPath<Content: View>(@ViewBuilder content: @escaping (Binding<NavigationPath>) -> Content) -> some View {
+//        return self.modifier(NavigationPathAccessor(content: content))
+//    }
+//}
+//
+//// Helper modifier to access navigation path
+//private struct NavigationPathAccessor<Content: View>: ViewModifier {
+//    let content: (Binding<NavigationPath>) -> Content
+//    @Environment(\.navigationPath) private var navigationPath
+//    
+//    func body(content: Content) -> some View {
+//        self.content(navigationPath)
+//    }
+//} 

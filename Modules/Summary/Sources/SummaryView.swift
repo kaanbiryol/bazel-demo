@@ -12,12 +12,24 @@ struct SummaryView: View {
     @Binding var selection: SummarySelection
     @Environment(\.dismiss) private var dismiss
     
+    @Environment(\.navigationPath) private var navigationPath
+    @Environment(\.routeNavigator) private var navigator
+    
     @State private var showSelection: Bool = false
     @State private var selectionState = SelectionSelection(value: "")
     
     var body: some View {
+        VStack {
+            Button("Pop Back") {
+                navigationPath.pop()
+            }
+            
+            Button("Pop to Root") {
+                navigationPath.popToRoot()
+            }
+        }
+        
         VStack(spacing: 30) {
-            // Display current selection
             VStack(spacing: 16) {
                 Text("Your Selection")
                     .font(.title2)
@@ -42,17 +54,16 @@ struct SummaryView: View {
             
             Spacer()
             
-            // Action buttons
             VStack(spacing: 12) {
                 Button("Change Selection") {
-                    // Set the current selection in the selection state
+                    
                     selectionState.value = selection.value
                     showSelection = true
                 }
                 .buttonStyle(.borderedProminent)
                 
                 Button("Done") {
-                    dismiss()
+                    navigationPath.pop()
                 }
                 .buttonStyle(.bordered)
             }
@@ -61,7 +72,6 @@ struct SummaryView: View {
         .navigationTitle("Summary")
         .routeTo(route: SelectionRoute(selection: $selectionState), isActive: $showSelection, style: .sheet)
         .onChange(of: selectionState.value) { newValue in
-            // Update the summary selection when coming back from selection screen
             selection.value = newValue
         }
     }

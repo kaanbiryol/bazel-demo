@@ -1,8 +1,9 @@
+import RouterService
 import SwiftUI
 import Collections
 import NetworkingInterface
 import ListInterface
-import List
+//import List
 import SummaryInterface
 import Summary
 import RouterService
@@ -29,9 +30,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
     
     @Injected(\.rootRIBBuilder) var rootRIBBuilder: RootRIBBuildable
-    
     @Injected(\.rootType) var rootType: RootType
-    
+    @Injected(\.router) var router: RouterService.Router
     
     var window: UIWindow?
     
@@ -51,6 +51,12 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             let router = rootRIBBuilder.build()
             router.launch(from: window)
         }
+    }
+    
+    // Handle URL opening
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        _ = router.handle(deepLink: url)
     }
 }
 

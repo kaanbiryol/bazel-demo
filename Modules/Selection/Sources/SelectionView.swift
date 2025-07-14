@@ -14,6 +14,9 @@ struct SelectionView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationStyle) private var presentationStyle
     
+    @Environment(\.navigationPath) private var navigationPath
+    @Environment(\.routeNavigator) private var navigator  // Access the injected navigator
+    
     @State private var selectedOptions: Set<String> = []
     @State private var showSummary: Bool = false
     @State private var summarySelection = SummarySelection(value: "")
@@ -39,6 +42,7 @@ struct SelectionView: View {
                 }
             }
             
+            
             Button(continueButtonTitle) {
                 handleContinueAction()
             }
@@ -49,7 +53,7 @@ struct SelectionView: View {
         }
         .padding()
         .navigationTitle("Selection")
-        .routeTo(route: SummaryRoute(selection: $summarySelection), isActive: $showSummary, style: .push)
+        .routeTo(route: SummaryRoute(selection: $summarySelection), isActive: $showSummary, style: .push(navigationPath))
         .onAppear {
             loadCurrentSelections()
         }
@@ -90,7 +94,8 @@ struct SelectionView: View {
     private func goToSummary() {
         let summaryText = selectedOptions.sorted().joined(separator: ", ")
         summarySelection.value = summaryText
-        showSummary = true
+//        showSummary = true
+        navigationPath.wrappedValue.push(to: SummaryRoute(selection: $summarySelection))
     }
 }
 

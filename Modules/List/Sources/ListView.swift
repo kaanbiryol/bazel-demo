@@ -12,71 +12,96 @@ import HomeInterface
 import SelectionRIB
 import SelectionInterface
 
-// Mock for preview
-public class Mock: NetworkingService {
-    public init() {}
-    
-    public func fetchTitle() -> String {
-        return "List Items"
-    }
-    
-    public func fetchDetails() -> String {
-        return "Details"
-    }
-}
-
-#Preview {
-    // For the preview, we need a mock RouterService as well
-    //    let store = Store()
-    //    store.register({ Mock() }, forMetaType: NetworkingService.self)
-    //    let routerService = RouterService(store: store)
-    //
-    //    return ListView(networkingService: Mock(), routerService: routerService)
-}
-
 struct ListView: View {
     
     @State var showDetails = false
     @State var showSimpleTextRIB = false
     
-    @State private var path = NavigationPath()
-    //    NavigationStack(path: $path) {
-    //        List {
-    //            NavigationLink("Mint", value: Color.mint)
-    //            NavigationLink("Red", value: Color.red)
-    //        }
-    //        .navigationDestination(for: Color.self) { color in
-    //            Text("test")
-    //        }
-    //    }
+    @State var navigationPath = NavigationPath()
     
     @State var selection: SummarySelection = SummarySelection(value: "")
     @State var selectionModel: SelectionSelection = SelectionSelection(value: "")
     @Injected(\.router) private var router
     
-    //picked list bg color of element
+    @State private var showModal = false
+    @State private var currentModalRoute: (any Route)? = nil
+    
+    private var cancellables = Set<AnyCancellable>()
     
     public var body: some View {
-        List(1...50, id: \.self) { item in
-            NavigationLink(
-                route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)")))
-            ) {
-                Text("Element \(item)")
-                    .padding(.vertical, 4)
+        RouteNavigationStack(path: $navigationPath) {
+            VStack {
+                List(1...50, id: \.self) { item in
+                    NavigationLink(route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)")))) {
+                        Text("Element \(item)")
+                            .padding(.vertical, 4)
+                    }
+                }
+                .navigationTitle("List")
+                
+                Button("Go to Order") {
+                    navigationPath.push(to: OrderRoute())
+                }
+                
+                Button("Simulate Deep Link to Selection 123") {
+                    let url = URL(string: "myapp://selection/123")! // Example URL
+                    _ = router.handle(deepLink: url)
+                }
             }
         }
-        .navigationTitle("List")
-        .navigationBarTitleDisplayMode(.inline)
+        .routeTo(route: currentModalRoute ?? SelectionRoute(selection: .constant(SelectionSelection(value: "Fallback"))), isActive: $showModal, style: .sheet) // Use .routeTo instead
+        .onReceive(router.deepLinkPublisher) { route in
+            currentModalRoute = route
+            showModal = true
+        }
+        .onOpenURL { url in
+            _ = router.handle(deepLink: url)
+        }
+        .onAppear {
+            router.registerDeepLink<SelectionRoute>(pathPrefix: "selection") { url in
+                
+                let urlString = url.absoluteString
+                print("📱 Processing selection URL: \(urlString)")
+                if let id = urlString.split(separator: "/").last {
+                    print("🆔 Extracted ID: \(id)")
+                    return SelectionRoute(selection: .constant(SelectionSelection(value: "Deep Link ID: \(id)")))
+                }
+                return nil
+            }
+        }
+        
+        // TODO: This is also possible
+        //        NavigationStack(path: $navigationPath) {
+        //            List(1...50, id: \.self) { item in
+        //                NavigationLink(
+        //                    route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)"))),
+        //                    navigationPath: $navigationPath
+        //                ) {
+        //                    Text("Element \(item)")
+        //                        .padding(.vertical, 4)
+        //                }
+        //
+        //                NavigationLink(
+        //                    route: OrderRoute(),
+        //                    navigationPath: $navigationPath
+        //                ) {
+        //                    Text("Order \(item)")
+        //                        .padding(.vertical, 4)
+        //                }
+        //            }
+        //            .navigationTitle("List")
+        //        }
+        //
         
         //        NavigationStack {
-        ////            Button("Show details") {
-        ////                showDetails = true
-        ////            }
-        ////            .routeTo(
-        ////                route: RentDetailsRoute(selection: $selection),
-        ////                isActive: $showDetails,
-        ////                style: .push
-        ////            )
+        //            //            Button("Show details") {
+        //            //                showDetails = true
+        //            //            }
+        //            //            .routeTo(
+        //            //                route: RentDetailsRoute(selection: $selection),
+        //            //                isActive: $showDetails,
+        //            //                style: .push
+        //            //            )
         //            List(Array(1...50), id: \.self) { item in
         //                Button("Element \(item)") {
         //                    //nav path?
@@ -88,7 +113,7 @@ struct ListView: View {
         //                SelectionRIBRepresentable()
         //            })
         //            .navigationTitle("List")
-        
+        //
         //            VStack(spacing: 20) {
         //                Button("Show details") {
         //                    showDetails = true
@@ -120,9 +145,9 @@ struct ListView: View {
 
 
 struct RouteTabItem: View {
-    let route: Route
+    let route: any Route
     
-    init(route: Route) {
+    init(route: any Route) {
         self.route = route
     }
     
@@ -173,4 +198,15 @@ struct RouteTabItem: View {
 //}
 //
 
-
+// Mock for preview
+public class Mock: NetworkingService {
+    public init() {}
+    
+    public func fetchTitle() -> String {
+        return "List Items"
+    }
+    
+    public func fetchDetails() -> String {
+        return "Details"
+    }
+}
