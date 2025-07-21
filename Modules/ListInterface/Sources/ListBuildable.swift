@@ -1,7 +1,7 @@
 import Factory
 import RouterService
 
-public protocol ListBuildable: Builder2 {}
+public protocol ListBuildable: RouteBuilder {}
 
 public extension Container {
     var listBuilder: Factory<ListBuildable> {

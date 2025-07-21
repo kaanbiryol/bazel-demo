@@ -4,6 +4,7 @@ import UIKit
 import SwiftUI
 import RouterService
 import RootRIB
+import RootType
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -20,11 +21,11 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     @Injected(\.router) var router: RouterService.Router
     
     var window: UIWindow?
+
+    var rootRouter: RootRouting?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        // Configure navigation bar appearance to fix safe area background color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.systemBackground
@@ -41,8 +42,8 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             window.rootViewController = hostingController
             window.makeKeyAndVisible()
         case .rib:
-            let router = rootRIBBuilder.build()
-            router.launch(from: window)
+            rootRouter = rootRIBBuilder.build()
+            rootRouter?.launch(from: window)
         }
     }
     

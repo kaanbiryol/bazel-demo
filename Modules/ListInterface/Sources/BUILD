@@ -5,6 +5,8 @@ swift_library(
     module_name = "ListInterface",
     deps = [
         "//Modules/RouterService/Sources:RouterService",
+        "//Modules/SelectionInterface/Sources:SelectionInterface",
+        "//Modules/SummaryInterface/Sources:SummaryInterface",
     ],
     srcs = glob(["**/*.swift"]),
     visibility = ["//visibility:public"],

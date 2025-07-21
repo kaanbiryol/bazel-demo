@@ -6,6 +6,8 @@ import NetworkingInterface
 import SummaryInterface
 import SelectionInterface
 import UIKit
+import Factory
+import RootType
 
 struct SummaryView: View {
     
@@ -16,16 +18,25 @@ struct SummaryView: View {
     @State private var showSelection: Bool = false
     @State private var selectionState = SelectionSelection(value: "")
     
+    @Injected(\.rootType) var rootType: RootType
+    
+    private weak var listener: SummaryViewRIBListener?
+    
+    init(selection: Binding<SummarySelection>, listener: SummaryViewRIBListener? = nil) {
+        self._selection = selection
+        self.listener = listener
+    }
+    
     var body: some View {
         VStack(spacing: 24) {
             HStack(spacing: 16) {
                 Button("Pop Back") {
-                    navigationPath.pop()
+                    popBack()
                 }
                 .buttonStyle(.bordered)
                 
                 Button("Pop to Root") {
-                    navigationPath.popToRoot()
+                    popToRoot()
                 }
                 .buttonStyle(.bordered)
             }
@@ -61,7 +72,7 @@ struct SummaryView: View {
             .buttonStyle(.borderedProminent)
             
             Button("Done") {
-                navigationPath.pop()
+                handleDone()
             }
             .buttonStyle(.bordered)
         }
@@ -71,6 +82,33 @@ struct SummaryView: View {
         .routeTo(route: SelectionRoute(selection: $selectionState), isActive: $showSelection, style: .sheet)
         .onChange(of: selectionState.value) { newValue in
             selection.value = newValue
+        }
+    }
+    
+    private func popBack() {
+        switch rootType {
+        case .rib:
+            listener?.didTapPopBack()
+        case .swiftUI:
+            navigationPath.pop()
+        }
+    }
+    
+    private func popToRoot() {
+        switch rootType {
+        case .rib:
+            listener?.didTapPopToRoot()
+        case .swiftUI:
+            navigationPath.popToRoot()
+        }
+    }
+    
+    private func handleDone() {
+        switch rootType {
+        case .rib:
+            listener?.didTapDone()
+        case .swiftUI:
+            navigationPath.pop()
         }
     }
 }

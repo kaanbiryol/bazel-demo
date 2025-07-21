@@ -35,11 +35,3 @@ final class SelectionRIBRouter: RIBs.Router<SelectionRIBInteractable>, Selection
         // TODO:  check if (push) UINavigationController / NavigationStack can work together
     }
 }
-
-final class SwiftUIViewControllable: ViewControllable {
-    var uiViewController: UIViewController
-    
-    init(_ view: some View) {
-        self.uiViewController = UIHostingController(rootView: view)
-    }
-}

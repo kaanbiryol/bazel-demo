@@ -3,14 +3,14 @@ import SwiftUI
 import RouterService
 import Factory
 
-public protocol HomeBuildable: Builder2 {}
+public protocol HomeBuildable: RouteBuilder {}
 
 public struct HomeRoute: Route {
     public static var identifier: String { "home_tab" }
     
     public init() {}
     
-    public func getBuilder() -> Builder2 {
+    public func getBuilder() -> RouteBuilder {
         Container.shared.homeBuilder()
     }
 }

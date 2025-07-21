@@ -12,7 +12,7 @@ public struct AnyRoute: Hashable {
     }
     public func hash(into hasher: inout Hasher) { _hash(&hasher) }
     public static func == (lhs: AnyRoute, rhs: AnyRoute) -> Bool {
-        lhs.base == rhs.base
+        lhs.base.hashValue == rhs.base.hashValue
     }
 }
 

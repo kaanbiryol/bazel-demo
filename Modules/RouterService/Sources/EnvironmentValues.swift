@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension EnvironmentValues {
-    @Entry public var presentationStyle: NavigationStyle = .sheet
-    @Entry public var navigationPath: Binding<NavigationPath> = .constant(NavigationPath())
+public extension EnvironmentValues {
+    @Entry var presentationStyle: NavigationStyle = .sheet
+    @Entry var navigationPath: Binding<NavigationPath> = .constant(NavigationPath())
 }

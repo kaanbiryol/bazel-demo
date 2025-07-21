@@ -13,11 +13,6 @@ import RIBs
 import UIKit
 import RootRIB
 
-enum RootType {
-    case rib
-    case swiftUI
-}
-
 @main
 struct Root: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate

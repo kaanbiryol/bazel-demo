@@ -121,19 +121,19 @@ final class SelectionRIBViewController: UIViewController, SelectionRIBPresentabl
             }
         )
         
-        let detailsBuilder = SummaryBuilder(selectionBinding: selectionBinding)
-        let detailsView = detailsBuilder.buildView()
-        let hostingController = UIHostingController(rootView: detailsView)
-        addChild(hostingController)
-        detailsContainer.addSubview(hostingController.view)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.topAnchor.constraint(equalTo: detailsContainer.topAnchor),
-            hostingController.view.leadingAnchor.constraint(equalTo: detailsContainer.leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: detailsContainer.trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: detailsContainer.bottomAnchor)
-        ])
-        hostingController.didMove(toParent: self)
+//        let detailsBuilder = SummaryBuilder(selectionBinding: selectionBinding)
+//        let detailsView = detailsBuilder.buildView()
+//        let hostingController = UIHostingController(rootView: detailsView)
+//        addChild(hostingController)
+//        detailsContainer.addSubview(hostingController.view)
+//        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            hostingController.view.topAnchor.constraint(equalTo: detailsContainer.topAnchor),
+//            hostingController.view.leadingAnchor.constraint(equalTo: detailsContainer.leadingAnchor),
+//            hostingController.view.trailingAnchor.constraint(equalTo: detailsContainer.trailingAnchor),
+//            hostingController.view.bottomAnchor.constraint(equalTo: detailsContainer.bottomAnchor)
+//        ])
+//        hostingController.didMove(toParent: self)
     }
     
     @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {

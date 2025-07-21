@@ -7,14 +7,19 @@ public class SummaryBuilder: SummaryBuildable {
 //    @Injected(\.router) private var router
     
     private var selectionBinding: Binding<SummarySelection>
+    private var listener: SummaryViewRIBListener?
     
-    public init(selectionBinding: Binding<SummarySelection>) {
+    public init(selectionBinding: Binding<SummarySelection>, listener: SummaryViewRIBListener?) {
         self.selectionBinding = selectionBinding
+        self.listener = listener
     }
     
     public func buildView() -> AnyView {
         return AnyView(
-            SummaryView(selection: selectionBinding)
+            SummaryView(
+                selection: selectionBinding,
+                listener: listener
+            )
         )
     }
 }

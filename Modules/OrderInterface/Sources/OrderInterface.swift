@@ -3,7 +3,7 @@ import SwiftUI
 import RouterService
 import Factory
 
-public protocol OrderBuildable: Builder2 {}
+public protocol OrderBuildable: RouteBuilder {}
 
 // Order route definition
 public struct OrderRoute: Route {
@@ -11,7 +11,7 @@ public struct OrderRoute: Route {
     
     public init() {}
     
-    public func getBuilder() -> Builder2 {
+    public func getBuilder() -> RouteBuilder {
         Container.shared.orderBuilder()
     }
 }

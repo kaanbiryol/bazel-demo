@@ -37,15 +37,16 @@ struct ListView: View {
                             .padding(.vertical, 4)
                     }
                 }
-                .navigationTitle("List")
+                
                 .scrollContentBackground(.hidden)
                 
                 Button("Go to Order") {
                     navigationPath.push(to: OrderRoute())
                 }.padding(8)
-                
             }
         }
+        .navigationTitle("List")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color(.systemBackground).ignoresSafeArea())
         .routeTo(route: currentModalRoute ?? SelectionRoute(selection: .constant(SelectionSelection(value: "Fallback"))), isActive: $showModal, style: .sheet) // Use .routeTo instead
         .onReceive(router.deepLinkPublisher) { route in

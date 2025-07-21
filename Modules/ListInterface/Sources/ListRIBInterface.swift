@@ -1,8 +1,10 @@
 import RIBs
 import UIKit
+import SelectionInterface
+import SummaryInterface
 
 // MARK: - ListInteractable
-public protocol ListInteractable: Interactable {
+public protocol ListInteractable: Interactable, SelectionViewRIBListener, SummaryViewRIBListener {
     var router: ListRouting? { get set }
     func didSelectItem(_ item: Int)
 }
@@ -14,9 +16,11 @@ public protocol ListViewControllable: ViewControllable {
 
 // MARK: - ListRouting
 public protocol ListRouting: Routing {
-    func launch(from window: UIWindow)
-    func routeToSelection()
     var viewControllable: ViewControllable { get }
+    func routeToSelection(for item: Int)
+    func routeToSummary(with selectionValue: String)
+    func routeToRoot()
+    func pop()
 }
 
 // MARK: - ListPresentable

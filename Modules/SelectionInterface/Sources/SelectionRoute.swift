@@ -12,8 +12,8 @@ public struct SelectionRoute: Route {
         self.selection = selection
     }
     
-    public func getBuilder() -> any Builder2 {
-        return Container.shared.selectionBuilder(selection)
+    public func getBuilder() -> any RouteBuilder {
+        return Container.shared.selectionBuilder((selection, nil))
     }
 }
 

@@ -1,5 +1,6 @@
 import RIBs
 import UIKit
+import Factory
 
 // MARK: - RootBuilder
 public protocol RootRIBBuildable: Buildable {

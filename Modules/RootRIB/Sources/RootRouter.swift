@@ -3,6 +3,7 @@ import UIKit
 import Factory
 import ListInterface
 import SwiftUI
+import RootType
 
 // MARK: - RootViewControllable
 protocol RootViewControllable: ViewControllable {
@@ -24,6 +25,7 @@ final class RootRouter: Router<RootInteractable>, RootRouting {
     
     @Injected(\.listBuilder) var listBuilder: ListBuildable
     @Injected(\.listRIBBuilder) var listRIBBuilder: ListRIBBuildable
+    @Injected(\.rootType) var rootType: RootType
     
     init(interactor: RootInteractable, viewController: RootViewControllable) {
         self.viewControllable = viewController
@@ -40,15 +42,22 @@ final class RootRouter: Router<RootInteractable>, RootRouting {
     }
     
     func routeToList() {
-//        let listRouter = listRIBBuilder.build()
-//        self.listRouter = listRouter
-//        
-//        attachChild(listRouter, attachingType: .embedded)
-//        viewController.embedViewController(listRouter.viewControllable)
-        
-        let listView = listBuilder.buildView()
-        let summaryController = SwiftUIViewControllable(listView)
-        viewControllable.embedViewController(summaryController)
+        switch rootType {
+        case .rib:
+            let listRouter = listRIBBuilder.build()
+            self.listRouter = listRouter
+            
+            let navigationController = UINavigationController(rootViewController: listRouter.viewControllable.uiViewController)
+            let navigationViewControllable = NavigationViewControllable(navigationController: navigationController)
+            
+            attachChild(listRouter, attachingType: .embedded)
+            viewControllable.embedViewController(navigationViewControllable)
+            
+        case .swiftUI:
+            let listView = listBuilder.buildView()
+            let summaryController = SwiftUIViewControllable(listView)
+            viewControllable.embedViewController(summaryController)
+        }
     }
 }
 
@@ -60,3 +69,11 @@ final class SwiftUIViewControllable: ViewControllable {
     }
 }
 
+
+final class NavigationViewControllable: ViewControllable {
+    let uiViewController: UIViewController
+    
+    init(navigationController: UINavigationController) {
+        self.uiViewController = navigationController
+    }
+}

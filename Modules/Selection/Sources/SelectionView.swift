@@ -6,6 +6,8 @@ import NetworkingInterface
 import SelectionInterface
 import SummaryInterface
 import UIKit
+import Factory
+import RootType
 
 struct SelectionView: View {
     @Environment(\.dismiss) private var dismiss
@@ -13,6 +15,10 @@ struct SelectionView: View {
     @Environment(\.navigationPath) private var navigationPath
     
     @Binding var selection: SelectionSelection
+    
+    weak var listener: SelectionViewRIBListener?
+    
+    @Injected(\.rootType) var rootType: RootType
     
     @State private var selectedOptions: Set<String> = []
     @State private var summarySelection = SummarySelection(value: "")
@@ -82,8 +88,14 @@ struct SelectionView: View {
     
     private func goToSummary() {
         let summaryText = selectedOptions.sorted().joined(separator: ", ")
-        summarySelection.value = summaryText
-        navigationPath.push(SummaryRoute(selection: $summarySelection))
+        
+        switch rootType {
+        case .rib:
+            listener?.didTapContinueToSummary(with: summaryText)
+        case .swiftUI:
+            summarySelection.value = summaryText
+            navigationPath.push(SummaryRoute(selection: $summarySelection))
+        }
     }
     
     private struct SelectionRow: View {

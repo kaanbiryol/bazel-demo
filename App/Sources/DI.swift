@@ -20,9 +20,7 @@ import RootRIB
 
 extension Container {
     
-    var rootType: Factory<RootType> {
-        self { .rib }
-    }
+    
     
     var rootRIBBuilder: Factory<RootRIBBuildable> {
         self { RootRIBBuilder() }
@@ -37,8 +35,8 @@ extension Container: AutoRegistering {
             NetworkingImpl()
         }
         
-        summaryBuilder.register { binding in
-            SummaryBuilder(selectionBinding: binding)
+        summaryBuilder.register { param in
+            SummaryBuilder(selectionBinding: param.0, listener: param.1)
         }
         
         listBuilder.register {
@@ -57,8 +55,8 @@ extension Container: AutoRegistering {
             OrderBuilder()
         }
         
-        selectionBuilder.register { binding in
-            SelectionBuilder(selectionBinding: binding)
+        selectionBuilder.register { param in
+            SelectionBuilder(selectionBinding: param.0, listener: param.1)
         }
         
     }
