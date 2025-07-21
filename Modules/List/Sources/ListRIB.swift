@@ -119,7 +119,7 @@ final class ListViewController: UIViewController, ListViewControllable, ListPres
     }
     
     private func setupUI() {
-        title = "List"
+        title = "List RIB"
         view.backgroundColor = .systemBackground
         
         tableView.delegate = self

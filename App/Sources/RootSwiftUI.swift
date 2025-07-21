@@ -3,20 +3,12 @@ import ListInterface
 import Factory
 
 struct RootSwiftUI: View {
-    @Injected(\.router) private var router
-    
-    @State private var showList = true
-    @State private var navigationPath = NavigationPath()
-    
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            EmptyView().navigationTitle("Root")
-                .routeTo(
-                    route: ListRoute(),
-                    isActive: $showList,
-                    style: .embed
-                )
-        }
-        .environment(\.navigationPath, $navigationPath)
+        Color.clear.frame(width: 0, height: 0)
+            .routeTo(
+                route: ListRoute(),
+                isActive: .constant(true),
+                style: .embed
+            )
     }
 }

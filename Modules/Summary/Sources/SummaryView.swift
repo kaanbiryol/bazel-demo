@@ -108,7 +108,7 @@ struct SummaryView: View {
         case .rib:
             listener?.didTapDone()
         case .swiftUI:
-            navigationPath.pop()
+            navigationPath.popToRoot()
         }
     }
 }

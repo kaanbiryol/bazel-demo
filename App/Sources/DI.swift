@@ -19,9 +19,7 @@ import RootRIB
 // MARK: - Static dependencies
 
 extension Container {
-    
-    
-    
+        
     var rootRIBBuilder: Factory<RootRIBBuildable> {
         self { RootRIBBuilder() }
     }
