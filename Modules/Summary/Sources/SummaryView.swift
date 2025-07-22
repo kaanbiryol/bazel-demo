@@ -10,15 +10,14 @@ import Factory
 import RootType
 
 struct SummaryView: View {
-    
-    @Binding var selection: SummaryValue
     @Environment(\.dismiss) private var dismiss
     @Environment(\.navigationPath) private var navigationPath
     
+    @Injected(\.rootType) var rootType: RootType
+
+    @Binding var selection: SummaryValue
     @State private var showSelection: Bool = false
     @State private var selectionState = SelectionValue(value: "")
-    
-    @Injected(\.rootType) var rootType: RootType
     
     private weak var listener: SummaryViewRIBListener?
     
@@ -104,7 +103,7 @@ struct SummaryView: View {
     private func handleDone() {
         switch rootType {
         case .rib:
-            listener?.didTapDone()
+            listener?.didTapDone(value: selection.value)
         case .swiftUI:
             navigationPath.popToRoot()
         }

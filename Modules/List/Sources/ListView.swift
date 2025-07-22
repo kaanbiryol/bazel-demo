@@ -9,18 +9,11 @@ import RIBs
 import Combine
 import OrderInterface
 import HomeInterface
-import SelectionRIB
 import SelectionInterface
 
 struct ListView: View {
     
-    @State var showDetails = false
-    @State var showSimpleTextRIB = false
-    
     @State var navigationPath = NavigationPath()
-    
-//    @State var selection: SummarySelection = SummarySelection(value: "")
-    @State var selectionModel: SelectionValue = SelectionValue(value: "")
     
     @Injected(\.router) private var router
     

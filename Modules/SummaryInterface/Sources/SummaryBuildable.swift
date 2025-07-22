@@ -5,7 +5,7 @@ import struct SwiftUI.Binding
 public protocol SummaryViewRIBListener: AnyObject {
     func didTapPopBack()
     func didTapPopToRoot()
-    func didTapDone()
+    func didTapDone(value: String)
 }
 
 public protocol SummaryBuildable: RouteBuilder {}

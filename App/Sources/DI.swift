@@ -1,4 +1,3 @@
-import SelectionRIB
 import Selection
 import SelectionInterface
 import Factory

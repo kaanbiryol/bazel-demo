@@ -1,13 +1,11 @@
 import Factory
 import RIBs
 import UIKit
-import SelectionRIB
 import SelectionInterface
 import SummaryInterface
 import ListInterface
 import SwiftUI
 
-// Import the SelectionViewListener protocol
 protocol SelectionViewListener: AnyObject {
     func didTapContinueToSummary(with selectionValue: String)
 }
@@ -99,9 +97,28 @@ final class ListInteractor: PresentableInteractor<ListPresentable>, ListInteract
     }
 }
 
-extension ListInteractor: SelectionViewRIBListener {
+// MARK: - SelectionViewRIBListener
+
+extension ListInteractor {
     func didTapContinueToSummary(with selectionValue: String) {
         router?.routeToSummary(with: selectionValue)
+    }
+}
+
+// MARK: - SummaryViewRIBListener
+
+extension ListInteractor {
+    func didTapPopBack() {
+        router?.pop()
+    }
+    
+    func didTapPopToRoot() {
+        router?.routeToRoot()
+    }
+    
+    func didTapDone(value: String) {
+        print("Received value in RIBs: ", value)
+        router?.routeToRoot()
     }
 }
 
@@ -142,7 +159,6 @@ final class ListViewController: UIViewController, ListViewControllable, ListPres
     }
 }
 
-// MARK: - TableView DataSource & Delegate
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,24 +179,3 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         listener?.didSelectItem(item)
     }
 }
-
-// MARK: - SelectionListener Extension
-extension ListInteractor: SelectionRIBListener {
-    func selectionDidComplete() {}
-}
-
-// MARK: - SummaryViewRIBListener Extension
-extension ListInteractor {
-    func didTapPopBack() {
-        router?.pop()
-    }
-    
-    func didTapPopToRoot() {
-        router?.routeToRoot()
-    }
-    
-    func didTapDone() {
-        router?.routeToRoot()
-    }
-}
-
