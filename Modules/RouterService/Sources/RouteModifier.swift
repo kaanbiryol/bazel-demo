@@ -4,34 +4,20 @@ import Factory
 public struct RouteModifier: ViewModifier {
      
     @Injected(\.router) private var router
-    @Binding var isActive: Bool
     
+    @Binding var isActive: Bool
     let route: any Route
     let style: NavigationStyle
     
     public func body(content: Content) -> some View {
-        VStack {
-            content
+        Group {
             if style == .embed && isActive {
                 routeDestination()
                     .environment(\.presentationStyle, .embed)
+            } else {
+                content
             }
         }
-        .background(
-//            ZStack {
-//                if case let .push(navigationPath) = style {
-//                    NavigationLink(
-//                        destination: routeDestination()
-//                            .environment(\.presentationStyle, .push(navigationPath))
-//                            .environment(\.navigationPath, navigationPath),
-//                        isActive: $isActive
-//                    ) {
-//                        EmptyView()
-//                    }
-//                    .hidden()
-//                }
-//            }
-        )
         .sheet(isPresented: style == .sheet ? $isActive : .constant(false)) {
             routeDestination()
                 .environment(\.presentationStyle, .sheet)
@@ -43,7 +29,7 @@ public struct RouteModifier: ViewModifier {
     }
     
     private func routeDestination() -> AnyView {
-        return router.view(for: route) ?? AnyView(EmptyView())
+        return router.view(for: route)
     }
 }
 

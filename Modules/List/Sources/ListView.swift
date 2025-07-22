@@ -66,28 +66,27 @@ struct ListView: View {
             }
         }
         
-        // TODO: This is also possible
-        //        NavigationStack(path: $navigationPath) {
-        //            List(1...50, id: \.self) { item in
-        //                NavigationLink(
-        //                    route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)"))),
-        //                    navigationPath: $navigationPath
-        //                ) {
-        //                    Text("Element \(item)")
-        //                        .padding(.vertical, 4)
-        //                }
-        //
-        //                NavigationLink(
-        //                    route: OrderRoute(),
-        //                    navigationPath: $navigationPath
-        //                ) {
-        //                    Text("Order \(item)")
-        //                        .padding(.vertical, 4)
-        //                }
-        //            }
-        //            .navigationTitle("List")
-        //        }
-        //
+//         TODO: This is also possible
+//                NavigationStack(path: $navigationPath) {
+//                    List(1...50, id: \.self) { item in
+//                        NavigationLink(
+//                            route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)"))),
+//                            navigationPath: $navigationPath
+//                        ) {
+//                            Text("Element \(item)")
+//                                .padding(.vertical, 4)
+//                        }
+//        
+//                        NavigationLink(
+//                            route: OrderRoute(),
+//                            navigationPath: $navigationPath
+//                        ) {
+//                            Text("Order \(item)")
+//                                .padding(.vertical, 4)
+//                        }
+//                    }
+//                    .navigationTitle("List")
+//                }
         
         //        NavigationStack {
         //            //            Button("Show details") {
@@ -131,11 +130,11 @@ struct ListView: View {
         //            }
         //        }
         
-        //        EmptyView()
-        //            .tabRouteTo(tabItems: [
-        //                TabItem(label: "Menu", systemImage: "list.dash", route: HomeTabRoute()),
-        //                TabItem(label: "Order", systemImage: "square.and.pencil", route: OrderTabRoute())
-        //            ])
+//                EmptyView()
+//                    .tabRouteTo(tabItems: [
+//                        TabItem(label: "Menu", systemImage: "list.dash", route: HomeTabRoute()),
+//                        TabItem(label: "Order", systemImage: "square.and.pencil", route: OrderTabRoute())
+//                    ])
     }
 }
 
@@ -168,17 +167,6 @@ struct RouteTabItem: View {
 //}
 
 
-// TODO: should we consider making this?
-//extension Route {
-//    func view() -> some View {
-//        let builder = getBuilder()
-//        if let view = builder.buildView(fromRoute: self) {
-//            return view
-//        } else {
-//            return AnyView(EmptyView())
-//        }
-//    }
-//}
 //
 //// Make HomeRoute and OrderRoute conform to View
 //extension HomeRoute: View {
