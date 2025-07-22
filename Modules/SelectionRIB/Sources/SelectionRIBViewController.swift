@@ -23,7 +23,7 @@ final class SelectionRIBViewController: UIViewController, SelectionRIBPresentabl
     
     var listener: SelectionRIBInteractable?
     
-    private var selection: SummarySelection = SummarySelection(value: "")
+    private var selection: SummaryValue = SummaryValue(value: "")
     private var selectedIndex: Int = 1 // Default to first option
     
     override func viewDidLoad() {
@@ -113,7 +113,7 @@ final class SelectionRIBViewController: UIViewController, SelectionRIBPresentabl
     }
     
     private func embedDetailsView() {
-        let selectionBinding = Binding<SummarySelection>(
+        let selectionBinding = Binding<SummaryValue>(
             get: { self.selection },
             set: { newValue in
                 self.selection = newValue

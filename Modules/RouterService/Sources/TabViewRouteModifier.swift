@@ -68,7 +68,7 @@ public struct TabItem {
 }
 
 public struct TabViewRouteModifier: ViewModifier {
-    let router: Router
+    let router: RouterProtocol
     let tabItems: [TabItem]
     
     public func body(content: Content) -> some View {

@@ -1,7 +1,7 @@
 import Factory
 
 public extension Container {
-    var router: Factory<Router> {
+    var router: Factory<RouterProtocol> {
         self { Router() }
             .singleton
     }

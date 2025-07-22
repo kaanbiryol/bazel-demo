@@ -6,9 +6,9 @@ import struct SwiftUI.Binding
 public struct SelectionRoute: Route {
     public static var identifier: String = "selection_route"
     
-    public let selection: Binding<SelectionSelection>
+    public let selection: Binding<SelectionValue>
     
-    public init(selection: Binding<SelectionSelection>) {
+    public init(selection: Binding<SelectionValue>) {
         self.selection = selection
     }
     
@@ -17,7 +17,7 @@ public struct SelectionRoute: Route {
     }
 }
 
-public struct SelectionSelection {
+public struct SelectionValue {
     public var value: String
     
     public init(value: String) {

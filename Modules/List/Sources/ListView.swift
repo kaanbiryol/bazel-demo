@@ -19,8 +19,9 @@ struct ListView: View {
     
     @State var navigationPath = NavigationPath()
     
-    @State var selection: SummarySelection = SummarySelection(value: "")
-    @State var selectionModel: SelectionSelection = SelectionSelection(value: "")
+//    @State var selection: SummarySelection = SummarySelection(value: "")
+    @State var selectionModel: SelectionValue = SelectionValue(value: "")
+    
     @Injected(\.router) private var router
     
     @State private var showModal = false
@@ -32,7 +33,7 @@ struct ListView: View {
         RouteNavigationStack(path: $navigationPath) {
             VStack {
                 List(1...50, id: \.self) { item in
-                    NavigationLink(route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)")))) {
+                    NavigationLink(route: SelectionRoute(selection: .constant(SelectionValue(value: "Element \(item)")))) {
                         Text("Element \(item)")
                             .padding(.vertical, 4)
                     }
@@ -48,7 +49,7 @@ struct ListView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .background(Color(.systemBackground).ignoresSafeArea())
-        .routeTo(route: currentModalRoute ?? SelectionRoute(selection: .constant(SelectionSelection(value: "Fallback"))), isActive: $showModal, style: .sheet) // Use .routeTo instead
+        .routeTo(route: currentModalRoute ?? SelectionRoute(selection: .constant(SelectionValue(value: "Fallback"))), isActive: $showModal, style: .sheet)
         .onReceive(router.deepLinkPublisher) { route in
             currentModalRoute = route
             showModal = true
@@ -57,140 +58,57 @@ struct ListView: View {
             _ = router.handle(deepLink: url)
         }
         .onAppear {
-            router.registerDeepLink<SelectionRoute>(pathPrefix: "selection") { url in
+            router.registerDeepLink(pathPrefix: "selection") { url in
                 let urlString = url.absoluteString
                 if let id = urlString.split(separator: "/").last {
-                    return SelectionRoute(selection: .constant(SelectionSelection(value: "Deep Link ID: \(id)")))
+                    return SelectionRoute(selection: .constant(SelectionValue(value: "Deep Link ID: \(id)")))
                 }
                 return nil
             }
         }
+        //
+        //         TODO: This is also possible
+        //                NavigationStack(path: $navigationPath) {
+        //                    List(1...50, id: \.self) { item in
+        //                        NavigationLink(
+        //                            route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)"))),
+        //                            navigationPath: $navigationPath
+        //                        ) {
+        //                            Text("Element \(item)")
+        //                                .padding(.vertical, 4)
+        //                        }
+        //
+        //                        NavigationLink(
+        //                            route: OrderRoute(),
+        //                            navigationPath: $navigationPath
+        //                        ) {
+        //                            Text("Order \(item)")
+        //                                .padding(.vertical, 4)
+        //                        }
+        //                    }
+        //                    .navigationTitle("List")
+        //                }
         
-//         TODO: This is also possible
-//                NavigationStack(path: $navigationPath) {
-//                    List(1...50, id: \.self) { item in
-//                        NavigationLink(
-//                            route: SelectionRoute(selection: .constant(SelectionSelection(value: "Element \(item)"))),
-//                            navigationPath: $navigationPath
-//                        ) {
-//                            Text("Element \(item)")
-//                                .padding(.vertical, 4)
-//                        }
-//        
-//                        NavigationLink(
-//                            route: OrderRoute(),
-//                            navigationPath: $navigationPath
-//                        ) {
-//                            Text("Order \(item)")
-//                                .padding(.vertical, 4)
-//                        }
-//                    }
-//                    .navigationTitle("List")
-//                }
-        
-        //        NavigationStack {
-        //            //            Button("Show details") {
-        //            //                showDetails = true
-        //            //            }
-        //            //            .routeTo(
-        //            //                route: RentDetailsRoute(selection: $selection),
-        //            //                isActive: $showDetails,
-        //            //                style: .push
-        //            //            )
-        //            List(Array(1...50), id: \.self) { item in
-        //                Button("Element \(item)") {
-        //                    //nav path?
-        //                    showSimpleTextRIB = true
-        //                }
-        //                .padding(.vertical, 4)
-        //            }
-        //            .navigationDestination(isPresented: $showSimpleTextRIB, destination: {
-        //                SelectionRIBRepresentable()
-        //            })
-        //            .navigationTitle("List")
-        //
-        //            VStack(spacing: 20) {
-        //                Button("Show details") {
-        //                    showDetails = true
-        //                }
-        //                .routeTo(
-        //                    route: RentDetailsRoute(selection: $selection),
-        //                    isActive: $showDetails,
-        //                    style: .push
-        //                )
-        //
-        //                Button("Show SimpleTextRIB") {
-        //                    showSimpleTextRIB = true
-        //                }
-        //                .navigationDestination(isPresented: $showSimpleTextRIB, destination: {
-        //                    SimpleTextRIBView()
-        //                })
-        //
-        //                Text("Selection: \($selection.value.wrappedValue)")
-        //            }
+        //        TabView {
+        //            RouteTabItem(
+        //                route: HomeRoute()
+        //            )
+        //            RouteTabItem(
+        //                route: OrderRoute()
+        //            )
         //        }
         
-//                EmptyView()
-//                    .tabRouteTo(tabItems: [
-//                        TabItem(label: "Menu", systemImage: "list.dash", route: HomeTabRoute()),
-//                        TabItem(label: "Order", systemImage: "square.and.pencil", route: OrderTabRoute())
-//                    ])
     }
 }
 
-
-struct RouteTabItem: View {
-    let route: any Route
-    
-    init(route: any Route) {
-        self.route = route
-    }
-    
-    var body: some View {
-        route.getBuilder().buildView()
-    }
-}
-
-//struct ListView: View {
-//    public var body: some View {
-//        TabView {
-//            RouteTabItem(
-//                route: HomeRoute()
-//            )
+//struct RouteTabItem: View {
+//    let route: any Route
 //
-//            RouteTabItem(
-//                route: OrderRoute()
-//            )
+//    init(route: any Route) {
+//        self.route = route
+//    }
 //
-//        }
+//    var body: some View {
+//        route.getBuilder().buildView()
 //    }
 //}
-
-
-//
-//// Make HomeRoute and OrderRoute conform to View
-//extension HomeRoute: View {
-//    public var body: some View {
-//        view()
-//    }
-//}
-//
-//extension OrderRoute: View {
-//    public var body: some View {
-//        view()
-//    }
-//}
-//
-
-// Mock for preview
-public class Mock: NetworkingService {
-    public init() {}
-    
-    public func fetchTitle() -> String {
-        return "List Items"
-    }
-    
-    public func fetchDetails() -> String {
-        return "Details"
-    }
-}

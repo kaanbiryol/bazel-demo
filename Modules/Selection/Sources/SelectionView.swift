@@ -14,14 +14,14 @@ struct SelectionView: View {
     @Environment(\.presentationStyle) private var presentationStyle
     @Environment(\.navigationPath) private var navigationPath
     
-    @Binding var selection: SelectionSelection
+    @Binding var selection: SelectionValue
     
     weak var listener: SelectionViewRIBListener?
     
     @Injected(\.rootType) var rootType: RootType
     
     @State private var selectedOptions: Set<String> = []
-    @State private var summarySelection = SummarySelection(value: "")
+    @State private var summarySelection = SummaryValue(value: "")
     
     var body: some View {
         VStack(spacing: 12) {

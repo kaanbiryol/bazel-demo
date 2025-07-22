@@ -15,10 +15,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
-    
     @Injected(\.rootRIBBuilder) var rootRIBBuilder: RootRIBBuildable
     @Injected(\.rootType) var rootType: RootType
-    @Injected(\.router) var router: RouterService.Router
+    @Injected(\.router) var router: RouterService.RouterProtocol
     
     var window: UIWindow?
 

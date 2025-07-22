@@ -9,7 +9,7 @@ public protocol SelectionViewRIBListener: AnyObject {
 public protocol SelectionBuildable: RouteBuilder {}
 
 public extension Container {
-    var selectionBuilder: ParameterFactory<(Binding<SelectionSelection>, SelectionViewRIBListener?), SelectionBuildable> {
+    var selectionBuilder: ParameterFactory<(Binding<SelectionValue>, SelectionViewRIBListener?), SelectionBuildable> {
     ParameterFactory(self) { _ in
       fatalError("🚨 SelectionService not registered – make sure your App registers one.")
     }

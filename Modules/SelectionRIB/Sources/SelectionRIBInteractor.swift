@@ -18,7 +18,7 @@ final class SelectionRIBInteractor: Interactor, SelectionRIBInteractable {
     
     private let presenter: SelectionRIBPresentable
     
-    private let selectionBinding: Binding<SummarySelection> = Binding.constant(SummarySelection(value: ""))
+    private let selectionBinding: Binding<SummaryValue> = Binding.constant(SummaryValue(value: ""))
     
     init(presenter: SelectionRIBPresentable) {
         self.presenter = presenter

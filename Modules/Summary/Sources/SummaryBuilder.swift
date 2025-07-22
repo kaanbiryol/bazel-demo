@@ -6,10 +6,10 @@ public class SummaryBuilder: SummaryBuildable {
 //    @Injected(\.networkingService) private var networkingService
 //    @Injected(\.router) private var router
     
-    private var selectionBinding: Binding<SummarySelection>
+    private var selectionBinding: Binding<SummaryValue>
     private var listener: SummaryViewRIBListener?
     
-    public init(selectionBinding: Binding<SummarySelection>, listener: SummaryViewRIBListener?) {
+    public init(selectionBinding: Binding<SummaryValue>, listener: SummaryViewRIBListener?) {
         self.selectionBinding = selectionBinding
         self.listener = listener
     }

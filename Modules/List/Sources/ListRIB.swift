@@ -41,8 +41,8 @@ final class ListRouter: Router<ListInteractable>, ListRouting {
     }
     
     func routeToSelection(for item: Int) {
-        let binding = Binding<SelectionSelection>(
-            get: { SelectionSelection(value: "Element \(item)") },
+        let binding = Binding<SelectionValue>(
+            get: { SelectionValue(value: "Element \(item)") },
             set: { _ in }
         )
         
@@ -55,8 +55,8 @@ final class ListRouter: Router<ListInteractable>, ListRouting {
     }
     
     func routeToSummary(with selectionValue: String) {
-        let summaryBinding = Binding<SummarySelection>(
-            get: { SummarySelection(value: selectionValue) },
+        let summaryBinding = Binding<SummaryValue>(
+            get: { SummaryValue(value: selectionValue) },
             set: { _ in }
         )
         

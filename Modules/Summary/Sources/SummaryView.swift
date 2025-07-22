@@ -11,18 +11,18 @@ import RootType
 
 struct SummaryView: View {
     
-    @Binding var selection: SummarySelection
+    @Binding var selection: SummaryValue
     @Environment(\.dismiss) private var dismiss
     @Environment(\.navigationPath) private var navigationPath
     
     @State private var showSelection: Bool = false
-    @State private var selectionState = SelectionSelection(value: "")
+    @State private var selectionState = SelectionValue(value: "")
     
     @Injected(\.rootType) var rootType: RootType
     
     private weak var listener: SummaryViewRIBListener?
     
-    init(selection: Binding<SummarySelection>, listener: SummaryViewRIBListener? = nil) {
+    init(selection: Binding<SummaryValue>, listener: SummaryViewRIBListener? = nil) {
         self._selection = selection
         self.listener = listener
     }
@@ -41,7 +41,6 @@ struct SummaryView: View {
                 .buttonStyle(.bordered)
             }
             
-            // Selection display
             Text("Your Selection")
                 .font(.title2)
                 .fontWeight(.semibold)
@@ -64,7 +63,6 @@ struct SummaryView: View {
             
             Spacer()
             
-            // Action buttons
             Button("Change Selection") {
                 selectionState.value = selection.value
                 showSelection = true

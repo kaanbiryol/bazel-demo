@@ -4,7 +4,7 @@ import Factory
 import SwiftUI
 
 public protocol SelectionRIBRouting: ViewableRouting {
-    func routeToSummary(selectionBinding: Binding<SummarySelection>)
+    func routeToSummary(selectionBinding: Binding<SummaryValue>)
 }
 
 public protocol SelectionRIBViewControllable: ViewControllable {
@@ -15,12 +15,12 @@ final class SelectionRIBRouter: RIBs.Router<SelectionRIBInteractable>, Selection
     
     var viewControllable: any RIBs.ViewControllable
     
-    private let summaryBuilder: ParameterFactory<Binding<SummarySelection>, SummaryBuildable>
+    private let summaryBuilder: ParameterFactory<Binding<SummaryValue>, SummaryBuildable>
     
     init(
         interactor: SelectionRIBInteractable,
         viewController: SelectionRIBViewControllable,
-        summaryBuilder: ParameterFactory<Binding<SummarySelection>, SummaryBuildable>
+        summaryBuilder: ParameterFactory<Binding<SummaryValue>, SummaryBuildable>
     ) {
         self.viewControllable = viewController
         self.summaryBuilder = summaryBuilder
@@ -28,7 +28,7 @@ final class SelectionRIBRouter: RIBs.Router<SelectionRIBInteractable>, Selection
         interactor.router = self
     }
     
-    func routeToSummary(selectionBinding: Binding<SummarySelection>) {
+    func routeToSummary(selectionBinding: Binding<SummaryValue>) {
         let summaryView = summaryBuilder(selectionBinding).buildView()
         let summaryController = SwiftUIViewControllable(summaryView)
         viewControllable.pushViewController(summaryController)
