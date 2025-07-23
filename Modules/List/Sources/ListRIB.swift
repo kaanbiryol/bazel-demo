@@ -10,6 +10,7 @@ protocol SelectionViewListener: AnyObject {
     func didTapContinueToSummary(with selectionValue: String)
 }
 
+// MARK: - ListRIBBuilder
 public final class ListRIBBuilder: ListRIBBuildable {
     public init() {}
     
@@ -19,7 +20,9 @@ public final class ListRIBBuilder: ListRIBBuildable {
         viewController.listener = interactor
         let router = ListRouter(
             interactor: interactor,
-            viewController: viewController
+            viewController: viewController,
+            selectionBuilder: Container.shared.selectionBuilder,
+            summaryBuilder: Container.shared.summaryBuilder
         )
         return router
     }
@@ -29,41 +32,60 @@ public final class ListRIBBuilder: ListRIBBuildable {
 final class ListRouter: Router<ListInteractable>, ListRouting {
     var viewControllable: any RIBs.ViewControllable
     
+    private let selectionBuilder: ParameterFactory<(Binding<SelectionValue>, SelectionViewRIBListener?), SelectionBuildable>
+    private let summaryBuilder: ParameterFactory<(Binding<SummaryValue>, SummaryViewRIBListener?), SummaryBuildable>
+    
     init(
         interactor: ListInteractable,
-        viewController: ListViewControllable
+        viewController: ListViewControllable,
+        selectionBuilder: ParameterFactory<(Binding<SelectionValue>, SelectionViewRIBListener?), SelectionBuildable>,
+        summaryBuilder: ParameterFactory<(Binding<SummaryValue>, SummaryViewRIBListener?), SummaryBuildable>
     ) {
         self.viewControllable = viewController
+        self.selectionBuilder = selectionBuilder
+        self.summaryBuilder = summaryBuilder
         super.init(interactor: interactor)
         interactor.router = self
     }
     
-    func routeToSelection(for item: Int) {
+    // MARK: - Factory Methods
+    
+    private func makeSelectionViewController(for item: Int) -> SwiftUIViewControllable {
         let binding = Binding<SelectionValue>(
             get: { SelectionValue(value: "Element \(item)") },
             set: { _ in }
         )
         
-        let builder = Container.shared.selectionBuilder.resolve((binding, interactor))
+        let builder = selectionBuilder.resolve((binding, interactor))
         let view = builder.buildView()
             .environment(\.presentationStyle, .push)
         
-        let viewController = SwiftUIViewControllable(view)
-        viewControllable.pushViewController(viewController)
+        return SwiftUIViewControllable(view)
     }
     
-    func routeToSummary(with selectionValue: String) {
+    private func makeSummaryViewController(with selectionValue: String) -> SwiftUIViewControllable {
         let summaryBinding = Binding<SummaryValue>(
             get: { SummaryValue(value: selectionValue) },
             set: { _ in }
         )
         
-        let builder = Container.shared.summaryBuilder.resolve((summaryBinding, interactor))
+        let builder = summaryBuilder.resolve((summaryBinding, interactor))
         let summaryView = builder.buildView()
             .environment(\.presentationStyle, .push)
         
-        let summaryViewController = SwiftUIViewControllable(summaryView)
-        viewControllable.pushViewController(summaryViewController)
+        return SwiftUIViewControllable(summaryView)
+    }
+    
+    // MARK: - Routing Methods
+    
+    func routeToSelection(for item: Int) {
+        let viewController = makeSelectionViewController(for: item)
+        viewControllable.pushViewController(viewController)
+    }
+    
+    func routeToSummary(with selectionValue: String) {
+        let viewController = makeSummaryViewController(with: selectionValue)
+        viewControllable.pushViewController(viewController)
     }
     
     func routeToRoot() {

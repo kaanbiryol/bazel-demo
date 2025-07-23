@@ -15,7 +15,6 @@ extension View {
     }
 }
 
-// Simplify RouteView
 struct RouteView: View {
     let route: Route
     

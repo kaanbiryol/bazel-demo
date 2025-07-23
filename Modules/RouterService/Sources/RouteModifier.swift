@@ -6,6 +6,7 @@ public struct RouteModifier: ViewModifier {
     @Injected(\.router) private var router
     
     @Binding var isActive: Bool
+    
     let route: any Route
     let style: NavigationStyle
     

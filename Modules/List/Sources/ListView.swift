@@ -50,6 +50,7 @@ struct ListView: View {
         .onOpenURL { url in
             _ = router.handle(deepLink: url)
         }
+        
         .onAppear {
             router.registerDeepLink(pathPrefix: "selection") { url in
                 let urlString = url.absoluteString
