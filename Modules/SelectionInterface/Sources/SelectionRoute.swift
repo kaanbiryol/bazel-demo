@@ -4,7 +4,6 @@ import RouterService
 import struct SwiftUI.Binding
 
 public struct SelectionRoute: Route {
-    public static var identifier: String = "selection_route"
     
     public let selection: Binding<SelectionValue>
     

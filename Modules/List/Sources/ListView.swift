@@ -43,6 +43,11 @@ struct ListView: View {
         }
         .background(Color(.systemBackground).ignoresSafeArea())
         .routeTo(route: currentModalRoute ?? SelectionRoute(selection: .constant(SelectionValue(value: "Fallback"))), isActive: $showModal, style: .sheet)
+        .routeTo(
+            route: SelectionRoute(selection: .constant(SelectionValue(value: ""))),
+            isActive: $showModal,
+            style: .sheet
+        )
         .onReceive(router.deepLinkPublisher) { route in
             currentModalRoute = route
             showModal = true
