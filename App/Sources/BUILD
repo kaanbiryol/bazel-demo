@@ -30,7 +30,7 @@ ios_application(
     families = ["iphone"],
     frameworks = select({
         "//build_tools/settings_linking:static": [],
-        "//build_tools/settings_linking:dynamic": ["//Modules/List/Sources:List"],
+        "//build_tools/settings_linking:dynamic": ["//Modules/List/Sources:ListFramework"],
         "//conditions:default": [],
     }),
     infoplists = [":Info.plist"],
@@ -53,6 +53,6 @@ swift_library(
         "//Modules/List/Sources:List",
         "//Modules/Networking/Sources:Networking",
         "//Modules/NetworkingInterface/Sources:NetworkingInterface",
-        "@com_github_apple_swift_collections//:Collections",
+        "@swift_collections//:Collections",
     ],
 )

@@ -19,7 +19,7 @@ public struct ListView: View {
                     }
                 }
             }
-            .navigationBarTitle(networkingService.fetchTitle())
+            .navigationTitle(networkingService.fetchTitle())
         }
     }
 }
