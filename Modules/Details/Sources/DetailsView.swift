@@ -14,14 +14,9 @@ public struct DetailsView: View {
             Image("bazel", bundle: .details)
                 .resizable()
                 .frame(width: 100, height: 100)
-            Text("Selected element23 \(element)")
+            Text("Element \(element)")
         }
         .padding()
-//        .navigationTitle(NetworkingImpl().fetchDetails())
-    }
-    
-    private func test() -> String {
-        "KAAN2"
     }
 }
 

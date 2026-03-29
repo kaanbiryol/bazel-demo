@@ -1,5 +1,18 @@
+# Bazel
 bazel-*
+MODULE.bazel.lock
+
+# macOS
 .DS_Store
-xcuserdata/
+
+# Xcode
 *.xcodeproj
 *.xcworkspace
+xcuserdata/
+DerivedData/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~

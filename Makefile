@@ -1,14 +1,11 @@
 project:
-	bazel run //:xcodeproj --config=bazel
-		
-project_bwx:
-	bazel run //:xcodeproj --config=xcode
+	bazel run //:xcodeproj
 
 test:
-	bazel test //...:all
+	bazel test //App/...:all //Modules/...:all
 
 build:
-	bazel build -s //App/Sources:App
+	bazel build //App/Sources:App
 
-swiflint:
+swiftlint:
 	bazel run //:swiftlint

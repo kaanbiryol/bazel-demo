@@ -4,7 +4,6 @@ load("//build_tools:build_settings.bzl", "minimum_os_version")
 
 ios_unit_test(
     name = "ListTests",
-    # bundle_id = "com.example.Home.HomeTests",
     minimum_os_version = minimum_os_version,
     test_host = "//App/Sources:App",
     visibility = ["@rules_xcodeproj//xcodeproj:generated"],
